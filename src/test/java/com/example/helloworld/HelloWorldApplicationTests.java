@@ -9,10 +9,5 @@ class HelloWorldApplicationTests {
     @Test
     void contextLoads() {
     }
-    
-    @Test
-    void fakeTestThatReturnsFalse() {
-        return false;
-    }
 
 }
