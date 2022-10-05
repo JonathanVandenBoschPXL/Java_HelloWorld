@@ -39,10 +39,6 @@ jobs:
         pwd
         ls -a
         echo "========="
-        ls /home/runner/work/Java_HelloWorld/Java_HelloWorld/target
-        ls /home/runner/work/Java_HelloWorld/Java_HelloWorld/target/
-        ls /home/runner/work/Java_HelloWorld/Java_HelloWorld/target/*
-        echo "========="
         find . -name 'HelloWorld-0.0.1-SNAPSHOT.jar'
 
 
