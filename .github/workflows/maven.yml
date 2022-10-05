@@ -39,6 +39,7 @@ jobs:
         find . -name 'HelloWorld-0.0.1-SNAPSHOT.jar'
 
   deploy:
+    needs: build-and-test
     runs-on: ubuntu-latest
     steps:
 # Docker
