@@ -36,6 +36,7 @@ jobs:
     - name: Test with Maven
       run: mvn -B test
   docker:
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Set up Docker Buildx
