@@ -34,14 +34,16 @@ jobs:
       run: | 
         echo "PRINTING CUSTOM DEBUG INFO"
         pwd
+        echo "========="
         ls -a
         echo "========="
         find . -name 'HelloWorld-0.0.1-SNAPSHOT.jar'
+        echo "========="
 
-  deploy:
-    needs: build-and-test
-    runs-on: ubuntu-latest
-    steps:
+#  deploy:
+#    needs: build-and-test
+#    runs-on: ubuntu-latest
+#    steps:
 # Docker
     - name: Set up Docker Buildx
       id: buildx
@@ -51,9 +53,11 @@ jobs:
       run: | 
         echo "PRINTING CUSTOM DEBUG INFO 2"
         pwd
+        echo "========="
         ls -a
         echo "========="
         find . -name 'HelloWorld-0.0.1-SNAPSHOT.jar'
+        echo "========="
 
     - name: Login to DockerHub
       uses: docker/login-action@v2
