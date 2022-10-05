@@ -17,7 +17,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+#    - uses: actions/checkout@v3
+    - name: Set up Docker Buildx
+      id: buildx
+      uses: docker/setup-buildx-action@v2
 
     - name: Set up JDK
       uses: actions/setup-java@v1
@@ -39,9 +42,7 @@ jobs:
         find . -name 'HelloWorld-0.0.1-SNAPSHOT.jar'
 
 
-    - name: Set up Docker Buildx
-      id: buildx
-      uses: docker/setup-buildx-action@v2
+
 
     - name: RUNNING CUSTOM DEBUG INFO 2
       run: | 
@@ -61,6 +62,7 @@ jobs:
       id: docker_build
       uses: docker/build-push-action@v3
       with:
+        context: .
         push: true
         tags: ${{ secrets.DOCKERHUB_USERNAME }}/java_helloworld:latest
 
