@@ -32,6 +32,8 @@ jobs:
 # Docker
     - name: Check Out Repo 
       uses: actions/checkout@v3
+
+    - name: RUNNING CUSTOM DEBUG INFO
       run: | 
         echo "PRINTING CUSTOM DEBUG INFO"
         pwd
