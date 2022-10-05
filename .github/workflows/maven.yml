@@ -28,11 +28,8 @@ jobs:
       run: mvn -B test
 #Build
     - name: Build with Maven
-      run: mvn clean install
+      run: mvn -B package --file pom.xml
 # Docker
-    - name: Check Out Repo 
-      uses: actions/checkout@v3
-
     - name: RUNNING CUSTOM DEBUG INFO
       run: | 
         echo "PRINTING CUSTOM DEBUG INFO"
@@ -56,8 +53,6 @@ jobs:
       id: docker_build
       uses: docker/build-push-action@v2
       with:
-        context: ./
-        file: ./Dockerfile
         push: true
         tags: ${{ secrets.DOCKERHUB_USERNAME }}/java_helloworld:latest
 
