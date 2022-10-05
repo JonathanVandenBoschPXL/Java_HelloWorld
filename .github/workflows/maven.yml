@@ -50,7 +50,7 @@ jobs:
         context: ./
         file: ./Dockerfile
         push: true
-        tags: ${{ secrets.DOCKERHUB_USERNAME }}/JavaHelloWorld:latest
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/java_helloworld:latest
 
     - name: Image digest
       run: echo ${{ steps.docker_build.outputs.digest }}
