@@ -14,13 +14,10 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  build & test:
     runs-on: ubuntu-latest
     steps:
-#    - uses: actions/checkout@v3
-    - name: Set up Docker Buildx
-      id: buildx
-      uses: docker/setup-buildx-action@v2
+    - uses: actions/checkout@v3
 
     - name: Set up JDK
       uses: actions/setup-java@v1
@@ -32,7 +29,7 @@ jobs:
 #Build
     - name: Build with Maven
       run: mvn -B package --file pom.xml
-# Docker
+
     - name: RUNNING CUSTOM DEBUG INFO
       run: | 
         echo "PRINTING CUSTOM DEBUG INFO"
@@ -41,8 +38,13 @@ jobs:
         echo "========="
         find . -name 'HelloWorld-0.0.1-SNAPSHOT.jar'
 
-
-
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+# Docker
+    - name: Set up Docker Buildx
+      id: buildx
+      uses: docker/setup-buildx-action@v2
 
     - name: RUNNING CUSTOM DEBUG INFO 2
       run: | 
