@@ -14,22 +14,37 @@ on:
     branches: [ main ]
 
 jobs:
-  build-and-test:
+  build-push:
     runs-on: ubuntu-latest
     steps:
+#Checkout the repo, this sets up the environment and scans for all files.
     - uses: actions/checkout@v3
 
+#Sets up tje JDK with v17
     - name: Set up JDK
       uses: actions/setup-java@v1
       with:
         java-version: 17
-#Test
+
+#Test with Maven
     - name: Test with Maven
       run: mvn -B test
-#Build
+
+#Build with Maven
     - name: Build with Maven
       run: mvn -B package --file pom.xml
 
+#  deploy:
+#    needs: build-and-test
+#    runs-on: ubuntu-latest
+#    steps:
+
+# Set-up of Buildx which is the Docker BuildKit. -> This also scans for available files.
+    - name: Set up Docker Buildx
+      id: buildx
+      uses: docker/setup-buildx-action@v2
+
+#Custom debug info, to be deleted later on
     - name: RUNNING CUSTOM DEBUG INFO
       run: | 
         echo "PRINTING CUSTOM DEBUG INFO"
@@ -40,31 +55,14 @@ jobs:
         find . -name 'HelloWorld-0.0.1-SNAPSHOT.jar'
         echo "========="
 
-#  deploy:
-#    needs: build-and-test
-#    runs-on: ubuntu-latest
-#    steps:
-# Docker
-    - name: Set up Docker Buildx
-      id: buildx
-      uses: docker/setup-buildx-action@v2
-
-    - name: RUNNING CUSTOM DEBUG INFO 2
-      run: | 
-        echo "PRINTING CUSTOM DEBUG INFO 2"
-        pwd
-        echo "========="
-        ls -a
-        echo "========="
-        find . -name 'HelloWorld-0.0.1-SNAPSHOT.jar'
-        echo "========="
-
+#Log in to DockerHub with Username and Access Token provided through GitHub Secrets (Repo Settings)
     - name: Login to DockerHub
       uses: docker/login-action@v2
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
+#Build the Docker Image and push it to DockerHub
     - name: Build and Push to DockerHub
       id: docker_build
       uses: docker/build-push-action@v3
@@ -73,5 +71,6 @@ jobs:
         push: true
         tags: ${{ secrets.DOCKERHUB_USERNAME }}/java_helloworld:latest
 
+#Returns the image hash
     - name: Image digest
       run: echo ${{ steps.docker_build.outputs.digest }}
