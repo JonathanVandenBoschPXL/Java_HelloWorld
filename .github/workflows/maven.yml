@@ -32,9 +32,10 @@ jobs:
 # Docker
     - name: Check Out Repo 
       uses: actions/checkout@v3
-      run: echo "PRINTING CUSTOM DEBUG INFO"
-      run: pwd
-      run: ls
+      run: | 
+        echo "PRINTING CUSTOM DEBUG INFO"
+        pwd
+        ls
 
     - name: Set up Docker Buildx
       id: buildx
