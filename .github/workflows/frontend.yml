@@ -28,7 +28,7 @@ jobs:
 
 #Install NPM modules
     - name: Install NPM Modules
-      run: npm --prefix /frontend install
+      run: npm install /frontend
 
 #Build with NPM
     - name: Build with NPM
