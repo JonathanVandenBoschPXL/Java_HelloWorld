@@ -32,7 +32,7 @@ jobs:
 
 #Build with NPM
     - name: Build with NPM
-      run: npm build ./frontend
+      run: npm run build ./frontend
 
 #  deploy:
 #    needs: build-and-test
