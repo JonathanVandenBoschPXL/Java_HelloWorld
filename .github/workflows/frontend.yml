@@ -27,12 +27,14 @@ jobs:
         node-version: '14'
 
 #Install NPM modules
-#    - name: Install NPM Modules
-#      run: npm install ./frontend
+    - name: Install NPM Modules
+      run: npm install
+      working-directory: frontend
 
 #Build with NPM
-#    - name: Build with NPM
-#      run: npm --prefix ./frontend run build
+    - name: Build with NPM
+      run: npm run build
+      working-directory: frontend
 
 #  deploy:
 #    needs: build-and-test
@@ -68,7 +70,7 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         context: .
-        file: ./frontend/Dockerfile2
+        file: ./frontend/Dockerfile
         push: true
         tags: ${{ secrets.DOCKERHUB_USERNAME }}/java_helloworld_frontend:latest
 
