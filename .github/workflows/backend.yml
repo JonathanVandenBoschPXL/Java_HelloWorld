@@ -28,11 +28,11 @@ jobs:
 
 #Test with Maven
     - name: Test with Maven
-      run: mvn -B test
+      run: mvn -B test --file backend/pom.xml
 
 #Build with Maven
     - name: Build with Maven
-      run: mvn -B package --file pom.xml
+      run: mvn -B package --file backend/pom.xml
 
 #  deploy:
 #    needs: build-and-test
@@ -67,7 +67,7 @@ jobs:
       id: docker_build
       uses: docker/build-push-action@v3
       with:
-        context: .
+        context: ./backend
         push: true
         tags: ${{ secrets.DOCKERHUB_USERNAME }}/java_helloworld:latest
 
