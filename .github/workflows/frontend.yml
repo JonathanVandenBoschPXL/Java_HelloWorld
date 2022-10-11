@@ -56,6 +56,8 @@ jobs:
         echo "========="
         ls -a ./frontend
         echo "========="
+        ls -a ./frontend/dist
+        echo "========="
 
 #Log in to DockerHub with Username and Access Token provided through GitHub Secrets (Repo Settings)
     - name: Login to DockerHub
