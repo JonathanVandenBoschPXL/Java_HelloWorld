@@ -26,9 +26,14 @@ jobs:
       with:
         node-version: '14'
 
-#Install NPM modules
+#Install modules with NPM
     - name: Install NPM Modules
       run: npm install
+      working-directory: frontend
+
+#Run tests with NPM
+    - name: Test with NPM
+      run: npm run test
       working-directory: frontend
 
 #Build with NPM
