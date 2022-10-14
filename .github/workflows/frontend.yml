@@ -39,9 +39,11 @@ jobs:
 # --                          = tells NPM to pass extra arguments to the test script defined in package.json
 # --watch=false               = fixes the "run never ends" issue (GitHub Actions workflow keeps loading same step endlessly otherwise)
 # --browsers=ChromeHeadless   = runs a headless version of Chrome since GitHub Actions has no "display".
-    - name: Test with NPM
-      run: npm run test -- --watch=false --browsers=ChromeHeadless
-      working-directory: frontend
+#
+#Tests temporarily disabled, they might not be used at all in the pipeline if UI tests are used instead.
+#    - name: Test with NPM
+#      run: npm run test -- --watch=false --browsers=ChromeHeadless
+#      working-directory: frontend
 
 #Build with NPM
     - name: Build with NPM
