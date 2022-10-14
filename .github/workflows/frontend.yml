@@ -32,7 +32,7 @@ jobs:
       working-directory: frontend
 
     - name: Install Angular CLI
-      run: npm install -g @angular/cli > /dev/null
+      run: npm install -g @angular/cli
       working-directory: frontend
 
 #Run tests with NPM
