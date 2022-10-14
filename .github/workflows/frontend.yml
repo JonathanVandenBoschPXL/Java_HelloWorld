@@ -31,6 +31,10 @@ jobs:
       run: npm install
       working-directory: frontend
 
+    - name: Install Angular CLI
+      run: npm install -g @angular/cli > /dev/null
+      working-directory: frontend
+
 #Run tests with NPM
 # --                          = tells NPM to pass extra arguments to the test script defined in package.json
 # --watch=false               = fixes the "run never ends" issue (GitHub Actions workflow keeps loading same step endlessly otherwise)
