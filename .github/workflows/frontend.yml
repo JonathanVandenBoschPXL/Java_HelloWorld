@@ -7,11 +7,11 @@
 #
 name: Build and Publish Angular-Frontend Docker Image
 
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+#on:
+#  push:
+#    branches: [ main ]
+#  pull_request:
+#    branches: [ main ]
 
 jobs:
   build-push:
