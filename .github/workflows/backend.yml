@@ -7,11 +7,11 @@
 #
 name: Build and Publish Java-Backend Docker Image
 
-#on:
-#  push:
-#    branches: [ main ]
-#  pull_request:
-#    branches: [ main ]
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
   build-push:
@@ -75,3 +75,16 @@ jobs:
 #Returns the image hash
     - name: Image digest
       run: echo ${{ steps.docker_build.outputs.digest }}
+
+# ===================
+# SONARQUBE JOB
+  sonarqube:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - run: wget -c https://github.com/PXL-IT/VMwareClusterInfo/blob/master/linux_sslvpn.tar
+    - run: tar -xf linux_sslvpn.tar
+    - run: sudo ./Install.sh
+    - run: f5fpc -s -t login.pxl.be -x -u ${{ secrets.STUDENT_NUMBER }}@student.pxl.be
+    - run: f5fpc --info
+    - run: f5fpc --stop 
