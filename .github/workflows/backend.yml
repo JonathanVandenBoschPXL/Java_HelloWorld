@@ -93,6 +93,6 @@ jobs:
       with:
         host: ${{ secrets.SONAR_HOST_URL }}
         login: ${{ secrets.SONAR_TOKEN }}
-        projectBaseDir: "backend/src/"
+        projectBaseDir: "/backend/src/"
         projectKey: "PRiSMA"
     
