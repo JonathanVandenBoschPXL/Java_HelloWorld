@@ -85,6 +85,6 @@ jobs:
     - run: wget -c https://login.pxl.be/public/download/linux_f5cli.x86_64.deb --cipher 'DEFAULT:!DH'
     - run: ls
     - run: sudo dpkg -i linux_f5cli.x86_64.deb
-    - run: f5fpc -s -t login.pxl.be -x -u -b ${{ secrets.STUDENT_NUMBER }}@student.pxl.be -p "${{ secrets.STUDENT_PASS }}"
+    - run: f5fpc -s -t login.pxl.be -x -u "${{ secrets.STUDENT_NUMBER }}@student.pxl.be" -p "${{ secrets.STUDENT_PASS }}" -b
     - run: f5fpc --info
     - run: f5fpc --stop 
