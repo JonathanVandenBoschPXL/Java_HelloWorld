@@ -86,6 +86,7 @@ jobs:
     - run: ls
     - run: sudo dpkg -i linux_f5cli.x86_64.deb
     - run: f5fpc -s -t login.pxl.be -x -u "${{ secrets.STUDENT_NUMBER }}@student.pxl.be" -p "${{ secrets.STUDENT_PASS }}" -b
+    - run: sleep 15
     - run: ping 10.128.9.7 -c 2
     - name: Connect to SonarQube + Scan
       uses: kitabisa/sonarqube-action@v1.2.0
