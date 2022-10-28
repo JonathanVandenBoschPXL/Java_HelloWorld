@@ -27,11 +27,17 @@ jobs:
     - run: f5fpc -s -t login.pxl.be -x -u "${{ secrets.STUDENT_NUMBER }}@student.pxl.be" -p "${{ secrets.STUDENT_PASS }}" -b
     - run: sleep 10
     - run: ping 10.128.9.7 -c 2
-    - name: Connect to SonarQube + Scan
-      uses: kitabisa/sonarqube-action@v1.2.0
-      with:
-        host: ${{ secrets.SONAR_HOST_URL }}
-        login: ${{ secrets.SONAR_TOKEN }}
-        projectKey: "PRiSMA"
+    #- name: Connect to SonarQube + Scan
+    #  uses: kitabisa/sonarqube-action@v1.2.0
+    #  with:
+    #    host: ${{ secrets.SONAR_HOST_URL }}
+    #    login: ${{ secrets.SONAR_TOKEN }}
+    #    projectKey: "PRiSMA"
+    - name: Scan
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=PRiSMA
     - run: sleep 10
     - run: f5fpc --stop
