@@ -1,0 +1,37 @@
+# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
+# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
+#
+#
+# "docker" job made with help from https://github.com/docker/build-push-action
+#
+#
+name: SonarQube
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+# ===================
+# SONARQUBE JOB
+  sonarqube:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - run: wget -c https://login.pxl.be/public/download/linux_f5cli.x86_64.deb --cipher 'DEFAULT:!DH'
+    - run: ls
+    - run: ls backend/
+    - run: sudo dpkg -i linux_f5cli.x86_64.deb
+    - run: f5fpc -s -t login.pxl.be -x -u "${{ secrets.STUDENT_NUMBER }}@student.pxl.be" -p "${{ secrets.STUDENT_PASS }}" -b
+    - run: sleep 10
+    - run: ping 10.128.9.7 -c 2
+    - name: Connect to SonarQube + Scan
+      uses: kitabisa/sonarqube-action@v1.2.0
+      with:
+        host: ${{ secrets.SONAR_HOST_URL }}
+        login: ${{ secrets.SONAR_TOKEN }}
+        projectKey: "PRiSMA"
+    - run: sleep 10
+    - run: f5fpc --stop
