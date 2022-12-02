@@ -12,9 +12,9 @@ name: RELEASE PIPELINE
 #     types: [published]
 on:
   push:
-    branches: [ dev ]
+    branches: [ dev , release-pipeline ]
   pull_request:
-    branches: [ dev ]
+    branches: [ dev , release-pipeline ]
 
 jobs:
   build-push:
@@ -51,7 +51,7 @@ jobs:
     - uses: oprypin/find-latest-tag@v1
       name: get latest release
       with:
-        repository: JonathanVandenBoschPXL/Java_HelloWorld  # The repository to scan.
+        repository: PXL-PRiSMA/PRiSMA  # The repository to scan.
         releases-only: true  # We know that all relevant tags have a GitHub release for them.
         prefix: 'v'
         regex: '^[v]\d+\.\d+\.\d+$'
