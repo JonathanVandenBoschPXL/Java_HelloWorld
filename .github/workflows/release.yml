@@ -30,7 +30,7 @@ jobs:
     #- run: echo ${{ github.ref#refs/heads/ }}
     - run: git branch --show-current
     #- run: curl -L -X GET 'https://api.github.com/repos/JonathanVandenBoschPXL/Java_HelloWorld/tags' -H 'Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}'
-    - run: export TOKEN=${{ secrets.GITHUB_TOKEN }}
+    # - run: export TOKEN=${{ secrets.GITHUB_TOKEN }}
     # - name: Run script file
     #   run: |
     #      chmod +x ./tagFixer.sh
@@ -38,6 +38,7 @@ jobs:
     #   shell: bash
     # - run: curl -X GET 'https://api.github.com/repos/JonathanVandenBoschPXL/Java_HelloWorld/tags' -H 'Authorization: Bearer ${{ secrets.GITHUB_TOKEN }} -H "Accept: application/vnd.github+json"
     - uses: oprypin/find-latest-tag@v1
+      name: get latest pre-release
       with:
         repository: JonathanVandenBoschPXL/Java_HelloWorld  # The repository to scan.
         releases-only: true  # We know that all relevant tags have a GitHub release for them.
@@ -46,6 +47,17 @@ jobs:
         sort-tags: true
         token: ${{ secrets.PERSONAL_ACCESS_TOKEN_CLASSIC }}
       id: octokit  # The step ID to refer to later.
-    - run: ${{ steps.octokit.outputs.tag }}
+    - run: echo ${{ steps.octokit.outputs.tag }}
+    - uses: oprypin/find-latest-tag@v1
+      name: get latest release
+      with:
+        repository: JonathanVandenBoschPXL/Java_HelloWorld  # The repository to scan.
+        releases-only: true  # We know that all relevant tags have a GitHub release for them.
+        prefix: 'v'
+        regex: '^[v]\d+\.\d+\.\d+$'
+        sort-tags: true
+        token: ${{ secrets.PERSONAL_ACCESS_TOKEN_CLASSIC }}
+      id: octokit2  # The step ID to refer to later.
+    - run: echo ${{ steps.octokit2.outputs.tag }}  
 
       
