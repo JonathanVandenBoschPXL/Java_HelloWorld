@@ -44,7 +44,8 @@ jobs:
         prefix: 'v'
         regex: '^[v]\d+\.\d+\.\d+(-pre)\d+$'
         sort-tags: true
-        token: ${{ secrets.PERSONAL_TOKEN }}
+        token: ${{ secrets.PERSONAL_ACCESS_TOKEN_CLASSIC }}
       id: octokit  # The step ID to refer to later.
+    - run: ${{ steps.octokit.outputs.tag }}
 
       
