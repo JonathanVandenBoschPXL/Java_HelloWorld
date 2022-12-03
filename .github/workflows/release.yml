@@ -55,7 +55,7 @@ jobs:
         sort-tags: true
         token: ${{ secrets.PERSONAL_ACCESS_TOKEN_CLASSIC }}
       id: GET_NEWEST_TAG_STEP  # The step ID to refer to later.
-      run: echo ${{ steps.GET_NEWEST_TAG_STEP.outputs.tag }}
+    - run: echo ${{ steps.GET_NEWEST_TAG_STEP.outputs.tag }}
 
 
     # GET LATETS RELEASE ON PRISMA
