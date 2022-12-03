@@ -66,6 +66,7 @@ jobs:
     - run: echo ${{ steps.GET_NEWEST_TAG_STEP.outputs.tag }}
 
 
+
     # GET LATETS RELEASE ON PRISMA
     # - uses: oprypin/find-latest-tag@v1
     #   name: get latest release
