@@ -60,27 +60,27 @@ jobs:
       id: octokit2  # The step ID to refer to later.
     - run: echo ${{ steps.octokit2.outputs.tag }}
     - name: Create tag
-        uses: actions/github-script@v6
-        with:
-          script: |
-            github.rest.git.createRef({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              ref: 'refs/tags/v0.0.6',
-              sha: context.sha
-            })
+      uses: actions/github-script@v6
+      with:
+        script: |
+          github.rest.git.createRef({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            ref: 'refs/tags/v0.0.6',
+            sha: context.sha
+          })
     - name: Create Release
-        uses: actions/github-script@v6
-        with:
-          script: |
-            github.rest.repos.createRelease({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              tag_name: v0.0.7,
-              target_commitish: dev,
-              name: 'just a release (v0.0.7)',
-              body: 'test body',
-              generate_release_notes: true
-            });
+      uses: actions/github-script@v6
+      with:
+        script: |
+          github.rest.repos.createRelease({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            tag_name: v0.0.7,
+            target_commitish: dev,
+            name: 'just a release (v0.0.7)',
+            body: 'test body',
+            generate_release_notes: true
+          });
 
       
