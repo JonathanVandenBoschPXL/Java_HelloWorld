@@ -7,18 +7,18 @@
 #
 name: RELEASE PIPELINE
 
-#on:
-#   release:
-#     types: [published]
 on:
-  push:
-    branches: [ main, dev , release-pipeline ]
-  pull_request:
-    branches: [ main, dev , release-pipeline ]
+   release:
+     types: [published]
+# on:
+#   push:
+#     branches: [ main, dev , release-pipeline ]
+#   pull_request:
+#     branches: [ main, dev , release-pipeline ]
 
 jobs:
   release-dev:
-    if: (github.event_name == 'push' || github.event.pull_request.merged == true) && ${{ github.ref_name }} == 'dev'
+    if: ${{ github.ref_name }} == 'dev'
     runs-on: ubuntu-latest
     steps:
 #Checkout the repo, this sets up the environment and scans for all files.
@@ -28,7 +28,7 @@ jobs:
     - run: echo DEBUG TEST - DEV
       if: ${{ github.ref_name }} == 'dev'
   release-main:
-    if: (github.event_name == 'push' || github.event.pull_request.merged == true) && ${{ github.ref_name }} == 'main'
+    if: ${{ github.ref_name }} == 'main'
     runs-on: ubuntu-latest
     steps:
 #Checkout the repo, this sets up the environment and scans for all files.
