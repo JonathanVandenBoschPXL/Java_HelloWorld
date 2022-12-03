@@ -92,6 +92,23 @@ jobs:
     #         ref: 'refs/tags/v0.0.10-pre1',
     #         sha: context.sha
     #       })
+
+    - name: test get any latest release
+      uses: actions/github-script@v6
+      with:
+        script: |
+          github.rest.repos.getLatestRelease({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+          });
+      id: testget
+    - name: Get result
+      run: echo "${{steps.testget.outputs.result}}"
+
+
+
+
+
     - name: Run script file
       run: |
         chmod +x ./.github/workflows/tagFixer.sh
