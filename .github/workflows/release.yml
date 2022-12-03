@@ -60,6 +60,7 @@ jobs:
       id: octokit2  # The step ID to refer to later.
     - run: echo ${{ steps.octokit2.outputs.tag }}
     - name: Create tag
+      if: always()
       uses: actions/github-script@v6
       with:
         script: |
@@ -70,6 +71,7 @@ jobs:
             sha: context.sha
           })
     - name: Create Release
+      if: always()
       uses: actions/github-script@v6
       with:
         script: |
