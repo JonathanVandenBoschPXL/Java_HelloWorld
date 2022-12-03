@@ -20,6 +20,6 @@ for version in $1; do
     echo -n "$version => ";
     [[ "$version" =~ (.*[^0-9])([0-9]+)$ ]] && version="${BASH_REMATCH[1]}$((${BASH_REMATCH[2]} + 1))";
     echo "$version"
-    echo "TAGNAME=$version" >> $GITHUB_OUTPUT;
+    echo "TAG_NAME=$version" >> $GITHUB_OUTPUT;
     echo $GITHUB_OUTPUT
 done
