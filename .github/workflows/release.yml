@@ -17,7 +17,8 @@ on:
     branches: [ dev , release-pipeline ]
 
 jobs:
-  build-push:
+  release:
+    if: github.event_name == 'push' || github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
 #Checkout the repo, this sets up the environment and scans for all files.
@@ -29,36 +30,49 @@ jobs:
     - run: echo ${{ github.head_ref }}
     #- run: echo ${{ github.ref#refs/heads/ }}
     - run: git branch --show-current
-    #- run: curl -L -X GET 'https://api.github.com/repos/JonathanVandenBoschPXL/Java_HelloWorld/tags' -H 'Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}'
-    # - run: export TOKEN=${{ secrets.GITHUB_TOKEN }}
-    # - name: Run script file
-    #   run: |
-    #      chmod +x ./tagFixer.sh
-    #      ./tagFixer.sh
-    #   shell: bash
-    # - run: curl -X GET 'https://api.github.com/repos/JonathanVandenBoschPXL/Java_HelloWorld/tags' -H 'Authorization: Bearer ${{ secrets.GITHUB_TOKEN }} -H "Accept: application/vnd.github+json"
+
+    # get latest pre-release
+    # - uses: oprypin/find-latest-tag@v1
+    #   name: get latest pre-release
+    #   with:
+    #     repository: JonathanVandenBoschPXL/Java_HelloWorld  # The repository to scan.
+    #     releases-only: true  # We know that all relevant tags have a GitHub release for them.
+    #     prefix: 'v'
+    #     regex: '^[v]\d+\.\d+\.\d+(-pre)\d+$'
+    #     sort-tags: true
+    #     token: ${{ secrets.PERSONAL_ACCESS_TOKEN_CLASSIC }}
+    #   id: octokit  # The step ID to refer to later.
+    # - run: echo ${{ steps.octokit.outputs.tag }}
+
+
     - uses: oprypin/find-latest-tag@v1
-      name: get latest pre-release
+      name: get newest release
       with:
         repository: JonathanVandenBoschPXL/Java_HelloWorld  # The repository to scan.
         releases-only: true  # We know that all relevant tags have a GitHub release for them.
         prefix: 'v'
-        regex: '^[v]\d+\.\d+\.\d+(-pre)\d+$'
-        sort-tags: true
+        #regex: '^[v]\d+\.\d+\.\d+.*$'
+        #sort-tags: true
         token: ${{ secrets.PERSONAL_ACCESS_TOKEN_CLASSIC }}
-      id: octokit  # The step ID to refer to later.
-    - run: echo ${{ steps.octokit.outputs.tag }}
-    - uses: oprypin/find-latest-tag@v1
-      name: get latest release
-      with:
-        repository: PXL-PRiSMA/PRiSMA  # The repository to scan.
-        releases-only: true  # We know that all relevant tags have a GitHub release for them.
-        prefix: 'v'
-        regex: '^[v]\d+\.\d+\.\d+$'
-        sort-tags: true
-        token: ${{ secrets.PERSONAL_ACCESS_TOKEN_CLASSIC }}
-      id: octokit2  # The step ID to refer to later.
-    - run: echo ${{ steps.octokit2.outputs.tag }}
+      id: GET_NEWEST_TAG_STEP  # The step ID to refer to later.
+    - run: echo ${{ steps.GET_NEWEST_TAG_STEP.outputs.tag }}
+
+
+    # GET LATETS RELEASE ON PRISMA
+    # - uses: oprypin/find-latest-tag@v1
+    #   name: get latest release
+    #   with:
+    #     repository: PXL-PRiSMA/PRiSMA  # The repository to scan.
+    #     releases-only: true  # We know that all relevant tags have a GitHub release for them.
+    #     prefix: 'v'
+    #     regex: '^[v]\d+\.\d+\.\d+$'
+    #     sort-tags: true
+    #     token: ${{ secrets.PERSONAL_ACCESS_TOKEN_CLASSIC }}
+    #   id: octokit2  # The step ID to refer to later.
+    # - run: echo ${{ steps.octokit2.outputs.tag }}
+
+
+
     # - name: Create tag
     #   if: always()
     #   uses: actions/github-script@v6
@@ -70,20 +84,31 @@ jobs:
     #         ref: 'refs/tags/v0.0.10-pre1',
     #         sha: context.sha
     #       })
+
+
+
+    - name: Run script file
+      run: |
+        chmod +x ./.github/workflows/tagFixer.sh
+        ./.github/workflows/tagFixer.sh ${{ steps.GET_NEWEST_TAG_STEP.outputs.tag }}
+      shell: bash
+      id: INCREMENT_TAG_STEP
+    - run: echo ${{ steps.INCREMENT_TAG_STEP.outputs.TAG_NAME }}
+
     - name: Create Release
-      if: always()
       uses: actions/github-script@v6
       with:
         script: |
           github.rest.repos.createRelease({
             owner: context.repo.owner,
             repo: context.repo.repo,
-            tag_name: 'v0.0.10-pre2',
+            tag_name: '${{ steps.INCREMENT_TAG_STEP.outputs.TAG_NAME }}',
             target_commitish: 'dev',
-            name: 'v0.0.10-pre2',
+            name: '${{ steps.INCREMENT_TAG_STEP.outputs.TAG_NAME }}',
             body: 'Automated pre-release triggered by feature-branch merge to branch: ${{ github.ref_name }}',
             generate_release_notes: true,
             prerelease: true
           });
+    - run: echo ${{ github.head_ref }}
 
       
