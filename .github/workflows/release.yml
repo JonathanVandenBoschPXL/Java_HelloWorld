@@ -48,17 +48,22 @@ jobs:
         token: ${{ secrets.PERSONAL_ACCESS_TOKEN_CLASSIC }}
       id: octokit  # The step ID to refer to later.
     - run: echo ${{ steps.octokit.outputs.tag }}
-    - uses: oprypin/find-latest-tag@v1
-      name: get latest release
-      with:
-        repository: PXL-PRiSMA/PRiSMA  # The repository to scan.
-        releases-only: true  # We know that all relevant tags have a GitHub release for them.
-        prefix: 'v'
-        regex: '^[v]\d+\.\d+\.\d+$'
-        sort-tags: true
-        token: ${{ secrets.PERSONAL_ACCESS_TOKEN_CLASSIC }}
-      id: octokit2  # The step ID to refer to later.
-    - run: echo ${{ steps.octokit2.outputs.tag }}
+
+
+    # - uses: oprypin/find-latest-tag@v1
+    #   name: get latest release
+    #   with:
+    #     repository: PXL-PRiSMA/PRiSMA  # The repository to scan.
+    #     releases-only: true  # We know that all relevant tags have a GitHub release for them.
+    #     prefix: 'v'
+    #     regex: '^[v]\d+\.\d+\.\d+$'
+    #     sort-tags: true
+    #     token: ${{ secrets.PERSONAL_ACCESS_TOKEN_CLASSIC }}
+    #   id: octokit2  # The step ID to refer to later.
+    # - run: echo ${{ steps.octokit2.outputs.tag }}
+
+
+
     # - name: Create tag
     #   if: always()
     #   uses: actions/github-script@v6
@@ -73,12 +78,11 @@ jobs:
     - name: Run script file
       run: |
         chmod +x ./tagFixer.sh
-        ./tagFixer.sh ${{ steps.octokit2.outputs.tag }}
+        ./tagFixer.sh ${{ steps.octokit.outputs.tag }}
       shell: bash
       id: INCREMENT_TAG_STEP
     - run: echo ${{ steps.INCREMENT_TAG_STEP.outputs.TAG_NAME }}
     - name: Create Release
-      if: always()
       uses: actions/github-script@v6
       with:
         script: |
