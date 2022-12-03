@@ -54,7 +54,7 @@ jobs:
 
 
     - uses: oprypin/find-latest-tag@v1
-      name: get latest pre-release
+      name: get newest release
       with:
         repository: JonathanVandenBoschPXL/Java_HelloWorld  # The repository to scan.
         releases-only: true  # We know that all relevant tags have a GitHub release for them.
