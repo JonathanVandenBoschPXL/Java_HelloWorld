@@ -82,7 +82,7 @@ jobs:
       shell: bash
       id: INCREMENT_TAG_STEP
     - run: echo ${{ steps.INCREMENT_TAG_STEP.outputs.TAG_NAME }}
-    
+
     - name: Create Release
       uses: actions/github-script@v6
       with:
@@ -90,9 +90,9 @@ jobs:
           github.rest.repos.createRelease({
             owner: context.repo.owner,
             repo: context.repo.repo,
-            tag_name: 'v0.0.12-pre3',
+            tag_name: '${{ steps.INCREMENT_TAG_STEP.outputs.TAG_NAME }}',
             target_commitish: 'dev',
-            name: 'v0.0.12-pre3',
+            name: '${{ steps.INCREMENT_TAG_STEP.outputs.TAG_NAME }}',
             body: 'Automated pre-release triggered by feature-branch merge to branch: ${{ github.ref_name }}',
             generate_release_notes: true,
             prerelease: true
