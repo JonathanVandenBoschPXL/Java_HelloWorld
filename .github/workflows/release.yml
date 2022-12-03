@@ -18,7 +18,7 @@ on:
 
 jobs:
   release:
-    if: github.event_name == 'push' || github.event.pull_request.merged == true
+    #if: github.event_name == 'push' || github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
 #Checkout the repo, this sets up the environment and scans for all files.
@@ -51,7 +51,7 @@ jobs:
         repository: JonathanVandenBoschPXL/Java_HelloWorld  # The repository to scan.
         releases-only: true  # We know that all relevant tags have a GitHub release for them.
         prefix: 'v'
-        regex: '^[v]\d+\.\d+\.\d+.*$'
+        #regex: '^[v]\d+\.\d+\.\d+.*$'
         sort-tags: true
         token: ${{ secrets.PERSONAL_ACCESS_TOKEN_CLASSIC }}
       id: GET_NEWEST_TAG_STEP  # The step ID to refer to later.
