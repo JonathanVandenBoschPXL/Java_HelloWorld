@@ -17,6 +17,7 @@ if [[ "$VER" =~ $REGEX ]]; then
 else
     echo "No pre-release tag found!"
     echo "Creating pre-release tag string..."
+    [[ "$VER" =~ (.*[^0-9])([0-9]+)$ ]] && VER="${BASH_REMATCH[1]}$((${BASH_REMATCH[2]} + 1))";
     echo "TAG_NAME=$VER-pre1" >> $GITHUB_OUTPUT;
 fi
 echo "end"
