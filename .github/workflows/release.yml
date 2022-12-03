@@ -17,7 +17,8 @@ on:
     branches: [ dev , release-pipeline ]
 
 jobs:
-  build-push:
+  release:
+    if: github.event_name == 'push' || github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
 #Checkout the repo, this sets up the environment and scans for all files.
@@ -29,15 +30,6 @@ jobs:
     - run: echo ${{ github.head_ref }}
     #- run: echo ${{ github.ref#refs/heads/ }}
     - run: git branch --show-current
-    #- run: curl -L -X GET 'https://api.github.com/repos/JonathanVandenBoschPXL/Java_HelloWorld/tags' -H 'Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}'
-    # - run: export TOKEN=${{ secrets.GITHUB_TOKEN }}
-    # - name: Run script file
-    #   run: |
-    #      chmod +x ./tagFixer.sh
-    #      ./tagFixer.sh
-    #   shell: bash
-    # - run: curl -X GET 'https://api.github.com/repos/JonathanVandenBoschPXL/Java_HelloWorld/tags' -H 'Authorization: Bearer ${{ secrets.GITHUB_TOKEN }} -H "Accept: application/vnd.github+json"
-
 
     # get latest pre-release
     # - uses: oprypin/find-latest-tag@v1
@@ -63,7 +55,7 @@ jobs:
         sort-tags: true
         token: ${{ secrets.PERSONAL_ACCESS_TOKEN_CLASSIC }}
       id: GET_NEWEST_TAG_STEP  # The step ID to refer to later.
-    - run: echo ${{ steps.GET_NEWEST_TAG_STEP.outputs.tag }}
+      run: echo ${{ steps.GET_NEWEST_TAG_STEP.outputs.tag }}
 
 
     # GET LATETS RELEASE ON PRISMA
@@ -92,20 +84,6 @@ jobs:
     #         ref: 'refs/tags/v0.0.10-pre1',
     #         sha: context.sha
     #       })
-
-    - name: test get any latest release
-      uses: actions/github-script@v6
-      with:
-        script: |
-          github.rest.repos.getLatestRelease({
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-          });
-      id: testget
-    - name: Get result
-      run: echo "${{steps.testget.outputs.result}}"
-
-
 
 
 
