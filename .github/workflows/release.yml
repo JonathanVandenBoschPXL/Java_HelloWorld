@@ -77,7 +77,7 @@ jobs:
     #       })
     - name: Run script file
       run: |
-        chmod +x ./tagFixer.sh
+        chmod +x ./.github/workflows/tagFixer.sh
         ./.github/workflows/tagFixer.sh ${{ steps.octokit.outputs.tag }}
       shell: bash
       id: INCREMENT_TAG_STEP
