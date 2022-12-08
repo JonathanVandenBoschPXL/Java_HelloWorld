@@ -1,0 +1,16 @@
+name: workflow_run trigger
+
+#on:
+#   release:
+#     types: [published]
+workflow_run:
+    workflows: ["RELEASE PIPELINE","RELEASE PIPELINE 2"]
+    types:
+      - completed
+    branches: [dev]
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+    - run: echo bump.
