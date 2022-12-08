@@ -86,6 +86,7 @@ jobs:
   
 
   release-create:
+    if: github.event_name == 'push' || github.event.pull_request.merged == true
     needs: release
     runs-on: ubuntu-latest
     steps:
@@ -147,7 +148,7 @@ jobs:
 
 
       - name: Create Release
-        if: ${{ steps.REGET_NEWEST_TAG_STEP.outputs.tag != needs.RELEASE.outputs.INCREMENTED_TAG }} && (github.event_name == 'push' || github.event.pull_request.merged == true)
+        if: ${{ steps.REGET_NEWEST_TAG_STEP.outputs.tag != needs.RELEASE.outputs.INCREMENTED_TAG }}
         uses: actions/github-script@v6
         with:
           script: |
