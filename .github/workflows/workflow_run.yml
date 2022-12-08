@@ -8,7 +8,6 @@ on:
       workflows: [ TEST FLOW , RELEASE PIPELINE 2 ]
       types:
         - completed
-      branches: [dev]
 
 jobs:
   release:
