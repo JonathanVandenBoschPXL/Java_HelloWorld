@@ -172,8 +172,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: echo ${{ needs.RELEASE.outputs.INCREMENTED_TAG }}
+  temp-two:
+    needs: temp
+    runs-on: ubuntu-latest
+    steps:
+    - run: echo ${{ needs.RELEASE.outputs.INCREMENTED_TAG }}
   release-aftermath:
-    needs: [RELEASE,temp]
+    needs: [RELEASE,temp-two]
     runs-on: ubuntu-latest
     steps:
     #simulate workflow run time & refetch latest tag afterwards
