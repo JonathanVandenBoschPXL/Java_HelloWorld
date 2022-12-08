@@ -14,7 +14,7 @@ on:
   push:
     branches: [ release-pipeline ]
   pull_request:
-    branches: [ dev , release-pipeline ]
+    branches: [ release-pipeline ]
 
 jobs:
   release:
@@ -128,6 +128,7 @@ jobs:
     # - run: echo ${{ steps.INCREMENT_TAG_STEP.outputs.TAG_NAME }}
 
     - name: Create Release
+      if: github.event_name == 'push' || github.event.pull_request.merged == true
       uses: actions/github-script@v6
       with:
         script: |

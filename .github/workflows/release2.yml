@@ -138,7 +138,7 @@ jobs:
 
 
     - name: Create Release
-      if: ${{ steps.REGET_NEWEST_TAG_STEP.outputs.tag != steps.INCREMENT_TAG_STEP.outputs.TAG_NAME }}
+      if: ${{ steps.REGET_NEWEST_TAG_STEP.outputs.tag != steps.INCREMENT_TAG_STEP.outputs.TAG_NAME }} && (github.event_name == 'push' || github.event.pull_request.merged == true)
       uses: actions/github-script@v6
       with:
         script: |
