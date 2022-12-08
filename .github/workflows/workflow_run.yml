@@ -5,7 +5,7 @@ name: workflow_run trigger
 #     types: [published]
 on: 
   workflow_run:
-      workflows: ["TEST FLOW","RELEASE PIPELINE 2"]
+      workflows: [ TEST FLOW , RELEASE PIPELINE 2 ]
       types:
         - completed
       branches: [dev]
