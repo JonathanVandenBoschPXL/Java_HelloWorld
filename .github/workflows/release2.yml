@@ -86,85 +86,87 @@ jobs:
   
 
   release-create:
+    if: github.event_name == 'push' || github.event.pull_request.merged == true
     needs: release
     runs-on: ubuntu-latest
-    #simulate workflow run time & refetch latest tag afterwards
-    - run: sleep 5
+    steps:
+      #simulate workflow run time & refetch latest tag afterwards
+      - run: sleep 5
 
-    - uses: oprypin/find-latest-tag@v1
-      name: Re-fetch latest tag
-      with:
-        repository: JonathanVandenBoschPXL/Java_HelloWorld  # The repository to scan.
-        releases-only: true  # We know that all relevant tags have a GitHub release for them.
-        prefix: 'v'
-        #regex: '^[v]\d+\.\d+\.\d+.*$'
-        #sort-tags: true
-        token: ${{ secrets.PERSONAL_ACCESS_TOKEN_CLASSIC }}
-      id: REGET_NEWEST_TAG_STEP  # The step ID to refer to later.
-    - run: echo ${{ steps.REGET_NEWEST_TAG_STEP.outputs.tag }}
+      - uses: oprypin/find-latest-tag@v1
+        name: Re-fetch latest tag
+        with:
+          repository: JonathanVandenBoschPXL/Java_HelloWorld  # The repository to scan.
+          releases-only: true  # We know that all relevant tags have a GitHub release for them.
+          prefix: 'v'
+          #regex: '^[v]\d+\.\d+\.\d+.*$'
+          #sort-tags: true
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN_CLASSIC }}
+        id: REGET_NEWEST_TAG_STEP  # The step ID to refer to later.
+      - run: echo ${{ steps.REGET_NEWEST_TAG_STEP.outputs.tag }}
 
-    # GET LATETS RELEASE ON PRISMA
-    # - uses: oprypin/find-latest-tag@v1
-    #   name: get latest release
-    #   with:
-    #     repository: PXL-PRiSMA/PRiSMA  # The repository to scan.
-    #     releases-only: true  # We know that all relevant tags have a GitHub release for them.
-    #     prefix: 'v'
-    #     regex: '^[v]\d+\.\d+\.\d+$'
-    #     sort-tags: true
-    #     token: ${{ secrets.PERSONAL_ACCESS_TOKEN_CLASSIC }}
-    #   id: octokit2  # The step ID to refer to later.
-    # - run: echo ${{ steps.octokit2.outputs.tag }}
-
-
-
-    # - name: Create tag
-    #   if: always()
-    #   uses: actions/github-script@v6
-    #   with:
-    #     script: |
-    #       github.rest.git.createRef({
-    #         owner: context.repo.owner,
-    #         repo: context.repo.repo,
-    #         ref: 'refs/tags/v0.0.10-pre1',
-    #         sha: context.sha
-    #       })
+      # GET LATETS RELEASE ON PRISMA
+      # - uses: oprypin/find-latest-tag@v1
+      #   name: get latest release
+      #   with:
+      #     repository: PXL-PRiSMA/PRiSMA  # The repository to scan.
+      #     releases-only: true  # We know that all relevant tags have a GitHub release for them.
+      #     prefix: 'v'
+      #     regex: '^[v]\d+\.\d+\.\d+$'
+      #     sort-tags: true
+      #     token: ${{ secrets.PERSONAL_ACCESS_TOKEN_CLASSIC }}
+      #   id: octokit2  # The step ID to refer to later.
+      # - run: echo ${{ steps.octokit2.outputs.tag }}
 
 
-    
-    - run: echo ${{ needs.RELEASE.outputs.INCREMENTED_TAG }}
 
-    - name: test1
-      if: ${{ steps.REGET_NEWEST_TAG_STEP.outputs.tag != needs.RELEASE.outputs.INCREMENTED_TAG }}
-      run: echo NOT the same
-
-    - name: test2
-      if: ${{ steps.REGET_NEWEST_TAG_STEP.outputs.tag == needs.RELEASE.outputs.INCREMENTED_TAG }}
-      run: echo theyre the same
-
-    
-
-
-    - name: Create Release
-      if: ${{ steps.REGET_NEWEST_TAG_STEP.outputs.tag != needs.RELEASE.outputs.INCREMENTED_TAG }} && (github.event_name == 'push' || github.event.pull_request.merged == true)
-      uses: actions/github-script@v6
-      with:
-        script: |
-          github.rest.repos.createRelease({
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            tag_name: '${{ needs.RELEASE.outputs.INCREMENTED_TAG }}',
-            target_commitish: 'dev',
-            name: '${{ needs.RELEASE.outputs.INCREMENTED_TAG }}',
-            body: 'Automated pre-release triggered by feature-branch merge to branch: ${{ github.ref_name }}',
-            generate_release_notes: true,
-            prerelease: true
-          });
-    - run: echo ${{ github.head_ref }}
-
-    - name: Tag already exists
-      if: ${{ steps.REGET_NEWEST_TAG_STEP.outputs.tag == needs.RELEASE.outputs.INCREMENTED_TAG }}
-      run: echo Tag already exists!
+      # - name: Create tag
+      #   if: always()
+      #   uses: actions/github-script@v6
+      #   with:
+      #     script: |
+      #       github.rest.git.createRef({
+      #         owner: context.repo.owner,
+      #         repo: context.repo.repo,
+      #         ref: 'refs/tags/v0.0.10-pre1',
+      #         sha: context.sha
+      #       })
 
 
       
+      - run: echo ${{ needs.RELEASE.outputs.INCREMENTED_TAG }}
+
+      - name: test1
+        if: ${{ steps.REGET_NEWEST_TAG_STEP.outputs.tag != needs.RELEASE.outputs.INCREMENTED_TAG }}
+        run: echo NOT the same
+
+      - name: test2
+        if: ${{ steps.REGET_NEWEST_TAG_STEP.outputs.tag == needs.RELEASE.outputs.INCREMENTED_TAG }}
+        run: echo theyre the same
+
+      
+
+
+      - name: Create Release
+        if: ${{ steps.REGET_NEWEST_TAG_STEP.outputs.tag != needs.RELEASE.outputs.INCREMENTED_TAG }}
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.repos.createRelease({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              tag_name: '${{ needs.RELEASE.outputs.INCREMENTED_TAG }}',
+              target_commitish: 'dev',
+              name: '${{ needs.RELEASE.outputs.INCREMENTED_TAG }}',
+              body: 'Automated pre-release triggered by feature-branch merge to branch: ${{ github.ref_name }}',
+              generate_release_notes: true,
+              prerelease: true
+            });
+      - run: echo ${{ github.head_ref }}
+
+      - name: Tag already exists
+        if: ${{ steps.REGET_NEWEST_TAG_STEP.outputs.tag == needs.RELEASE.outputs.INCREMENTED_TAG }}
+        run: echo Tag already exists!
+
+
+        
