@@ -168,13 +168,11 @@ jobs:
         if: ${{ steps.REGET_NEWEST_TAG_STEP.outputs.tag == needs.RELEASE.outputs.INCREMENTED_TAG }}
         run: echo Tag already exists!
   temp:
-    if: github.event_name == 'push' || github.event.pull_request.merged == true
     needs: release
     runs-on: ubuntu-latest
     steps:
     - run: echo temp
   release-aftermath:
-    if: github.event_name == 'push' || github.event.pull_request.merged == true
     needs: temp
     runs-on: ubuntu-latest
     steps:
