@@ -124,7 +124,7 @@ jobs:
 
 
 
-
+    - run: echo ${{ steps.INCREMENT_TAG_STEP.outputs.tag }}
 
 
 
