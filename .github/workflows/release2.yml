@@ -87,7 +87,7 @@ jobs:
 
   release-create:
     if: github.event_name == 'push' || github.event.pull_request.merged == true
-    needs: release
+    needs: RELEASE
     runs-on: ubuntu-latest
     steps:
       #simulate workflow run time & refetch latest tag afterwards
@@ -167,6 +167,21 @@ jobs:
       - name: Tag already exists
         if: ${{ steps.REGET_NEWEST_TAG_STEP.outputs.tag == needs.RELEASE.outputs.INCREMENTED_TAG }}
         run: echo Tag already exists!
-
+  temp:
+    needs: RELEASE
+    runs-on: ubuntu-latest
+    steps:
+    - run: echo ${{ needs.RELEASE.outputs.INCREMENTED_TAG }}
+  temp-two:
+    needs: temp
+    runs-on: ubuntu-latest
+    steps:
+    - run: echo ${{ needs.RELEASE.outputs.INCREMENTED_TAG }}
+  release-aftermath:
+    needs: [RELEASE,temp-two]
+    runs-on: ubuntu-latest
+    steps:
+    #simulate workflow run time & refetch latest tag afterwards
+    - run: echo ${{ needs.RELEASE.outputs.INCREMENTED_TAG }}
 
         
