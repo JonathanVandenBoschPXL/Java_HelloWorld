@@ -127,12 +127,12 @@ jobs:
     - run: echo ${{ steps.INCREMENT_TAG_STEP.outputs.TAG_NAME }}
 
     - name: test2
-      if: ${{ steps.REGET_NEWEST_TAG_STEP.outputs.tag }} != ${{ steps.INCREMENT_TAG_STEP.outputs.TAG_NAME }}
+      if: ${{ steps.REGET_NEWEST_TAG_STEP.outputs.tag != steps.INCREMENT_TAG_STEP.outputs.TAG_NAME }}
       run: echo NOT the same
 
     - name: test
       if: ${{ steps.REGET_NEWEST_TAG_STEP.outputs.tag }} == ${{ steps.INCREMENT_TAG_STEP.outputs.TAG_NAME }}
-      run: echo they're the same
+      run: echo theyre the same
 
     
 
