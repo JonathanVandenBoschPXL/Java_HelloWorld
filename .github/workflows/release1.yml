@@ -5,7 +5,7 @@
 # "docker" job made with help from https://github.com/docker/build-push-action
 #
 #
-name: RELEASE PIPELINE 2
+name: RELEASE PIPELINE 1
 
 #on:
 #   release:
@@ -23,6 +23,38 @@ jobs:
     steps:
 #Checkout the repo, this sets up the environment and scans for all files.
     - uses: actions/checkout@v3
+
+
+
+    # fetch latest tag for first time
+    - uses: oprypin/find-latest-tag@v1
+      name: get newest release
+      with:
+        repository: JonathanVandenBoschPXL/Java_HelloWorld  # The repository to scan.
+        releases-only: true  # We know that all relevant tags have a GitHub release for them.
+        prefix: 'v'
+        #regex: '^[v]\d+\.\d+\.\d+.*$'
+        #sort-tags: true
+        token: ${{ secrets.PERSONAL_ACCESS_TOKEN_CLASSIC }}
+      id: GET_NEWEST_TAG_STEP  # The step ID to refer to later.
+    - run: echo ${{ steps.GET_NEWEST_TAG_STEP.outputs.tag }}
+
+
+    # Incremenent tag
+    - name: Increment pre-release tag
+      run: |
+        chmod +x ./.github/workflows/tagFixer.sh
+        ./.github/workflows/tagFixer.sh ${{ steps.GET_NEWEST_TAG_STEP.outputs.tag }}
+      shell: bash
+      id: INCREMENT_TAG_STEP
+    - run: echo ${{ steps.INCREMENT_TAG_STEP.outputs.TAG_NAME }}
+
+
+
+
+
+
+
     - run: echo ${{ github.ref }}
     - run: echo ${{ github.ref_name }}
     #- run: echo ${{ github.ref#refs/tags/ }}
@@ -45,17 +77,17 @@ jobs:
     # - run: echo ${{ steps.octokit.outputs.tag }}
 
 
-    - uses: oprypin/find-latest-tag@v1
-      name: get newest release
-      with:
-        repository: JonathanVandenBoschPXL/Java_HelloWorld  # The repository to scan.
-        releases-only: true  # We know that all relevant tags have a GitHub release for them.
-        prefix: 'v'
-        #regex: '^[v]\d+\.\d+\.\d+.*$'
-        #sort-tags: true
-        token: ${{ secrets.PERSONAL_ACCESS_TOKEN_CLASSIC }}
-      id: GET_NEWEST_TAG_STEP  # The step ID to refer to later.
-    - run: echo ${{ steps.GET_NEWEST_TAG_STEP.outputs.tag }}
+    # - uses: oprypin/find-latest-tag@v1
+    #   name: get newest release
+    #   with:
+    #     repository: JonathanVandenBoschPXL/Java_HelloWorld  # The repository to scan.
+    #     releases-only: true  # We know that all relevant tags have a GitHub release for them.
+    #     prefix: 'v'
+    #     #regex: '^[v]\d+\.\d+\.\d+.*$'
+    #     #sort-tags: true
+    #     token: ${{ secrets.PERSONAL_ACCESS_TOKEN_CLASSIC }}
+    #   id: GET_NEWEST_TAG_STEP  # The step ID to refer to later.
+    # - run: echo ${{ steps.GET_NEWEST_TAG_STEP.outputs.tag }}
 
 
     # GET LATETS RELEASE ON PRISMA
@@ -87,13 +119,13 @@ jobs:
 
 
 
-    - name: Run script file
-      run: |
-        chmod +x ./.github/workflows/tagFixer.sh
-        ./.github/workflows/tagFixer.sh ${{ steps.GET_NEWEST_TAG_STEP.outputs.tag }}
-      shell: bash
-      id: INCREMENT_TAG_STEP
-    - run: echo ${{ steps.INCREMENT_TAG_STEP.outputs.TAG_NAME }}
+    # - name: Run script file
+    #   run: |
+    #     chmod +x ./.github/workflows/tagFixer.sh
+    #     ./.github/workflows/tagFixer.sh ${{ steps.GET_NEWEST_TAG_STEP.outputs.tag }}
+    #   shell: bash
+    #   id: INCREMENT_TAG_STEP
+    # - run: echo ${{ steps.INCREMENT_TAG_STEP.outputs.TAG_NAME }}
 
     - name: Create Release
       uses: actions/github-script@v6
