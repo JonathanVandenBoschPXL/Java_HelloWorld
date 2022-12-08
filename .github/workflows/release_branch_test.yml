@@ -38,4 +38,3 @@ jobs:
     - run: echo DEBUG TEST - MAIN
       if: ${{ github.ref_name }} == 'main'
 
-      
