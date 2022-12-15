@@ -118,13 +118,22 @@ jobs:
       with:
         access-token: ${{ secrets.GITHUB_TOKEN }}
     #Generate [Surefire] report
-    - name: '[Surefire] Report'
-      uses: scacap/action-surefire-report@v1
-      if: ${{ always() }}
+    # - name: '[Surefire] Report'
+    #   uses: scacap/action-surefire-report@v1
+    #   if: ${{ always() }}
+    #   with:
+    #     check_name: '[Surefire] Report: frontend'
+    #     report_paths: './frontend/Prisma/junit-results/junit-results.xml'
+    #     fail_on_test_failures: true
+    - name: XUnit Viewer
+      id: xunit-viewer
+      uses: AutoModality/action-xunit-viewer@v1  
+    - name: Attach the report
+      uses: actions/upload-artifact@v1
       with:
-        check_name: '[Surefire] Report: frontend'
-        report_paths: './frontend/Prisma/junit-results/junit-results.xml'
-        fail_on_test_failures: true
+        name: ${{ steps.xunit-viewer.outputs.report-name }}
+        path: ${{ steps.xunit-viewer.outputs.report-dir }}
+        retention-days: 1
 
 
 
