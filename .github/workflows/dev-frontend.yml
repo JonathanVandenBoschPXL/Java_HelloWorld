@@ -84,28 +84,28 @@ jobs:
     - uses: actions/upload-artifact@v3
       if: success()
       with:
-        name: frontend-junit-results
-        path: ./frontend/Prisma/junit-results/junit-results.xml
+        name: prisma-frontend
+        path: ./frontend/Prisma
         retention-days: 3
     
 
-    - run: wget -c https://login.pxl.be/public/download/linux_f5cli.x86_64.deb --cipher 'DEFAULT:!DH'
-    - run: sudo dpkg -i linux_f5cli.x86_64.deb
-    - run: f5fpc -s -t login.pxl.be -x -u "${{ secrets.STUDENT_NUMBER }}@student.pxl.be" -p "${{ secrets.STUDENT_PASS }}" -b
-    - run: sleep 10
-    - run: ping 10.128.9.7 -c 2
-    - name: SonarQube Scan frontend
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_FRONTEND }}
-        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-      if: always()
-      uses: sonarsource/sonarqube-scan-action@master
-      with: 
-        projectBaseDir: frontend/Prisma
-      continue-on-error: true
-    - run: sleep 10
-    - run: f5fpc --stop
+    # - run: wget -c https://login.pxl.be/public/download/linux_f5cli.x86_64.deb --cipher 'DEFAULT:!DH'
+    # - run: sudo dpkg -i linux_f5cli.x86_64.deb
+    # - run: f5fpc -s -t login.pxl.be -x -u "${{ secrets.STUDENT_NUMBER }}@student.pxl.be" -p "${{ secrets.STUDENT_PASS }}" -b
+    # - run: sleep 10
+    # - run: ping 10.128.9.7 -c 2
+    # - name: SonarQube Scan frontend
+    #   env:
+    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_FRONTEND }}
+    #     SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+    #   if: always()
+    #   uses: sonarsource/sonarqube-scan-action@master
+    #   with: 
+    #     projectBaseDir: frontend/Prisma
+    #   continue-on-error: true
+    # - run: sleep 10
+    # - run: f5fpc --stop
 
     #Build with NPM
     # - name: Build with NPM
@@ -119,90 +119,96 @@ jobs:
     #     path: ./frontend/Prisma/dist/prisma
     #     retention-days: 3
 
-  # sonarqube-frontend:
-  #   needs: build-test-frontend
-  #   if: github.event_name == 'push' || github.event.pull_request.merged == true
-  #   runs-on: ubuntu-latest
-  #   steps:
+  sonarqube-frontend:
+    needs: build-test-frontend
+    if: github.event_name == 'push' || github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
 
-  #   #Sets up the JDK with v17
-  #   - name: Set up Node.js 14 LTS
-  #     uses: actions/setup-node@v2
-  #     with:
-  #       node-version: '14'
+    #Sets up the JDK with v17
+    - name: Set up Node.js 14 LTS
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
 
 
 
-  #   # NEW: Install sonarqube for angular
-  #   # - name: Install sonar-qube Angular plugin
-  #   #   run: npm install sonar-scanner --save-dev
-  #   # - name: install karma sonarqube reporter
-  #   #   run: npm install -D karma-sonarqube-reporter
+    # NEW: Install sonarqube for angular
+    # - name: Install sonar-qube Angular plugin
+    #   run: npm install sonar-scanner --save-dev
+    # - name: install karma sonarqube reporter
+    #   run: npm install -D karma-sonarqube-reporter
     
 
-  #   # #Install modules with NPM
-  #   # - name: Install NPM Modules
-  #   #   run: npm install
-  #   #   working-directory: frontend/Prisma
-  #   # #Install angular CLI
-  #   # - name: Install Angular CLI
-  #   #   run: npm install -g @angular/cli
-  #   #   working-directory: frontend/Prisma
+    # #Install modules with NPM
+    # - name: Install NPM Modules
+    #   run: npm install
+    #   working-directory: frontend/Prisma
+    # #Install angular CLI
+    # - name: Install Angular CLI
+    #   run: npm install -g @angular/cli
+    #   working-directory: frontend/Prisma
 
-  #   #Checkout the repo, this sets up the environment and scans for all files.
-  #   - uses: actions/checkout@v3
+    #Checkout the repo, this sets up the environment and scans for all files.
+    - uses: actions/checkout@v3
 
-  #   # Download Maven artifact (package) to GitHub Actions workflow runner for use in this job.
-  #   - uses: actions/download-artifact@v2
-  #     with:
-  #       name: frontend-junit-results
-
-
-  #   - name: debug
-  #     run: | 
-  #       echo ======
-  #       ls -A 
-  #       echo ======
-  #       ls ./frontend
-  #       echo ======
-  #       ls ./frontend/Prisma
-  #       echo ======
-  #       echo ======
-  #       ls ./frontend/Prisma/junit-results
-  #       echo ======
-  #       cat ./frontend/Prisma/junit-results/junit-results.xml
+    # Download Maven artifact (package) to GitHub Actions workflow runner for use in this job.
+    - uses: actions/download-artifact@v2
+      with:
+        name: prisma-frontend
 
 
-  #   - run: wget -c https://login.pxl.be/public/download/linux_f5cli.x86_64.deb --cipher 'DEFAULT:!DH'
-  #   - run: sudo dpkg -i linux_f5cli.x86_64.deb
-  #   - run: f5fpc -s -t login.pxl.be -x -u "${{ secrets.STUDENT_NUMBER }}@student.pxl.be" -p "${{ secrets.STUDENT_PASS }}" -b
-  #   - run: sleep 10
-  #   - run: ping 10.128.9.7 -c 2
-  #   - name: SonarQube Scan frontend
-  #     env:
-  #       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  #       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_FRONTEND }}
-  #       SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-  #     if: always()
-  #     uses: sonarsource/sonarqube-scan-action@master
-  #     # run: |
-  #     #   cd frontend/Prisma
-  #     #   npm install
-  #     #   npm install -g @angular/cli
-  #     #   npm install -g sonarqube-scanner
-  #     #   npm install -D karma-sonarqube-reporter
-  #     #   npm install karma-junit-reporter --save-dev
-  #     #   npm install karma-sonarqube-reporter --save-dev
-  #     #   npm run test
-  #     #   ls -A 
-  #     #   echo ======
-  #     #   ls ./frontend
-  #     #   echo ======
-  #     #   ls ./frontend/Prisma
-  #     #   echo ======
-  #     #  npm run sonar
-  #     with: 
-  #       projectBaseDir: frontend/Prisma
-  #     continue-on-error: true
-  #   - run: sleep 10
-  #   - run: f5fpc --stop
+    - name: debug
+      run: | 
+        echo ======
+        ls -A 
+        echo ======
+        ls ./frontend
+        echo ======
+        ls ./frontend/Prisma
+        echo ======
+        echo ======
+        ls ./frontend/Prisma/junit-results
+        echo ======
+        cat ./frontend/Prisma/junit-results/junit-results.xml
+        echo ======LOCV DEBUG
+        ls ./frontend/Prisma/coverage
+        echo ======LOCV DEBUG
+        ls ./frontend/Prisma/coverage/prisma
+        echo ======LOCV DEBUG
+        cat ./frontend/Prisma/coverage//prisma/lcov.info
+
+
+    - run: wget -c https://login.pxl.be/public/download/linux_f5cli.x86_64.deb --cipher 'DEFAULT:!DH'
+    - run: sudo dpkg -i linux_f5cli.x86_64.deb
+    - run: f5fpc -s -t login.pxl.be -x -u "${{ secrets.STUDENT_NUMBER }}@student.pxl.be" -p "${{ secrets.STUDENT_PASS }}" -b
+    - run: sleep 10
+    - run: ping 10.128.9.7 -c 2
+    - name: SonarQube Scan frontend
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_FRONTEND }}
+        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+      if: always()
+      uses: sonarsource/sonarqube-scan-action@master
+      # run: |
+      #   cd frontend/Prisma
+      #   npm install
+      #   npm install -g @angular/cli
+      #   npm install -g sonarqube-scanner
+      #   npm install -D karma-sonarqube-reporter
+      #   npm install karma-junit-reporter --save-dev
+      #   npm install karma-sonarqube-reporter --save-dev
+      #   npm run test
+      #   ls -A 
+      #   echo ======
+      #   ls ./frontend
+      #   echo ======
+      #   ls ./frontend/Prisma
+      #   echo ======
+      #  npm run sonar
+      with: 
+        projectBaseDir: frontend/Prisma
+      continue-on-error: true
+    - run: sleep 10
+    - run: f5fpc --stop
