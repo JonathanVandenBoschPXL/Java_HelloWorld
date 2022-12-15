@@ -87,11 +87,13 @@ jobs:
     # Upload Maven artifact (package) to GitHub Actions cache for later use in "docker" job.
     - name: Tar files
       run: tar -cvf prisma-frontend.tar ./frontend/Prisma
+    - name: list
+      run: ls -A 
     - uses: actions/upload-artifact@v3
       if: success()
       with:
         name: prisma-frontend
-        path: ./frontend/Prisma
+        path: prisma-frontend.tar
         retention-days: 3
     
 
