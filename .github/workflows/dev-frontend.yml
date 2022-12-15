@@ -17,35 +17,8 @@ on:
     paths:
       - 'frontend/**'
 jobs:
-  fetch-release-tag:
-    runs-on: ubuntu-latest
-    outputs:
-      INCREMENTED_TAG: ${{ steps.INCREMENT_TAG_STEP.outputs.TAG_NAME }}
-    steps:
-    - uses: actions/checkout@v3
-    # fetch latest tag for first time
-    - uses: oprypin/find-latest-tag@v1
-      name: Get latest release tag
-      with:
-        repository: PXL-PRiSMA/PRiSMA  # The repository to scan.
-        releases-only: true  # We know that all relevant tags have a GitHub release for them.
-        prefix: 'v'
-        token: ${{ secrets.PERSONAL_ACCESS_TOKEN_CLASSIC }}
-      id: GET_NEWEST_TAG_STEP  # The step ID to refer to later.
-    - run: echo ${{ steps.GET_NEWEST_TAG_STEP.outputs.tag }}
-    # Incremenent tag
-    - name: Increment pre-release tag
-      run: |
-        chmod +x ./.github/workflows/tagFixer.sh
-        ./.github/workflows/tagFixer.sh ${{ steps.GET_NEWEST_TAG_STEP.outputs.tag }}
-      shell: bash
-      id: INCREMENT_TAG_STEP
-    - run: echo ${{ steps.INCREMENT_TAG_STEP.outputs.TAG_NAME }}
-
-
   build-test-frontend:
     runs-on: ubuntu-latest
-    needs: fetch-release-tag
     steps:
     #Checkout the repo, this sets up the environment and scans for all files.
     - uses: actions/checkout@v3
