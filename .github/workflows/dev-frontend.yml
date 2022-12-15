@@ -73,6 +73,14 @@ jobs:
         ls ./frontend/Prisma/junit-results
         echo ======
         cat ./frontend/Prisma/junit-results/junit-results.xml
+    
+    # Upload Maven artifact (package) to GitHub Actions cache for later use in "docker" job.
+    - uses: actions/upload-artifact@v3
+      if: success()
+      with:
+        name: frontend-junit-results
+        path: ./frontend/Prisma/junit-results/junit-results.xml
+        retention-days: 3
 
     #Build with NPM
     # - name: Build with NPM
@@ -118,6 +126,13 @@ jobs:
 
     #Checkout the repo, this sets up the environment and scans for all files.
     - uses: actions/checkout@v3
+
+    # Download Maven artifact (package) to GitHub Actions workflow runner for use in this job.
+    - uses: actions/download-artifact@v2
+      with:
+        name: frontend-junit-results
+
+
     - name: debug
       run: | 
         echo ======
@@ -127,6 +142,10 @@ jobs:
         echo ======
         ls ./frontend/Prisma
         echo ======
+        echo ======
+        ls ./frontend/Prisma/junit-results
+        echo ======
+        cat ./frontend/Prisma/junit-results/junit-results.xml
 
 
     - run: wget -c https://login.pxl.be/public/download/linux_f5cli.x86_64.deb --cipher 'DEFAULT:!DH'
@@ -139,22 +158,26 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_FRONTEND }}
         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-      run: |
-        cd frontend/Prisma
-        npm install
-        npm install -g @angular/cli
-        npm install -g sonarqube-scanner
-        npm install -D karma-sonarqube-reporter
-        npm install karma-junit-reporter --save-dev
-        npm install karma-sonarqube-reporter --save-dev
-        npm run test
-        ls -A 
-        echo ======
-        ls ./frontend
-        echo ======
-        ls ./frontend/Prisma
-        echo ======
+      if: always()
+      uses: sonarsource/sonarqube-scan-action@master
+      # run: |
+      #   cd frontend/Prisma
+      #   npm install
+      #   npm install -g @angular/cli
+      #   npm install -g sonarqube-scanner
+      #   npm install -D karma-sonarqube-reporter
+      #   npm install karma-junit-reporter --save-dev
+      #   npm install karma-sonarqube-reporter --save-dev
+      #   npm run test
+      #   ls -A 
+      #   echo ======
+      #   ls ./frontend
+      #   echo ======
+      #   ls ./frontend/Prisma
+      #   echo ======
       #  npm run sonar
+      with: 
+        projectBaseDir: frontend/Prisma
       continue-on-error: true
     - run: sleep 10
     - run: f5fpc --stop
