@@ -11,15 +11,16 @@ module.exports = function (config) {
       require('karma-jasmine-html-reporter'),
       require('karma-coverage'),
       require('@angular-devkit/build-angular/plugins/karma'),
-      require('karma-junit-reporter')
+      require('karma-junit-reporter'),
+      require('karma-sonarqube-unit-reporter'),
       //require('karma-sonarqube-reporter')
     ],
-    files: [
-      'src/**/*.spec.ts'
-    ],
-    preprocessors: {
-      'src/**/*.spec.ts': ['coverage', 'junit']
-    },
+    // files: [
+    //   'src/**/*.spec.ts'
+    // ],
+    // preprocessors: {
+    //   'src/**/*.spec.ts': ['coverage', 'junit']
+    // },
     client: {
       jasmine: {
         // you can add configuration options for Jasmine here
@@ -37,8 +38,19 @@ module.exports = function (config) {
       subdir: '.',
       reporters: [
         { type: 'html' },
-        { type: 'text-summary' }
+        { type: 'text-summary' },
+        { type: 'lcov' },
       ]
+    },
+    junitReporter: {
+      outputDir: 'junit-results', // results will be saved as $outputDir/$browserName.xml
+      outputFile: 'junit-results.xml', // if included, results will be saved as $outputDir/$browserName/$outputFile
+      suite: '', // suite will become the package name attribute in xml testsuite element
+      useBrowserName: false, // add browser name to report and classes names
+      nameFormatter: undefined, // function (browser, result) to customize the name attribute in xml testcase element
+      classNameFormatter: undefined, // function (browser, result) to customize the classname attribute in xml testcase element
+      properties: {}, // key value pair of properties to add to the <properties> section of the report
+      xmlVersion: 1 // use '1' if reporting to be per SonarQube 6.2 XML format
     },
     sonarqubeReporter: {
       basePath: 'src/app', // test files folder
@@ -57,24 +69,20 @@ module.exports = function (config) {
          * - metadata[3] = plataform version
          */
         return 'sonarqube_report.xml';
-      },
-    },
-    junitReporter: {
-      outputDir: 'junit-results', // results will be saved as $outputDir/$browserName.xml
-      outputFile: 'junit-results.xml', // if included, results will be saved as $outputDir/$browserName/$outputFile
-      suite: '', // suite will become the package name attribute in xml testsuite element
-      useBrowserName: false, // add browser name to report and classes names
-      nameFormatter: undefined, // function (browser, result) to customize the name attribute in xml testcase element
-      classNameFormatter: undefined, // function (browser, result) to customize the classname attribute in xml testcase element
-      properties: {}, // key value pair of properties to add to the <properties> section of the report
-      xmlVersion: 1 // use '1' if reporting to be per SonarQube 6.2 XML format
+      }
     },
     reporters: ['progress', 'kjhtml', 'coverage', 'junit'],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome'],
+    browsers: ['Chrome', 'ChromeHeadless', 'ChromeHeadlessCI'],
+    customLaunchers: {
+      ChromeHeadlessCI: {
+        base: 'ChromeHeadless',
+        flags: ['--no-sandbox']
+      }
+    },
     singleRun: false,
     restartOnFileChange: true
   });
