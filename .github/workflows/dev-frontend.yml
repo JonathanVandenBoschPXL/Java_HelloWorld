@@ -49,6 +49,8 @@ jobs:
     - name: pre-install
       run: |
         npm install karma-junit-reporter --save-dev
+        npm install karma-sonarqube-unit-reporter --save-dev
+      working-directory: frontend/Prisma
 
     - name: Test with npm
       run: npm run test
