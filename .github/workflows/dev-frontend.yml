@@ -72,6 +72,7 @@ jobs:
         echo ======
         ls ./frontend/Prisma/junit-results
         echo ======
+        cat ./frontend/Prisma/junit-results/junit-results.xml
 
     #Build with NPM
     # - name: Build with NPM
@@ -154,5 +155,6 @@ jobs:
         ls ./frontend/Prisma
         echo ======
       #  npm run sonar
+      continue-on-error: true
     - run: sleep 10
     - run: f5fpc --stop
