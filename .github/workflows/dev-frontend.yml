@@ -46,8 +46,8 @@ jobs:
     #      run: npm run test -- --watch=false --browsers=ChromeHeadless
     #      working-directory: frontend
 
-    - name: Test with npm
-      run: npm test
+    # - name: Test with npm
+    #   run: npm test
 
     #Build with NPM
     # - name: Build with NPM

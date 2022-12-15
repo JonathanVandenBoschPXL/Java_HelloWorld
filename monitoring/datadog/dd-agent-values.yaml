@@ -4,8 +4,8 @@
 
 targetSystem: "linux"
 datadog:
-  apiKey: ***REMOVED***
-  appKey: ***REMOVED***
+  apiKey: 1d6b2575ac80ca5ac21bedbbd62e26e0
+  appKey: 541c29229d0e7d4f68fe58c39cf249ca89dbea1c
   # If not using secrets, then use apiKey and appKey instead
   # apiKeyExistingSecret: <DATADOG_API_KEY_SECRET>
   # appKeyExistingSecret: <DATADOG_APP_KEY_SECRET>
