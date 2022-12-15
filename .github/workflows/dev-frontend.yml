@@ -119,6 +119,7 @@ jobs:
         npm install -g @angular/cli
         npm install -g sonarqube-scanner
         npm install -D karma-sonarqube-reporter
+        npm install karma-junit-reporter --save-dev
         npm run sonar
     - run: sleep 10
     - run: f5fpc --stop
