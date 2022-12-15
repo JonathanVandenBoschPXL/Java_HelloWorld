@@ -110,6 +110,10 @@ jobs:
       if: always() # always run even if the previous step fails
       with:
         report_paths: './frontend/Prisma/junit-results/junit-results.xml'
+        summary: true
+        job_summary: true
+        detailed_summary: true
+        
     
 
     # - run: wget -c https://login.pxl.be/public/download/linux_f5cli.x86_64.deb --cipher 'DEFAULT:!DH'
@@ -191,9 +195,8 @@ jobs:
       run: ls -A
     - name: Extract Tar files
       run: |
-        mkdir /tmp/data
         ls -A
-        tar -xvf prisma-frontend.tar -C /tmp/data
+        tar -xvf prisma-frontend.tar -C /frontend/Prisma
 
 
     - name: debug
