@@ -81,6 +81,7 @@ jobs:
     #     retention-days: 3
 
   sonarqube-frontend:
+    needs: build-test-frontend
     if: github.event_name == 'push' || github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
