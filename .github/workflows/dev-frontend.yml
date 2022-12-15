@@ -97,14 +97,19 @@ jobs:
         retention-days: 1
 
     #Generate [Dorny] report
-    - name: '[Dorny] Report'
-      uses: dorny/test-reporter@v1
-      if: always()
+    # - name: '[Dorny] Report'
+    #   uses: dorny/test-reporter@v1
+    #   if: always()
+    #   with:
+    #     name: '[Dorny] Report: frontend'
+    #     path: ./frontend/Prisma/junit-results/junit-results.xml
+    #     reporter: java-junit
+    #     fail-on-error: true
+    - name: Publish Test Report
+      uses: mikepenz/action-junit-report@v3
+      if: always() # always run even if the previous step fails
       with:
-        name: '[Dorny] Report: frontend'
-        path: ./frontend/Prisma/junit-results/junit-results.xml
-        reporter: java-junit
-        fail-on-error: true
+        report_paths: './frontend/Prisma/junit-results/junit-results.xml'
     
 
     # - run: wget -c https://login.pxl.be/public/download/linux_f5cli.x86_64.deb --cipher 'DEFAULT:!DH'
