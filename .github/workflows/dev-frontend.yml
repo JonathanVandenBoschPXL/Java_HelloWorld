@@ -74,7 +74,6 @@ jobs:
         echo ======
         cat ./frontend/Prisma/junit-results/junit-results.xml
         echo ======
-        cat ./frontend/Prisma/junit-results/junit-results-2.xml
         echo ======LOCV DEBUG
         ls ./frontend/Prisma/coverage
         echo ======LOCV DEBUG
@@ -113,7 +112,7 @@ jobs:
     #   if: always()
     #   with:
     #     name: '[Dorny] Report: frontend'
-    #     path: ./frontend/Prisma/junit-results/junit-results-2.xml
+    #     path: ./frontend/Prisma/junit-results/junit-results.xml
     #     reporter: java-junit
         #fail-on-error: true
 
