@@ -48,6 +48,7 @@ jobs:
 
     - name: Test with npm
       run: npm run test
+      working-directory: frontend/Prisma
     
     - name: debug
       run: | 
