@@ -17,24 +17,24 @@ on:
     paths:
       - 'frontend/**'
 jobs:
-  build-test-frontend:
-    runs-on: ubuntu-latest
-    steps:
-    #Checkout the repo, this sets up the environment and scans for all files.
-    - uses: actions/checkout@v3
-    #Sets up the JDK with v17
-    - name: Set up Node.js 14 LTS
-      uses: actions/setup-node@v2
-      with:
-        node-version: '14'
-    #Install modules with NPM
-    - name: Install NPM Modules
-      run: npm install
-      working-directory: frontend/Prisma
-    #Install angular CLI
-    - name: Install Angular CLI
-      run: npm install -g @angular/cli
-      working-directory: frontend/Prisma
+  # build-test-frontend:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   #Checkout the repo, this sets up the environment and scans for all files.
+  #   - uses: actions/checkout@v3
+  #   #Sets up the JDK with v17
+  #   - name: Set up Node.js 14 LTS
+  #     uses: actions/setup-node@v2
+  #     with:
+  #       node-version: '14'
+  #   #Install modules with NPM
+  #   - name: Install NPM Modules
+  #     run: npm install
+  #     working-directory: frontend/Prisma
+  #   #Install angular CLI
+  #   - name: Install Angular CLI
+  #     run: npm install -g @angular/cli
+  #     working-directory: frontend/Prisma
 
     #Run tests with NPM
     # --                          = tells NPM to pass extra arguments to the test script defined in package.json
@@ -82,14 +82,14 @@ jobs:
     #   run: npm install -D karma-sonarqube-reporter
     
 
-    #Install modules with NPM
-    - name: Install NPM Modules
-      run: npm install
-      working-directory: frontend/Prisma
-    #Install angular CLI
-    - name: Install Angular CLI
-      run: npm install -g @angular/cli
-      working-directory: frontend/Prisma
+    # #Install modules with NPM
+    # - name: Install NPM Modules
+    #   run: npm install
+    #   working-directory: frontend/Prisma
+    # #Install angular CLI
+    # - name: Install Angular CLI
+    #   run: npm install -g @angular/cli
+    #   working-directory: frontend/Prisma
 
     #Checkout the repo, this sets up the environment and scans for all files.
     - uses: actions/checkout@v3
@@ -116,6 +116,7 @@ jobs:
         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
       run: |
         cd frontend/Prisma
+        npm install
         npm install -g @angular/cli
         npm install -g sonarqube-scanner
         npm install -D karma-sonarqube-reporter
