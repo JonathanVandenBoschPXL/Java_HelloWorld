@@ -1,0 +1,43 @@
+<div id="background">
+  <div id="container">
+    <app-terug-naar-kind-profiel></app-terug-naar-kind-profiel>
+    <div id="prioriteitenVenster">
+      <h1>Prioriteiten</h1>
+      <div id="prioriteitenVensterBody">
+        <app-traject-voortgang-indicatie></app-traject-voortgang-indicatie>
+        <div id="prioriteitenVensterInhoud">
+          <div id="prioriteitenVensterLinks">
+            <div id="uitleg">
+              <p>
+                Gelieve hier uw prioriteit aan te duiden.
+                Op basis hiervan zal u adviezen toegewezen krijgen die toegepast kunnen worden op het desbetreffende
+                kind.
+              </p>
+            </div>
+          </div>
+          <div id="prioriteitenVensterRechts">
+            <app-prioriteit-selectie (luisterNaarClick)="zetPrioriteit('CC')" [subfunctie]="'Centrale Coherentie'"
+                                     *ngIf="zetGroeipuntenAanwezig('CC')"></app-prioriteit-selectie>
+            <app-prioriteit-selectie (luisterNaarClick)="zetPrioriteit('EF')"
+                                     [subfunctie]="'Executieve Functie'"
+                                     *ngIf="zetGroeipuntenAanwezig('EF')"></app-prioriteit-selectie>
+            <app-prioriteit-selectie (luisterNaarClick)="zetPrioriteit('ToM')"
+                                     [subfunctie]="'Theory of Mind'"
+                                     *ngIf="zetGroeipuntenAanwezig('ToM')"></app-prioriteit-selectie>
+            <app-prioriteit-selectie (luisterNaarClick)="zetPrioriteit('Socio')"
+                                     [subfunctie]="'Socio-emotionele ontwikkeling'"
+                                     *ngIf="zetGroeipuntenAanwezig('Socio')"></app-prioriteit-selectie>
+            <app-prioriteit-selectie (luisterNaarClick)="zetPrioriteit('SF')"
+                                     [subfunctie]="'Sensorische Functies'"
+                                     *ngIf="zetGroeipuntenAanwezig('SF')"></app-prioriteit-selectie>
+            <app-prioriteit-selectie (luisterNaarClick)="zetPrioriteit('Beweging')"
+                                     [subfunctie]="'Bewegingssysteem en aan beweging verwante functies'"
+                                     *ngIf="zetGroeipuntenAanwezig('Beweging')"></app-prioriteit-selectie>
+          </div>
+
+        </div>
+      </div>
+      <button (click)="opslaanTraject()" id="trajectAanmakenButton">Opslaan</button>
+    </div>
+  </div>
+</div>

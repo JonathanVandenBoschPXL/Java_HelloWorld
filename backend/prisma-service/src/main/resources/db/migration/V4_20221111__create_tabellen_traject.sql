@@ -1,0 +1,13 @@
+create table antwoord (id bigint not null auto_increment, ingevuld bit not null, naam varchar(255), opmerking varchar(255), subfunctie_id bigint, primary key (id)) engine=InnoDB;
+create table domein (id bigint not null auto_increment, kleur varchar(255), naam varchar(255), primary key (id)) engine=InnoDB;
+create table functie (id bigint not null auto_increment, naam varchar(255), domein_id bigint, primary key (id)) engine=InnoDB;
+create table situering (id bigint not null auto_increment, antwoord1 varchar(255), antwoord2 varchar(255), primary key (id)) engine=InnoDB;
+create table subfunctie (id bigint not null auto_increment, naam varchar(255), functie_id bigint, primary key (id)) engine=InnoDB;
+create table traject (id bigint not null auto_increment, datum_laatst_aangepast date, domein_id bigint, kind_id bigint, situering_id bigint, user_id bigint, primary key (id)) engine=InnoDB;
+alter table antwoord add constraint FK5mn4ik7j5l4kmiumx0hhsxeb4 foreign key (subfunctie_id) references subfunctie (id);
+alter table functie add constraint FKmx1n93t9bp7ea42cy3lrnl41n foreign key (domein_id) references domein (id);
+alter table subfunctie add constraint FK11mdch1wmmgxuvyfnqx60evkv foreign key (functie_id) references functie (id);
+alter table traject add constraint FKks0xdm3mvn9tpfxt8kru7nhmi foreign key (domein_id) references domein (id);
+alter table traject add constraint FK6xivsvlori1sqmc7s2mnfepjw foreign key (kind_id) references kind (id);
+alter table traject add constraint FKg94aq9jpdsn3iy9y376kct93g foreign key (situering_id) references situering (id);
+alter table traject add constraint FK8ad6dglaudmnaxpihq5tnvd95 foreign key (user_id) references user (id);

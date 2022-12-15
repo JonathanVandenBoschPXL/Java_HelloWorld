@@ -1,0 +1,51 @@
+# Datadog Agent with Logs, APM, Processes, and System Probe enabled
+# from: https://app.datadoghq.com/account/settings#agent/kubernetes
+# https://github.com/DataDog/helm-charts/blob/main/examples/datadog/agent_basic_values.yaml
+
+targetSystem: "linux"
+datadog:
+  apiKey: ***REMOVED***
+  appKey: ***REMOVED***
+  # If not using secrets, then use apiKey and appKey instead
+  # apiKeyExistingSecret: <DATADOG_API_KEY_SECRET>
+  # appKeyExistingSecret: <DATADOG_APP_KEY_SECRET>
+
+
+  #clusterName: pe1-cluster
+
+  
+  tags: []
+  # datadog.kubelet.tlsVerify should be `false` on kind and minikube
+  # to establish communication with the kubelet
+  # kubelet:
+    # tlsVerify: "false"
+  logs:
+    enabled: true
+    containerCollectAll: true
+    containerCollectUsingFiles: true
+  apm:
+    portEnabled: true
+    socketPath: /var/run/datadog/apm.socket
+    hostSocketPath: /var/run/datadog/
+  processAgent:
+    enabled: true
+    processCollection: false
+  systemProbe:
+    enableTCPQueueLength: false
+    enableOOMKill: true
+    collectDNSStats: false
+# Custom added below
+#clusterAgent:
+  ## @param admissionController - object - required
+  ## Enable the admissionController to automatically inject APM and
+  ## DogStatsD config and standard tags (env, service, version) into
+  ## your pods
+  #
+  #admissionController:
+    #enabled: true
+
+    ## @param mutateUnlabelled - boolean - optional
+    ## Enable injecting config without having the pod label:
+    ## admission.datadoghq.com/enabled="true"
+    #
+    #mutateUnlabelled: false

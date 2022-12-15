@@ -1,0 +1,46 @@
+server:
+  port: '7000'
+  servlet:
+    contextPath: /api
+  error:
+    include-message: always
+    include-binding-errors: always
+
+spring:
+  datasource:
+    url: 'jdbc:mysql://localhost:3308/${PRISMA_DB_DATABASE_NAME}'
+    username: '${PRISMA_DB_USERNAME}'
+    password: '${PRISMA_DB_PASSWORD}'
+    driverClassName: com.mysql.cj.jdbc.Driver
+  mail:
+    host: '${SMTP_HOST}'
+    username: '${SMTP_USERNAME}'
+    password: '${SMTP_PASSWORD}'
+    properties:
+      mail:
+        transport:
+          protocol: smtp
+        smtp:
+          port: '${SMTP_PORT}'
+          auth: true
+          starttls:
+            enable: true
+  security:
+    oauth2:
+      client:
+        provider:
+          keycloak:
+            issuer-uri:
+                '${IDENTITY_SERVER_URL}/realms/PRiSMA'
+
+keycloak:
+  realm:
+    PRiSMA
+  auth-server-url:
+    '${IDENTITY_SERVER_URL}'
+  resource:
+    PRiSMA_Identity_Server
+  public-client: true
+  bearer-only: true
+  use-resource-role-mappings: false
+  cors: true

@@ -1,0 +1,93 @@
+#container {
+  margin-top: 80px;
+  overflow: hidden;
+  padding: 30px;
+  min-height: 50em;
+  /*zet child in het midden van deze parent div*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#background {
+  background-image: url("src/assets/kind_profiel.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+}
+
+#contactVenster {
+  border-radius: 25px;
+  width: 100%;
+  min-height: fit-content;
+  background: var(--primary-color-white);
+  margin: auto;
+  padding: 30px;
+}
+
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 4%;
+}
+
+h3 {
+  margin-block-end: 0;
+}
+
+input {
+  width: 30%;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 2px #999;
+  height: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+textarea {
+  margin-left: 0;
+}
+
+.vraag {
+  width: 100%;
+  height: fit-content;
+}
+
+button {
+  background-color: var(--primary-color-blue);
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  float: right;
+  border-radius: 12px;
+  width: fit-content;
+  padding: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 1em;
+}
+
+button:disabled {
+  background-color: lightblue;
+}
+
+.visible {
+  visibility: collapse;
+}
+
+.validationerror {
+  background-color: #f24b48;
+  color: white;
+  border: 1px solid #f24b48;
+  border-radius: 0.3rem;
+  width: fit-content;
+  padding: 0 5px;
+}
+
+.annuleerButton {
+  float: left;
+}

@@ -1,0 +1,20 @@
+<div id="background">
+    <div id="container">
+        <img id="afbeelding" src="/assets/Login.jpg">
+        <div id="login">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label for="emailInput">Email</label><br/>
+                    <input id="emailInput" type="text" formControlName="email" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label for="wachtwoordInput">Password</label><br/>
+                    <input id="wachtwoordInput" type="password" formControlName="wachtwoord" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <button id="loginButton">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

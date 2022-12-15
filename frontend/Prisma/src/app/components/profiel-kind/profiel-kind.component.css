@@ -1,0 +1,109 @@
+#container {
+  margin-top: 80px;
+  overflow: hidden;
+  height: 60em;
+  font-family: Arial, serif;
+}
+
+#background {
+  background-image: url("src/assets/kind_profiel.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+}
+
+#kind {
+  display: grid;
+  padding: 20px;
+  width: 50%;
+  left: 25%;
+  position: absolute;
+  top: 30%;
+  background-color: #E3E3E3;
+  border-radius: 25px;
+  box-shadow: 0 3px 9px black, inset 0 0 9px white;
+
+}
+
+#topRow {
+  width: 100%;
+}
+
+#imageKind {
+  width: 40%;
+}
+
+#imageKind img {
+  border-radius: 50%;
+  width: 200px;
+  float: left;
+}
+
+.informatie {
+  float: right;
+  width: 50%;
+  margin-bottom: 30px;
+  padding: 20px;
+}
+
+#bottomRow {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10em, 1fr));
+  padding-left: 15%;
+  padding-right: 15%;
+}
+@media only screen and (max-width: 1600px) {
+  #bottomRow {
+    grid-template-columns: repeat(auto-fit, minmax(5em, 1fr));
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+#dagboekButton {
+  color: #8F66AC;
+  position: relative;
+}
+
+#trajectButton {
+  color: #B1C135;
+
+}
+
+#adviezenButton {
+  color: #35BDB7;
+}
+
+#bottomRow img {
+  border-radius: 50%;
+  border: 4px solid;
+  margin: 5px;
+  padding: 5px;
+  width: 10em;
+}
+
+.button {
+  text-align: center;
+  width: 200px;
+  margin: auto;
+}
+
+a {
+  text-decoration: none;
+
+}
+
+#button-badge {
+  font-family: Arial, serif;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: red;
+  color: var(--primary-color-white);
+  position: absolute;
+  top: 5%;
+  right: 20%;
+}

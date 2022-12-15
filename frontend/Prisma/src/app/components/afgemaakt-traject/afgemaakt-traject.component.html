@@ -1,0 +1,29 @@
+<div id="background">
+  <div id="container">
+    <app-terug-naar-kind-profiel></app-terug-naar-kind-profiel>
+    <div id="venster">
+      <div id="header">
+        <h1>Traject</h1>
+        <app-domein-indicatie></app-domein-indicatie>
+      </div>
+      <div id="body">
+        <div id="huidigTraject">
+          <div *ngIf="eigenTrajectAanwezig == true; else geenEigenTraject">
+            <h3 id="meldingTraject">Uw meest recent traject</h3>
+            <app-afgemaakt-traject-card [traject]="meestRecentTraject"></app-afgemaakt-traject-card>
+            <button id="naarAdviezenButton">Adviezen</button>
+            <button id="nogEenTrajectAanmaken" (click)="maakNieuwTraject()">Maak nog een traject aan</button>
+          </div>
+          <ng-template #geenEigenTraject id="geenTrajectVenster">
+            <h3>Geen eigen traject</h3>
+            <button id="trajectAanmaken" (click)="maakNieuwTraject()">Maak traject aan</button>
+          </ng-template>
+        </div>
+        <div id="line"></div>
+        <div id="trajectVergelijkingVenster">
+          <app-afgemaakt-traject-vergelijken [kindId]="kindId$" [trajectHuidig]="meestRecentTraject"></app-afgemaakt-traject-vergelijken>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

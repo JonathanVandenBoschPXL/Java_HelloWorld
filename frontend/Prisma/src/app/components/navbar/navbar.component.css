@@ -1,0 +1,95 @@
+.container{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: auto;
+  z-index: 999;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 20px;
+  overflow: hidden;
+  background: var(--navbar-background-color);
+  font-size: 20px;
+  font-family: 'Aristotelica Display Trial', sans-serif;
+
+}
+
+ul a {
+  font-weight: 600;
+}
+
+li {
+  float: right;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 18px 5px;
+  text-decoration: none;
+}
+
+.breakLine{
+  width: 3px;
+  height: 20px;
+  margin: 15px 4px 4px;
+  background-color: white;
+  float: right;
+}
+button{
+  font-family: 'Aristotelica Display Trial', sans-serif;
+  background-color: var(--primary-color-blue);
+  border: none;
+  color: var(--primary-color-white);
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  float: right;
+  border-radius: 12px;
+  margin-left: 40px;
+}
+
+button a{
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+#logo{
+  position: absolute;
+}
+
+img{
+  width: 150px;
+}
+
+.hover-underline-animation {
+  display: inline-block;
+  position: relative;
+  color: #0087ca;
+}
+
+.hover-underline-animation:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #ABFAA9;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}

@@ -1,0 +1,23 @@
+<div id="container">
+  <section class="vragen_section" [formGroup]="vragen">
+    <p><mat-checkbox formControlName="overprikkeling">Overprikkeling <span>in sensorische kanalen (hypersensitiviteit)</span></mat-checkbox></p>
+      <span><ul>
+        <li>bv. prikkel ontwijkend gedrag (vluchten uit het klaslokaal)</li>
+        <li>bv. buitensporige reactie op prikkels (pijnreactie bij veel geluid)</li>
+      </ul></span>
+    <p><mat-checkbox formControlName="onderprikkeling">Onderprikkeling <span>in sensorische kanalen (hyposensitief)</span></mat-checkbox></p>
+      <span><ul>
+        <li>bv. prikkel zoekend gedrag (fladderen)</li>
+      </ul>
+    </span>
+    <p><mat-checkbox formControlName="visueleDenkers"><span>Meer frequent</span> visuele denkers <span>sterk in het herkennen van patronen</span></mat-checkbox></p>
+  </section>
+  <textarea [(ngModel)]="opmerking" placeholder="Opmerkingen"></textarea>
+
+
+  <div id="functieNavigatieButtons">
+    <button (click)="functieNavigatie(-1)" id="terugButton">Terug</button>
+    <button (click)="functieNavigatie(1)" id="volgendeButton">Volgende</button>
+  </div>
+
+</div>

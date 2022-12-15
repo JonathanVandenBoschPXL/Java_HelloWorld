@@ -1,0 +1,86 @@
+#container {
+  margin-top: 80px;
+  overflow: hidden;
+  padding: 30px;
+  height: 800px;
+
+}
+
+#background {
+  background-image: url("src/assets/kind_profiel.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+}
+
+#traject_card {
+  display: grid;
+  padding: 20px;
+  width: 50%;
+  left: 25%;
+  top: 30%;
+  position: absolute;
+  background-color: #E3E3E3;
+  border-radius: 25px;
+  box-shadow: 0 3px 9px #7e7e7e, inset 0 0 9px white;
+}
+
+#traject_uitslag {
+  margin: 6em auto 1em auto;
+}
+
+
+h1 {
+  font-size: 3rem;
+  margin-left: 4%;
+  font-weight: bold;
+  text-decoration: underline;
+  text-decoration-color: var(--primary-color-blue);
+}
+
+h2 {
+  display: block;
+  float: left;
+}
+
+h3 {
+  display: block;
+  float: left;
+}
+
+button {
+  background-color: var(--primary-color-blue);
+  border: none;
+  color: var(--primary-color-white);
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  float: left;
+  border-radius: 12px;
+  width: 10rem;
+  padding: 10px;
+  font-weight: 600;
+  margin: auto;
+  cursor: pointer;
+}
+
+button a {
+  display: block;
+  color: var(--primary-color-white);
+  text-align: center;
+  margin: auto;
+  text-decoration: none;
+}
+
+.card_content {
+  height: 20em;
+  display: grid;
+  align-content: center;
+}
+
+.trajectenAntwoord{
+  display: grid;
+  margin: auto;
+}

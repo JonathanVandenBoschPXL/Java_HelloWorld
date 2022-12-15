@@ -1,0 +1,83 @@
+#container {
+  height: 100%;
+}
+
+#geenTraject {
+  text-align: center;
+  margin-top: 50%;
+  background-color: #dcdcdc;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+h1 {
+  margin-bottom: 2em;
+}
+#trajectSelectieSectie{
+  display: grid;
+  gap: 2em;
+}
+
+#trajectSelecteren {
+  display: grid;
+  gap: 1em;
+  grid-template-columns: 1fr 1fr;
+}
+#trajectFilterenVenster{
+  display: grid;
+  gap: 1em;
+}
+#trajectFilterenVensterHeader{
+  display: flex;
+}
+#mijnTrajectenButton{
+  margin-left: auto;
+}
+#filterForm{
+  width: 50%;
+  display: grid;
+  gap: 1em;
+}
+.inputSectie{
+  display: flex;
+  width: 100%;
+  gap: 2em;
+}
+label{
+  margin: 8px 0;
+
+}
+input{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+select{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+input:focus {
+  outline: none;
+  border: none;
+  box-shadow: 0 0 10px var(--primary-color-blue);
+}
+
+button {
+  background-color: var(--primary-color-blue);
+  border: none;
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 12px;
+  width: fit-content;
+  padding: 10px;
+  cursor: pointer;
+  gap: 20px;
+}
+#trajectDeselecteren{
+  margin-bottom: 16px;
+}
+

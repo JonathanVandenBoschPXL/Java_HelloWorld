@@ -1,0 +1,67 @@
+<div id="background">
+    <div id="container">
+        <div id="contactVenster">
+            <h1>Contacteer ons</h1>
+            <form *ngIf="!this.sent" id="contactForm" #myForm="ngForm">
+                <p>Bij vragen over het PRiSMA-programma kunt u ons steeds contacteren via onderstaand contactformulier.</p>
+                <div class="vraag">
+                    <h3>Onderwerp</h3>
+                    <input type="text" required minlength="3" name="onderwerp" id="onderwerpInput"
+                        [(ngModel)]="contact.onderwerp" #onderwerp="ngModel" />
+                </div>
+                <div *ngIf="onderwerp.invalid && (onderwerp.touched)">
+                    <p class="validationerror" *ngIf="onderwerp.errors?.['required']">
+                        Onderwerp is verplicht in te vullen!
+                    </p>
+                    <p class="validationerror" *ngIf="onderwerp.errors?.['minlength']">
+                        Onderwerp moet tenminste 3 karakters lang zijn!
+                    </p>
+                </div>
+                <div class="vraag">
+                    <h3>E-mailadres</h3>
+                    <input type="text" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}" name="e-mail"
+                        id="emailInput" [(ngModel)]="contact.verzender" #emailadres="ngModel">
+                </div>
+                <div *ngIf="emailadres.invalid && (emailadres.touched)">
+                    <p class="validationerror" *ngIf="emailadres.errors?.['required']">
+                        Emailadres is verplicht in te vullen!
+                    </p>
+                    <p class="validationerror" *ngIf="emailadres.errors?.['pattern']">
+                        Vul een geldig emailadres in!
+                    </p>
+                </div>
+                <div class="vraag">
+                    <h3>Naam</h3>
+                    <input type="text" required minlength="3" name="naam" id="naamInput" [(ngModel)]="contact.naam" #naam="ngModel"/>
+                </div>
+                <div *ngIf="naam.invalid && (naam.touched)">
+                    <p class="validationerror" *ngIf="naam.errors?.['required']">
+                        Naam is verplicht in te vullen!
+                    </p>
+                    <p class="validationerror" *ngIf="naam.errors?.['minlength']">
+                        Naam moet tenminste 3 karakters lang zijn!
+                    </p>
+                </div>
+                <div class="vraag">
+                    <h3>Uw vraag</h3>
+                    <textarea required minlength="10" name="e-mailText" id="emailtextInput" [(ngModel)]="contact.body"
+                        #body="ngModel">
+                        </textarea>
+                </div>
+                <div *ngIf="body.invalid && (body.touched)">
+                    <p class="validationerror" *ngIf="body.errors?.['required']">
+                        Vraag is verplicht in te vullen!
+                    </p>
+                    <p class="validationerror" *ngIf="body.errors?.['minlength']">
+                        Vraag moet tenminste 10 karakters lang zijn!
+                    </p>
+                </div>
+                <button class="annuleerButton" type="button" (click)="openCancelDialog()">Annuleer</button>
+                <button [disabled]="myForm.invalid" type="submit" (click)="onSubmit()">Verstuur</button>
+            </form>
+            <div *ngIf="this.sent">
+                <p>Bedankt! Je email werd verstuurd. We zullen je vraag zo spoedig mogelijk beantwoorden.</p>
+            </div>
+        </div>
+    </div>
+</div>

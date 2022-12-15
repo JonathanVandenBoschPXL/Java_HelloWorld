@@ -1,0 +1,9 @@
+router-outlet{
+  width: 100%;
+  margin-bottom: 5%;
+  height: auto;
+}
+app-footer{
+  clear: both;
+  margin-top: 5%;
+}

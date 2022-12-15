@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  namespace: prisma
+  labels:
+    app: frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: prisma-frontend
+        #image: jonvdb/prisma-frontend-test:dd-rum
+        image: jonvdb/prisma_frontend:dev
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 4200
+        env:
+        - name: API_URL     
+          value: "http://10.128.9.11:7000/api/"

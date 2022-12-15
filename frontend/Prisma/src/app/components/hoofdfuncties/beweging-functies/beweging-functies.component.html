@@ -1,0 +1,13 @@
+<div id="container">
+  <section class="vragen_section" [formGroup]="vragen">
+    <p><mat-checkbox formControlName="motorischeVaardigheden">Beperkte grove of fijnmotorische vaardigheden </mat-checkbox>
+      <span>(bv. schrijfproblemen)</span></p>
+    <p><mat-checkbox formControlName="spierspanning">Hoge spierspanning – houterig bewegen – tenengang</mat-checkbox></p>
+    <p><mat-checkbox formControlName="coordinatievermogen">Beperkte coördinatievermogen bij motorische handelingen</mat-checkbox></p>
+  </section>
+  <textarea [(ngModel)]="opmerking" placeholder="Opmerkingen"></textarea>
+  <div id="functieNavigatieButtons">
+    <button (click)="functieNavigatie(-1)" id="terugButton">Terug</button>
+    <button (click)="saveData()" [routerLink]="['/prioriteiten']" id="volgendeButton">Volgende</button>
+  </div>
+</div>

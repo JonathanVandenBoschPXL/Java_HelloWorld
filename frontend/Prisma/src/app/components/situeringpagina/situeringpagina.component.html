@@ -1,0 +1,26 @@
+<div id="background">
+  <div id="container">
+    <app-terug-naar-kind-profiel></app-terug-naar-kind-profiel>
+    <div id="situeeringVenster">
+      <h1>Situering</h1>
+      <div id="situeeringVensterRow">
+        <app-traject-voortgang-indicatie></app-traject-voortgang-indicatie>
+        <form id="vragenCollectie" #myForm="ngForm">
+          <div class="vraag">
+            <h2>Wat zijn de talenten en interesse van het kind?</h2>
+            <textarea required name="talenten" id="talentenInput"
+                      [(ngModel)]="situering.talenten" (ngModelChange)="validInput()"></textarea>
+          </div>
+          <div class="vraag">
+            <h2>Wat zijn de kwetsbaarheden van het kind?</h2>
+            <textarea required name="kwetsbaarheden" id="kwetsbaarhedenInput"
+                      [(ngModel)]="situering.kwetsbaarheden" (ngModelChange)="validInput()"></textarea>
+          </div>
+          <button [disabled]="!validForm" type="submit" [routerLink]="['/groeipunten']"
+                  (click)="onSubmit()" id="naarGroeipuntenButton">Naar groeipunten >
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

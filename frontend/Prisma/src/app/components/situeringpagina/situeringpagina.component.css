@@ -1,0 +1,95 @@
+#container {
+  margin-top: 80px;
+  overflow: hidden;
+  padding: 30px;
+  min-height: 50em;
+  /*zet child in het midden van deze parent div*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+#background {
+  background-image: url("src/assets/kind_profiel.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+}
+
+#situeeringVenster {
+  border-radius: 25px;
+  width: 100%;
+  min-height: fit-content;
+  background: var(--primary-color-white);
+  margin: auto;
+  padding: 30px;
+}
+@media only screen and (max-width: 1600px) {
+  situeeringVenster {
+    width: 80%;
+  }
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 4%;
+  font-weight: bold;
+  text-decoration: underline;
+  text-decoration-color: var(--primary-color-blue);
+}
+
+#situeeringVensterRow {
+  display: flex;
+
+}
+
+app-traject-voortgang-indicatie {
+  width: 20%;
+  box-shadow: 2px 0 #cbcbcb;
+}
+
+#vragenCollectie {
+  width: 70%;
+  margin-left: auto;
+}
+
+textarea {
+  max-height: 100%;
+  resize: vertical;
+  width: 100%;
+  height: 10em;
+
+}
+.vraag{
+  width: 100%;
+  height: fit-content;
+
+}
+button {
+  background-color: var(--primary-color-blue);
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  float: right;
+  border-radius: 12px;
+  width: fit-content;
+  padding: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 1em;
+}
+
+button:disabled {
+  background-color: lightblue;
+}
+
+.visible{
+  visibility: collapse;
+}
+
+

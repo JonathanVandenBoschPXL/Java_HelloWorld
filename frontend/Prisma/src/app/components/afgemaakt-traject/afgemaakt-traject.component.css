@@ -1,0 +1,88 @@
+#container {
+  margin-top: 80px;
+  overflow: hidden;
+  padding: 30px;
+  min-height: 50em;
+  /*zet child in het midden van deze parent div*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+#background {
+  background-image: url("src/assets/kind_profiel.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+}
+
+#venster {
+  width: 100%;
+  min-height: fit-content;
+  background: var(--primary-color-white);
+  margin: auto;
+  padding: 30px;
+  display: grid;
+}
+
+#header {
+  display: flex;
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 4%;
+  font-weight: bold;
+  text-decoration: underline;
+  text-decoration-color: var(--primary-color-blue);
+}
+
+app-domein-indicatie {
+  margin-left: auto;
+}
+
+#body {
+  display: flex;
+  width: 100%;
+}
+#huidigTraject{
+  width: 50%;
+  box-shadow: 2px 0 #cbcbcb;
+  padding: 10px;
+
+}
+#trajectVergelijkingVenster{
+  width: 50%;
+  padding: 10px;
+  margin-left: auto ;
+
+}
+
+button {
+  background-color: var(--primary-color-blue);
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  float: right;
+  border-radius: 12px;
+  width: fit-content;
+  padding: 10px;
+  cursor: pointer;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#navigatieButtons {
+  float: right;
+  display: flex;
+  gap: 20px;
+  margin-top: 0;
+}
+
+#meldingTraject{
+  color: var(--primary-color-blue);
+}

@@ -1,0 +1,113 @@
+#container {
+  margin-top: 80px;
+  overflow: hidden;
+  padding: 30px;
+  min-height: 50em;
+  /*zet child in het midden van deze parent div*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#background {
+  background-image: url("src/assets/kind_profiel.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+}
+
+#groeipuntenVenster {
+  border-radius: 25px;
+  width: 70%;
+  min-height: fit-content;
+  background: var(--primary-color-white);
+  margin: auto;
+  padding: 30px;
+}
+
+@media only screen and (max-width: 1600px) {
+  groeipuntenVenster {
+    width: 80%;
+  }
+}
+
+#header {
+  display: flex;
+}
+
+app-domein-indicatie {
+  margin-left: auto;
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 4%;
+  font-weight: bold;
+  text-decoration: underline;
+  text-decoration-color: var(--primary-color-blue);
+}
+
+#groeipuntenVensterBody {
+  display: flex;
+}
+
+app-traject-voortgang-indicatie {
+  width: 20%;
+  box-shadow: 2px 0 #cbcbcb;
+
+}
+
+#groeipuntenVensterInhoud {
+  width: 78%;
+  margin-left: auto;
+  display: flex;
+}
+
+#uitleg {
+  height: 150px;
+}
+
+#groeipuntenVensterLinks {
+  width: 30%;
+  display: grid;
+  max-height: 40%;
+}
+
+#groeipuntenVensterRechts {
+  margin-left: 10px;
+  width: 70%;
+  max-height: auto;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+app-subfunctie-stappen {
+  float: right;
+}
+
+button {
+  background-color: var(--primary-color-blue);
+  border: none;
+  color: var(--primary-color-white);
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 12px;
+  width: fit-content;
+  padding: 10px;
+  margin: auto;
+  cursor: pointer;
+}
+
+#functieNavigatieButtons {
+  float: right;
+  display: flex;
+  gap: 20px;
+}
+
+p {
+  font-size: smaller;
+  font-weight: lighter;
+  width: 200px;
+}

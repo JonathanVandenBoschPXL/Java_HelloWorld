@@ -1,0 +1,4 @@
+{
+  "baseURL": "http://10.128.9.4:4200",
+  "defaultBrowser": "chrome"
+}

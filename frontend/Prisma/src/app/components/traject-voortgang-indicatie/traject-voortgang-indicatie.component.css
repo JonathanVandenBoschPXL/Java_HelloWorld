@@ -1,0 +1,38 @@
+#container{
+  height: fit-content;
+  display: grid;
+  margin-top: 5em;
+}
+.lineVertical{
+  background-color: #7e7e7e;
+  width: 5px;
+  height: 5em;
+  margin: auto;
+}
+h2{
+  margin: auto;
+  height: fit-content;
+}
+.active{
+  text-decoration: underline;
+  text-decoration-color: var(--primary-color-blue);
+}
+button {
+  background-color: gray;
+  border: none;
+  color: var(--primary-color-white);
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 12px;
+  width: 70%;
+  min-width: fit-content;
+  padding: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 2em auto auto;
+}
+button:hover{
+  background-color: red;
+}

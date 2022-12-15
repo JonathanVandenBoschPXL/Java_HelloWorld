@@ -1,0 +1,109 @@
+# To run: docker compose up -d --force-recreate
+# sudo docker rm $(sudo docker ps -aq)
+# sudo docker rmi -f $(sudo docker images -aq) 
+
+# version: '3'
+
+# services:
+
+#   dev-prisma-service-db:
+#     image: mysql:8.0.17
+#     container_name: dev_prisma_service_db
+#     environment:
+#       MYSQL_ROOT_PASSWORD: prisma2password
+#       MYSQL_DATABASE: prisma-service-db
+#     ports:
+#       - "3308:3306"
+  
+#   dev-prisma-frontend:
+#     image: jonvdb/prisma_frontend:dev
+#     container_name: dev_prisma_frontend
+#     ports:
+#       - "4200:4200"
+
+#   dev-prisma-service:
+#     image: jonvdb/prisma-service:dev
+#     container_name: dev_prisma_service
+#     ports:
+#       - "7000:7000"
+#     environment:
+#       PRISMA_DB_USERNAME: root
+#       PRISMA_DB_PASSWORD: prisma2password
+#       PRISMA_DB_DATABASE_NAME: prisma-service-db
+#       SPRING_DATASOURCE_URL: jdbc:mysql://dev_prisma_service_db:3306/prisma-service-db
+#     depends_on:
+#       - dev-prisma-service-db
+
+#   dev-identity-server:
+#     image: jonvdb/identity-server:dev
+#     container_name: dev_identity_server
+#     ports:
+#       - "8888:8888"
+
+#   watchtower:
+#     image: containrrr/watchtower
+#     container_name: watchtower
+#     volumes:
+#       - /var/run/docker.sock:/var/run/docker.sock
+#     command: --interval 30 dev_prisma_frontend dev_identity_server dev_prisma_service
+##################################################################################################
+# To run: docker compose up -d --force-recreate
+# Production environment
+# sudo docker rm $(sudo docker ps -aq)
+# sudo docker rmi -f $(sudo docker images -aq) 
+# ####
+# sudo docker compose up --build
+# sudo docker compose stop -t 1 
+# sudo docker compose rm -f
+
+version: '3'
+
+services:
+
+  dev-prisma-service-db:
+    image: mysql:8.0.17
+    container_name: dev_prisma_service_db
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+    ports:
+      - "3308:3306"
+  
+  dev-prisma-frontend:
+    image: jonvdb/prisma_frontend:dev
+    container_name: dev_prisma_frontend
+    ports:
+      - "4200:4200"
+    environment:
+      API_URL: ${API_URL}
+
+  dev-prisma-service:
+    image: jonvdb/prisma-service:dev
+    container_name: dev_prisma_service
+    ports:
+      - "7000:7000"
+    environment:
+      PRISMA_DB_USERNAME: ${PRISMA_DB_USERNAME}
+      PRISMA_DB_PASSWORD: ${PRISMA_DB_PASSWORD}
+      PRISMA_DB_DATABASE_NAME: ${PRISMA_DB_DATABASE_NAME}
+      SPRING_DATASOURCE_URL: ${SPRING_DATASOURCE_URL}
+      SMTP_HOST: ${SMTP_HOST}
+      SMTP_PORT: ${SMTP_PORT}
+      SMTP_USERNAME: ${SMTP_USERNAME}
+      SMTP_PASSWORD: ${SMTP_PASSWORD}
+    depends_on:
+      - dev-prisma-service-db
+    restart: on-failure
+
+  dev-identity-server:
+    image: jonvdb/identity-server:dev
+    container_name: dev_identity_server
+    ports:
+      - "8888:8888"
+
+  watchtower:
+    image: containrrr/watchtower
+    container_name: watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: --interval 30 dev_prisma_frontend dev_identity_server dev_prisma_service

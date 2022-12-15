@@ -1,0 +1,32 @@
+<div id="background">
+  <div id="container">
+    <app-terug-naar-kind-profiel></app-terug-naar-kind-profiel>
+    <div  *ngIf="kind && trajectAanwezig" id="traject_card">
+      <h1>Traject</h1>
+      <div class="card_content" *ngIf="trajectAanwezig.kindHeeftTrajecten == true">
+        <div class="trajectenAntwoord">
+          <h2 class="traject_uitslag">Er zijn trajecten voor {{kind.voornaam}} {{kind.achternaam}} beschikbaar!</h2>
+          <button (click)="laadBestaandeTrajecten()" class="button_trajecten_bekijken"><a>Trajecten bekijken</a></button>
+        </div>
+
+        <div class="trajectenAntwoord" *ngIf="trajectAanwezig.userHeeftTrajectenVanDitKind == true">
+          <h3 class="traject_uitslag">U heeft een of meerdere trajecten!</h3>
+        </div>
+
+        <div class="trajectenAntwoord" *ngIf="trajectAanwezig.userHeeftTrajectenVanDitKind == false">
+          <h3>U heeft zelf nog geen traject aangemaakt</h3>
+            <button (click)="maakNieuwTraject()" class="button_traject_aanmaken">Traject aanmaken</button>
+        </div>
+      </div>
+
+      <div class="card_content" *ngIf="trajectAanwezig.kindHeeftTrajecten == false">
+        <h2 class="traject_uitslag">{{kind.voornaam + " " + kind.achternaam}} heeft nog geen trajecten</h2>
+        <div class="button_section">
+          <button (click)="maakNieuwTraject()" class="button_traject_aanmaken">Traject aanmaken</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+

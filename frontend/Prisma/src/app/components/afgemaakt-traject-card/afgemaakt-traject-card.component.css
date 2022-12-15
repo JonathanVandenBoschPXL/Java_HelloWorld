@@ -1,0 +1,95 @@
+#traject{
+  display: grid;
+}
+.prioriteit {
+  color: rgb(186, 100, 100);
+}
+
+.opmerking {
+  margin-top: 1rem;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+img {
+  display: inline-block;
+}
+
+app-domein-indicatie {
+  margin-left: auto;
+}
+
+h2 {
+  font-weight: bold;
+  text-decoration: underline;
+  text-decoration-color: var(--primary-color-blue);
+}
+h3{
+  font-weight: bold;
+}
+h4{
+ font-size: 1rem;
+}
+.antwoorden{
+  margin-left: 20px;
+}
+#body{
+  margin-bottom: 50px;
+}
+#functie{
+  border-bottom: 2px grey solid;
+}
+button {
+  background-color: var(--primary-color-blue);
+  border: none;
+  color: var(--primary-color-white);
+  text-decoration: none;
+  font-size: 16px;
+  float: left;
+  border-radius: 12px;
+  width: fit-content;
+  padding: 10px;
+  margin: auto;
+  cursor: pointer;
+  gap: 20px;
+}
+
+#card-header {
+  display: flex;
+  height: 100px;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+#card-info {
+  width: 90%;
+  margin-left: 20px;
+}
+
+#card-image {
+  width: 10%;
+}
+
+.ouder {
+  background-image: url("../../../assets/ouder.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+
+
+}
+
+.hulpverlener {
+  background-image: url("../../../assets/hulpverlener.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+
+}
+
+.leerkracht {
+  background-image: url("../../../assets/leerkracht.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+
+}

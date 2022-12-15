@@ -1,0 +1,68 @@
+#domeinen {
+  width: fit-content;
+  height: fit-content;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2px;
+
+}
+
+.domein {
+  text-align: center;
+  height: 100%;
+  width: 100px;
+  background-color: white;
+}
+
+p {
+  margin: auto;
+  padding: 5px;
+}
+
+#geel {
+  /* background-color: #eed792; */
+  background-color: #e0b224;
+  /*box-shadow: 0 4px #e0b224;*/
+  box-shadow: 0 4px #eed792;
+  font-weight: bold;
+}
+
+#groen {
+  background-color: #8dd24363;
+  box-shadow: 0 4px #8dd243;
+}
+
+#groen:hover {
+  background-color: #8dd243;
+  box-shadow: 0 4px #8dd24363;
+}
+
+#blauw {
+  background-color: #4396d26d;
+  box-shadow: 0 4px #4396d2;
+}
+
+#blauw:hover {
+  background-color: #4396d2;
+  box-shadow: 0 4px #4396d26d;
+}
+
+#rood {
+  background-color: #d2434367;
+  box-shadow: 0 4px #d24343;
+}
+
+#rood:hover {
+  background-color: #d24343;
+  box-shadow: 0 4px #d2434367;
+}
+
+#roos {
+  background-color: #f17edc5b;
+  box-shadow: 0 4px #f17edb;
+}
+
+#roos:hover {
+  background-color: #f17edb;
+  box-shadow: 0 4px #f17edc5b;
+}

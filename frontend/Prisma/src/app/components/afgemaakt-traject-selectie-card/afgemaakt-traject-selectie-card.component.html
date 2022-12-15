@@ -1,0 +1,16 @@
+<div id="trajectBox">
+  <div id="trajectRolFoto" [ngClass]="{
+      ouder: traject.user.rol == 'OUDER',
+      leerkracht: traject.user.rol == 'LEERKRACHT',
+      hulpverlener: traject.user.rol == 'HULPVERLENER'
+
+    }"></div>
+  <div id="trajectInfo">
+    <div id="trajectUser">
+      <h3>{{traject.user.rol}} 'naam'</h3>
+    </div>
+    <div id="trajectDatum">
+      <h4>{{traject.datumLaatstAangepast}}</h4>
+    </div>
+  </div>
+</div>

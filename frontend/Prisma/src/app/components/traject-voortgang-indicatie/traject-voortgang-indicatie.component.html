@@ -1,0 +1,9 @@
+<div id="container">
+  <h2 [ngClass]="{active: huidigePlaats == '/situering'}">Situering</h2>
+  <div class="lineVertical"></div>
+  <h2 [ngClass]="{active: huidigePlaats == '/groeipunten'}">Groeipunten</h2>
+  <div class="lineVertical"></div>
+  <h2 [ngClass]="{active: huidigePlaats == '/prioriteiten'}">Prioriteiten</h2>
+  <button [routerLink]="['/profielkind', kindId]" (click)="annuleren()">Annuleren</button>
+
+</div>

@@ -1,0 +1,45 @@
+<div id="container">
+  <div *ngIf="trajectenList == null; else trajectSelecteren" id="geenTraject">
+    <h3>Wilt u uw huidig traject vergelijken? Dat kan!</h3>
+    <button (click)="laadTrajecten()">Vergelijk Traject</button>
+  </div>
+
+  <ng-template #trajectSelecteren>
+    <div *ngIf="!geselecteerd; else trajectGeselecteerd" id="trajectSelectieSectie">
+      <h1>Selecteer een traject!</h1>
+      <div id="trajectFilterenVenster">
+        <div id="trajectFilterenVensterHeader">
+          <h2>Filteren</h2>
+          <button id="mijnTrajectenButton" (click)="mijnTrajecten()">Mijn trajecten</button>
+        </div>
+        <form id="filterForm">
+          <div class="inputSectie">
+            <label for="rol">Rol: </label>
+            <select id="rol" #rol (change)="filterBijRol(rol.value)">
+              <option *ngFor="let rol of gebruikerRollen; let i = index" [value]="rol" >{{rol}}</option>
+            </select>
+          </div>
+          <div class="inputSectie">
+            <label for="datum">Datum</label>
+            <input type="date" id="datum" name="datum" #datum (change)="filterBijDatum(datum.value)">
+          </div>
+          <button id="toonAlleTrajectenButton" (click)="toonAlleTrajecten()">Toon alle trajecten</button>
+
+        </form>
+      </div>
+      <div id="trajectSelectieVenster">
+        <h2>Resultaten</h2>
+        <div id="trajectSelecteren">
+          <div *ngFor="let traject of trajectenFilterList">
+            <app-afgemaakt-traject-selectie-card [traject]="traject" (click)="zetTrajectOmTeVergelijken(traject)"></app-afgemaakt-traject-selectie-card>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-template #trajectGeselecteerd>
+      <button id="trajectDeselecteren" (click)="trajectDeselecteren()" >Kies een ander traject</button>
+      <app-afgemaakt-traject-card [traject]="geselecteerdTraject"></app-afgemaakt-traject-card>
+    </ng-template>
+  </ng-template>
+
+</div>

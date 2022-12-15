@@ -1,0 +1,5 @@
+<div id="kind_card">
+  <img class="kind_img" *ngIf="kind.geslacht == 'vrouwelijk'" src="assets/girl.png" alt="meisje foto">
+  <img class="kind_img" *ngIf="kind.geslacht == 'mannelijk'" src="assets/boy.png" alt="jonge foto">
+  <h2 id="kind_naam">{{kind.achternaam}} {{kind.voornaam}}</h2>
+</div>

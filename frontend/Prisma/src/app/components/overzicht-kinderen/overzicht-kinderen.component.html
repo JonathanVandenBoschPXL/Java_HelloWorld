@@ -1,0 +1,11 @@
+<script src="../hoofdfunctie/hoofdfunctie.component.ts"></script>
+<div id="background">
+  <div id="container">
+    <h1 id="title">Mijn Kind(eren):</h1>
+    <ul id="kinderen">
+      <li *ngFor="let kind of kinderenList$ | async" id="kind">
+        <app-kind-card [routerLink]="['/profielkind', kind.id]" [kind]="kind"></app-kind-card>
+      </li>
+    </ul>
+  </div>
+</div>

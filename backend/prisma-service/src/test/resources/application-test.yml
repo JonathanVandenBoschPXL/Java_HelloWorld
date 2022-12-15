@@ -1,0 +1,8 @@
+keycloak:
+  enabled: false #Keycloak is not needed in full functionality
+  realm: mock #There is no configuration mock for Keycloak in case of testing. Realm must be set but it is not used
+  resource: mock #There is no configuration mock for Keycloak in case of testing. Resource must be set but it is not used
+  auth-server-url: http://mock #There is no configuration mock for Keycloak in case of testing. URL must be set but it is not used
+  bearer-only: true # Because Keycloak do redirect in case of unauthenticated user which leads to 302 status, we switch to strict Bearer mode
+  credentials:
+    secret: mock

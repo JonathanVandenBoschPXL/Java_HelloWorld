@@ -1,0 +1,82 @@
+.container {
+  background-color: #FFFEF5;
+  height: auto;
+  font-size: medium;
+  overflow: hidden;
+  width: 100%;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+h1 {
+  text-align: center;
+  font-family: 'Aristotelica Display Trial', sans-serif;
+  font-weight: 600;
+  color: #3FA3D7;
+  font-size: 60px;
+  margin-top: 20px;
+}
+
+.container.secondchild {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wat, .hoe {
+  margin: auto;
+  width: 60%;
+  font-weight: 200;
+  padding: 20px;
+}
+
+.center {
+  text-align: center;
+  width: 60%;
+  margin: auto;
+  font-size: large;
+  padding: 20px;
+}
+
+.kernwaarden {
+  display: grid;
+}
+
+.row{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 2fr));
+  margin-left: 10px;
+}
+
+.kernwaarde {
+  margin: 10px;
+  height: auto;
+  display: inline-block;
+  float: left;
+}
+
+.regenboog {
+  font-weight: bold;
+  background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.image img {
+  width: 200px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.image {
+  background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.center:last-child {
+  margin-top: 50px;
+}

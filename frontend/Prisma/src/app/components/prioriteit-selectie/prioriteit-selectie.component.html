@@ -1,0 +1,9 @@
+<div id="container" [ngClass]="[divStyle]" (click)="click($event); $event.stopPropagation()">
+  <h2>{{subfunctie}}</h2>
+  <!-- de pipe operator | zorgt ervoor dat je over de properties kan lopen van het object.  -->
+  <!-- In dit geval de verschillende antwoorden-->
+  <div id="antwoorden" *ngFor="let antwoord of functieAntwoorden | keyvalue">
+    <div *ngIf="antwoord.value.toString() == 'true'" id="antwoord"><p>{{returnAntwoordDescription(antwoord.key)}}</p>
+    </div>
+  </div>
+</div>

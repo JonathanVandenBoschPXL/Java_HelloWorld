@@ -1,0 +1,122 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-prisma-service
+  namespace: prisma
+  labels:
+    app: backend-prisma-service
+    tags.datadoghq.com/env: "ENV_test"
+    tags.datadoghq.com/service: "SVC_prisma-service"
+    tags.datadoghq.com/version: ""
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend-prisma-service
+  template:
+    metadata:
+      labels:
+        app: backend-prisma-service
+        tags.datadoghq.com/env: "ENV_test"
+        tags.datadoghq.com/service: "SVC_prisma-service"
+        tags.datadoghq.com/version: ""
+    spec:
+
+
+      #Datadog volume
+      volumes:
+      - hostPath:
+          path: /var/run/datadog/
+        name: apmsocketpath
+      
+
+      containers:
+      - name: prisma-backend-prisma-service
+      # IMAGE TAG AANPASSEN na merge en conflictoplossing + API URL als ENV!!! #test verwijderen op DockerHub.
+        image: jonvdb/prisma-service:dev
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 7000
+        
+
+        #Datadog Volume Mount
+        volumeMounts:
+          - name: apmsocketpath
+            mountPath: /var/run/datadog
+
+
+        env:
+        - name: PRISMA_DB_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: dev-prisma-service-secrets
+              key: PRISMA_DB_USERNAME
+        - name: PRISMA_DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: dev-prisma-service-secrets
+              key: PRISMA_DB_PASSWORD
+        - name: PRISMA_DB_DATABASE_NAME
+          valueFrom:
+            secretKeyRef:
+              name: dev-prisma-service-secrets
+              key: PRISMA_DB_DATABASE_NAME
+        - name: SPRING_DATASOURCE_URL
+          valueFrom:
+            secretKeyRef:
+              name: dev-prisma-service-secrets
+              key: SPRING_DATASOURCE_URL
+        - name: SMTP_HOST
+          valueFrom:
+            secretKeyRef:
+              name: dev-prisma-service-secrets
+              key: SMTP_HOST
+        - name: SMTP_PORT
+          valueFrom:
+            secretKeyRef:
+              name: dev-prisma-service-secrets
+              key: SMTP_PORT
+        - name: SMTP_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: dev-prisma-service-secrets
+              key: SMTP_USERNAME
+        - name: SMTP_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: dev-prisma-service-secrets
+              key: SMTP_PASSWORD
+        - name: IDENTITY_SERVER_URL
+          valueFrom:
+            secretKeyRef:
+              name: dev-prisma-service-secrets
+              key: IDENTITY_SERVER_URL
+        - name: CLIENT_ID
+          valueFrom:
+            secretKeyRef:
+              name: dev-prisma-service-secrets
+              key: CLIENT_ID
+        - name: CLIENT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: dev-prisma-service-secrets
+              key: CLIENT_SECRET
+        #Datadog Environment Variables
+        - name: DD_ENV
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.labels['tags.datadoghq.com/env']
+        - name: DD_SERVICE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.labels['tags.datadoghq.com/service']
+        - name: DD_VERSION
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.labels['tags.datadoghq.com/version']
+        - name: DD_LOGS_INJECTION
+          value: "true"
+        - name: DD_PROFILING_ENABLED
+          value: "true"
+        - name: DD_APPSEC_ENABLED
+          value: "true"

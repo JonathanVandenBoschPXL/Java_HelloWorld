@@ -1,0 +1,65 @@
+<div id="traject" *ngIf="traject">
+  <div id="card-header">
+    <div id="card-image" [ngClass]="{
+      ouder: traject.user.rol == 'OUDER',
+      leerkracht: traject.user.rol == 'LEERKRACHT',
+      hulpverlener: traject.user.rol == 'HULPVERLENER'
+
+    }"></div>
+
+    <div id="card-info">
+      <p>Mama Janssen</p>
+      <p>Role:{{traject.user.rol}}, {{traject.datumLaatstAangepast}}</p>
+    </div>
+
+  </div>
+
+  <div id="body">
+    <h2>Situering:</h2>
+    <h4>De talenten en interesse:</h4>
+    <p class="antwoorden">{{traject.situering.antwoord1}}</p>
+    <h4>De kwetsbaarheden: </h4>
+    <p class="antwoorden">{{traject.situering.antwoord2}}</p>
+    <h2>Groeipunten:</h2>
+
+
+    <div *ngFor="let functie of traject.domein.functie; index as functieIndex" id="functie">
+      <div *ngIf="functieNamen[functieIndex] == 'Mentale functies'; else notMentaleFunctie">
+        <h3>{{functieCodes[functieIndex]}} {{functieNamen[functieIndex]}}</h3>
+
+        <div *ngFor="let subFunctie of functie.subfunctie; index as subfunctieIndex">
+          <h4 class="subfunctie">{{functieIndex + 1}}.{{subfunctieIndex + 1}} {{subfunctieNamen[subfunctieIndex]}}
+            <span class="prioriteit"
+                  *ngIf="traject.domein.functie[functieIndex].subfunctie[subfunctieIndex].prioriteit">
+            <mat-icon matTooltip="Gekozen prioriteit">report</mat-icon>
+            </span>
+          </h4>
+          <div class="antwoorden" *ngFor="let subFunctieAntwoord of functie.subfunctie[subfunctieIndex].antwoorden">
+            <div *ngIf="subFunctieAntwoord.ingevuld">
+              <p>{{subFunctieAntwoord.naam}}</p>
+            </div>
+          </div>
+          <p class="opmerking" *ngIf="functie.subfunctie[subfunctieIndex].opmerking"> *
+            Opmerking:   {{functie.subfunctie[subfunctieIndex].opmerking}}</p>
+        </div>
+      </div>
+
+      <ng-template #notMentaleFunctie>
+        <h3> {{functieCodes[functieIndex]}} {{functieNamen[functieIndex]}}
+          <span class="prioriteit" *ngIf="traject.domein.functie[functieIndex].subfunctie[0].prioriteit">
+
+                <mat-icon matTooltip="Gekozen prioriteit">report</mat-icon>
+          </span>
+        </h3>
+        <div class="antwoorden"
+             *ngFor="let subFunctieAntwoord of functie.subfunctie[0].antwoorden; index as subfunctieIndex">
+          <div *ngIf="subFunctieAntwoord.ingevuld">
+            <p>{{subFunctieAntwoord.naam}}</p>
+          </div>
+        </div>
+        <p class="opmerking" *ngIf="functie.subfunctie[0].opmerking"> *
+          Opmerking:   {{functie.subfunctie[0].opmerking}}</p>
+      </ng-template>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<div id="background">
+  <div id="container">
+    <app-terug-naar-kind-profiel></app-terug-naar-kind-profiel>
+    <div id="groeipuntenVenster">
+      <div id="header">
+        <h1>Groeipunten</h1>
+        <app-domein-indicatie></app-domein-indicatie>
+      </div>
+      <div id="groeipuntenVensterBody">
+        <app-traject-voortgang-indicatie></app-traject-voortgang-indicatie>
+
+        <div id="groeipuntenVensterInhoud">
+          <div id="groeipuntenVensterLinks">
+            <div id="uitleg">
+              <p>
+                Gelieve de groeipunten (kwetsbaarheden) van het kind aan te vinken en eventueel opmerkingen in te geven.
+              </p>
+            </div>
+            <app-hoofdfunctie-indicatie  [hoofdFunctie]="hoofdfunctieIndex"></app-hoofdfunctie-indicatie>
+          </div>
+          <div id="groeipuntenVensterRechts">
+            <app-hoofdfunctie (hoofdfunctieIndex)="functieNavigatie($event)" [hoofdFunctie]="hoofdfunctieIndex"></app-hoofdfunctie>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

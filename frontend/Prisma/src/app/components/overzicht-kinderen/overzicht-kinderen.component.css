@@ -1,0 +1,47 @@
+#container {
+  margin-top: 80px;
+  overflow: hidden;
+  padding: 30px;
+  height: 80em;
+
+}
+
+#background {
+  background-image: var(--background-abstract);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+}
+
+#title {
+  text-align: center;
+  color: var(--primary-color-blue);
+  margin: 40px;
+  padding: 20px;
+  font-family: var(--primary-font-family);
+  font-weight: 600;
+  font-size: 40px;
+}
+
+li {
+  list-style-type: none;
+}
+
+#kinderen {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+#kind {
+  margin: 1%;
+  display: block;
+  float: left;
+  width: 22%;
+  height: auto;
+  cursor: pointer;
+
+}
+
+

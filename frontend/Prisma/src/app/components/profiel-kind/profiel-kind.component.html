@@ -1,0 +1,42 @@
+<script src="../traject-overzicht/traject-overzicht.component.ts"></script>
+<div id="container">
+  <div id="background">
+    <div  *ngIf="kindData" id="kind">
+      <div id="topRow">
+        <div id="imageKind">
+          <img *ngIf="kindData.geslacht == 'vrouwelijk'" src="assets/girl.png" alt="meisje foto">
+          <img *ngIf="kindData.geslacht == 'mannelijk'" src="assets/boy.png" alt="jonge foto">
+        </div>
+        <div class="informatie">
+          <p><b>Naam: </b> {{kindData.voornaam}} {{kindData.achternaam}}</p>
+          <p><b>Geboortedatum: </b>{{kindData.geboortedatum}}</p>
+          <p><b>Adres: </b>{{kindData.adres}}</p>
+          <p><b>School: </b>{{kindData.school}}</p>
+          <p><b>Klas: </b>{{kindData.klas}}</p>
+        </div>
+      </div>
+
+      <div id="bottomRow">
+        <div id="dagboekButton" class="button">
+          <a href="">
+            <img src="assets/dagboek.png">
+            <h2>Dagboek</h2>
+            <div *ngIf="notification" id="button-badge">{{notification}}</div>
+          </a>
+        </div>
+        <a [routerLink]="['/overzichttraject', userId, 'kind', kindId]">
+          <div id="trajectButton" class="button">
+            <img src="assets/traject.png">
+            <h2>Traject</h2>
+          </div>
+        </a>
+        <a href="">
+          <div id="adviezenButton" class="button">
+            <img src="assets/adviezen.png">
+            <h2>Adviezen</h2>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

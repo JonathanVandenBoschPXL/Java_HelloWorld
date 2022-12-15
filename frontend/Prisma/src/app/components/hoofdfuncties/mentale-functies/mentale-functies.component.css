@@ -1,0 +1,92 @@
+h2 {
+  margin-bottom: 2%;
+  text-decoration: underline;
+  text-decoration-color: var(--primary-color-blue);
+
+}
+
+mat-checkbox {
+  margin-left: 20px;
+  font-weight: bold;
+}
+
+span {
+  font-weight: lighter;
+  font-size: smaller;
+  display: block;
+  margin-left: 10%;
+}
+
+textarea {
+  margin-bottom: 2%;
+  margin-left: 3%;
+  min-width: 90%;
+  min-height: 70px;
+  max-width: 90%;
+  max-height: 300px;
+  overflow-y: auto;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 2px #999;
+
+}
+
+::-webkit-resizer {
+  display: none;
+}
+
+textarea::-webkit-scrollbar {
+  width: 10px;
+}
+
+textarea::-webkit-scrollbar-thumb {
+  background: #666;
+  border-radius: 20px;
+}
+
+textarea::-webkit-scrollbar-track {
+  background: #ddd;
+  border-radius: 20px;
+}
+
+textarea:focus {
+  outline: none !important;
+  border-color: #719ECE;
+  box-shadow: 0 0 10px #719ECE;
+}
+
+#terugButton {
+  background-color: lightcoral;
+  width:fit-content;
+  float: left;
+  border: none;
+  color: white;
+  height: 30px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+#terugButton:hover {
+  background-color: rgb(218, 84, 84);
+}
+
+#volgendeButton {
+  background-color: var(--primary-color-blue);
+  width: fit-content;
+  height: 30px;
+  border: none;
+  color: white;
+  font-size: 16px;
+  border-radius: 12px;
+  font-weight: bold;
+  float: right;
+}
+
+#volgendeButton:hover {
+  background-color: #3081ac;
+}
+
+.example-section {
+  width: 100%;
+}

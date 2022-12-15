@@ -1,0 +1,51 @@
+#trajectBox {
+  display: flex;
+  gap: 5%;
+  padding: 5px;
+  background-color: #dcdcdc;
+  border-radius: 5px;
+}
+
+#trajectBox:hover {
+  box-shadow: 5px 10px var(--primary-color-blue);
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+#trajectRolFoto {
+  width: 20%;
+}
+
+#trajectInfo {
+  width: 80%;
+}
+
+.ouder {
+  background-image: url("../../../assets/ouder.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.hulpverlener {
+  background-image: url("../../../assets/hulpverlener.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.leerkracht {
+  background-image: url("../../../assets/leerkracht.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+#trajectInfo {
+  display: grid;
+}
+
+#trajectUser {
+  border-bottom: 1px grey solid;
+}
+#trajectDatum{
+  margin-top: 10px;
+  text-align: right;
+}

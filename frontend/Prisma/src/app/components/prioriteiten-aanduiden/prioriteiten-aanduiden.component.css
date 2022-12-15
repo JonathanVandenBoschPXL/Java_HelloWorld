@@ -1,0 +1,80 @@
+#container {
+  margin-top: 80px;
+  overflow: hidden;
+  padding: 30px;
+  min-height: 50em;
+  /*zet child in het midden van deze parent div*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#background {
+  background-image: url("src/assets/kind_profiel.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+}
+
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 4%;
+  font-weight: bold;
+  text-decoration: underline;
+  text-decoration-color: var(--primary-color-blue);
+}
+
+#prioriteitenVensterBody {
+  display: flex;
+
+}
+
+app-traject-voortgang-indicatie {
+  width: 20%;
+  box-shadow: 2px 0 #cbcbcb;
+}
+
+#prioriteitenVenster {
+  border-radius: 25px;
+  width: 95%;
+  min-height: fit-content;
+  background: var(--primary-color-white);
+  margin: auto;
+  padding: 30px;
+}
+#prioriteitenVensterInhoud{
+  width: 78%;
+  margin-left: auto;
+  display: grid;
+}
+#prioriteitenVensterLinks{
+  width: 60%;
+  text-align: left;
+  font-size: 12px;
+  padding: 20px 20px 20px 0;
+}
+#prioriteitenVensterRechts{
+  width: 80%;
+  display: grid;
+  grid-template-columns: repeat(3, 33%);
+  gap: 3em;
+}
+#uitleg p{
+  font-size: 16px;
+}
+button{
+  background-color: var(--primary-color-blue);
+  border: none;
+  color: var(--primary-color-white);
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  float: right;
+  border-radius: 12px;
+  margin-left: 40px;
+  width: fit-content;
+  padding: 5px;
+}

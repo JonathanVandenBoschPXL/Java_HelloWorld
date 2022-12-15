@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+
+  prisma-service-db:
+    image: mysql:8.0.17
+    environment:
+      MYSQL_ROOT_PASSWORD: ${PRISMA_DB_PASSWORD}
+      MYSQL_DATABASE: ${PRISMA_DB_DATABASE_NAME}
+    ports:
+      - "3308:3306"
+    security_opt:
+      - seccomp:unconfined

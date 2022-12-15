@@ -1,0 +1,44 @@
+.container {
+  background-color: #FFFEF5;
+  margin-top: 80px;
+  padding: 10px;
+}
+
+h1, h2 {
+  text-align: center;
+  font-family: 'Aristotelica Display Trial', sans-serif;
+  font-weight: 600;
+  color: var(--primary-color-blue);
+}
+
+h1 {
+  padding-top: 120px;
+  font-size: 60px;
+  margin: 20px;
+}
+
+.body {
+  text-align: center;
+  margin-top: 30px;
+}
+
+p {
+  display: inline-block;
+  width: 30%;
+  text-align: center;
+  margin: 40px;
+}
+
+.images {
+  width: 100%;
+  display: flex;
+}
+
+.images img {
+  width: 32%;
+  margin-left: auto;
+  margin-right: auto;
+  height: auto;
+  display: inline-block;
+  float: left;
+}

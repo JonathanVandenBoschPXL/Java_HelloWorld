@@ -1,0 +1,60 @@
+<div id="container">
+
+  <section class="example-section" [formGroup]="vragenCC">
+    <h2>Centrale Coherentie (CC)</h2>
+    <p><mat-checkbox formControlName="gerichtOpDetail">Gericht op details </mat-checkbox>
+      <span>(bv. taken tot in de puntjes uitwerken)</span></p>
+    <p><mat-checkbox formControlName="moeizaamGeheelZien">Moeizaam het geheel zien </mat-checkbox>
+      <span>(bv. moeite met het onderscheiden van figuur-achtergrond)</span></p>
+    <p><mat-checkbox formControlName="vaardighedenContextAfhankelijk">Vaardigheden zijn contextafhankelijk </mat-checkbox>
+      <span>(bv. moeite om het geleerde in een andere context toe te passen)</span></p>
+  </section>
+  <textarea [(ngModel)]="opmerkingCC" placeholder="Opmerkingen"></textarea>
+
+  <section class="example-section" [formGroup]="vragenEF">
+    <h2>Executieve Functies (EF)</h2>
+    <p><mat-checkbox formControlName="responsinhibitie">Responsinhibitie </mat-checkbox>
+    <span>(bv. snel antwoorden, zonder goed na te denken)</span></p>
+    <p><mat-checkbox formControlName="werkgeheugen">Werkgeheugen </mat-checkbox>
+      <span>(bv. geen meervoudige opdrachten begrijpen)</span></p>
+    <p><mat-checkbox formControlName="emotieRegulatie">Emotie-regulatie </mat-checkbox>
+      <span>(bv. woedeaanvallen)</span></p>
+    <p><mat-checkbox formControlName="volgehoudenAandacht">Volgehouden aandacht </mat-checkbox>
+      <span>(bv. snel afgeleid)</span></p>
+    <p><mat-checkbox formControlName="taakinitiatie">Taakinitiatie </mat-checkbox>
+      <span>(bv. niet spontaan beginnen te spelen met speelgoed tijdens vrije momenten)</span></p>
+    <p><mat-checkbox formControlName="planning">Planning </mat-checkbox>
+      <span>(bv. moeite met het maken van taken die uit meerdere stappen bestaan)</span></p>
+    <p><mat-checkbox formControlName="organisatie">Organisatie </mat-checkbox>
+      <span>(bv. moeite met de werkbank te organiseren tijdens een knutselwerkje)</span></p>
+    <p><mat-checkbox formControlName="timemanagement">Timemanagement </mat-checkbox>
+      <span>(bv. moeite met het afsluiten van een taak met geen duidelijk einde)</span></p>
+    <p><mat-checkbox formControlName="doelGerichtHandelen">Doelgericht handelen </mat-checkbox>
+      <span>(bv. test maar één oplossing om zijn doel te bereiken)</span></p>
+    <p><mat-checkbox formControlName="flexibiliteit">Flexibiliteit </mat-checkbox>
+      <span>(bv. moeite om zich aan te passen aan onverwachte situaties)</span></p>
+    <p><mat-checkbox formControlName="metacognitie">Metacognitie </mat-checkbox>
+      <span>(bv.nog niet ontwikkeld voor deze leeftijdscategorie)</span></p>
+  </section>
+  <textarea  [(ngModel)]="opmerkingEF" placeholder="Opmerkingen"></textarea>
+
+  <section class="example-section" [formGroup]="vragenToM">
+    <h2>Theory of Mind (ToM)</h2>
+    <p><mat-checkbox formControlName="letterlijkBegrijpenTaal">Letterlijk begrijpen van taal </mat-checkbox>
+      <span>(bv. spreekwoorden letterlijk opvatten)</span></p>
+    <p><mat-checkbox formControlName="moeitePerspectiefname">Moeite met perspectiefname </mat-checkbox>
+      <span>van de ander en wederkerigheid (bv. empathie)</span></p>
+  </section>
+  <textarea [(ngModel)]="opmerkingToM" placeholder="Opmerkingen"></textarea>
+
+  <section class="example-section" [formGroup]="vragenSocio">
+    <h2>Socio-emotionele ontwikkeling</h2>
+    <p><mat-checkbox formControlName="persoonlijkheid">Persoonlijkheid </mat-checkbox>
+      <span>(temperament, zelfbeeld, emoties) van de leerling (bv. verlatingsangst)</span></p>
+  </section>
+  <textarea [(ngModel)]="opmerkingSocio" placeholder="Opmerkingen"></textarea>
+  <div id="functieNavigatieButtons">
+    <button (click)="functieNavigatie(-1)" id="terugButton">Terug</button>
+    <button (click)="functieNavigatie(1)" id="volgendeButton">Volgende</button>
+  </div>
+</div>
