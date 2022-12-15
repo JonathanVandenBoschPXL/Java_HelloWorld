@@ -10,8 +10,8 @@ name: 'FRONTEND: : Test - Build - Dockerize'
 on:
   push:
     branches: [ dev , angular ]
-    paths:
-      - 'frontend/**'
+    # paths:
+    #   - 'frontend/**'
   pull_request:
     branches: [ dev , angular ]
     paths:
