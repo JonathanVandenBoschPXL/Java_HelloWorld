@@ -133,6 +133,7 @@ jobs:
         npm install -g sonarqube-scanner
         npm install -D karma-sonarqube-reporter
         npm install karma-junit-reporter --save-dev
+        npm install karma-sonarqube-reporter --save-dev
         npm run test
         ls -A 
         echo ======
