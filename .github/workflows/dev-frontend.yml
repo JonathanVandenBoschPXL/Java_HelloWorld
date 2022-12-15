@@ -73,6 +73,10 @@ jobs:
         ls ./frontend/Prisma/junit-results
         echo ======
         cat ./frontend/Prisma/junit-results/junit-results.xml
+        echo ======(LOCV DEBUG)
+        ls ./frontend/Prisma/coverage
+        echo ======(LOCV DEBUG)
+        cat ./frontend/Prisma/coverage/lcov.info
     
     # Upload Maven artifact (package) to GitHub Actions cache for later use in "docker" job.
     - uses: actions/upload-artifact@v3

@@ -39,7 +39,7 @@ module.exports = function (config) {
       reporters: [
         { type: 'html' },
         { type: 'text-summary' },
-        { type: 'lcov' },
+        { type: 'lcovonly' },
       ]
     },
     junitReporter: {
