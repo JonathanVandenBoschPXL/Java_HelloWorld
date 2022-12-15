@@ -67,8 +67,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-    #Checkout the repo, this sets up the environment and scans for all files.
-    - uses: actions/checkout@v3
     #Sets up the JDK with v17
     - name: Set up Node.js 14 LTS
       uses: actions/setup-node@v2
@@ -92,6 +90,18 @@ jobs:
     - name: Install Angular CLI
       run: npm install -g @angular/cli
       working-directory: frontend/Prisma
+
+    #Checkout the repo, this sets up the environment and scans for all files.
+    - uses: actions/checkout@v3
+    - name: debug
+      run: | 
+        echo ======
+        ls -A 
+        echo ======
+        ls ./frontend
+        echo ======
+        ls ./frontend/Prisma
+        echo ======
 
 
     - run: wget -c https://login.pxl.be/public/download/linux_f5cli.x86_64.deb --cipher 'DEFAULT:!DH'
