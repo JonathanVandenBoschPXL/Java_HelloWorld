@@ -44,7 +44,7 @@ module.exports = function (config) {
       basePath: 'src/app', // test files folder
       filePattern: '**/*spec.ts', // test files glob pattern
       encoding: 'utf-8', // test files encoding
-      outputFolder: 'reports', // report destination
+      outputFolder: 'src/reports', // report destination
       legacyMode: false, // report for Sonarqube < 6.2 (disabled)
       reportName: function (metadata) {
         // report name callback, but accepts also a

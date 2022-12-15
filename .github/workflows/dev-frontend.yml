@@ -17,24 +17,24 @@ on:
     paths:
       - 'frontend/**'
 jobs:
-  # build-test-frontend:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #   #Checkout the repo, this sets up the environment and scans for all files.
-  #   - uses: actions/checkout@v3
-  #   #Sets up the JDK with v17
-  #   - name: Set up Node.js 14 LTS
-  #     uses: actions/setup-node@v2
-  #     with:
-  #       node-version: '14'
-  #   #Install modules with NPM
-  #   - name: Install NPM Modules
-  #     run: npm install
-  #     working-directory: frontend/Prisma
-  #   #Install angular CLI
-  #   - name: Install Angular CLI
-  #     run: npm install -g @angular/cli
-  #     working-directory: frontend/Prisma
+  build-test-frontend:
+    runs-on: ubuntu-latest
+    steps:
+    #Checkout the repo, this sets up the environment and scans for all files.
+    - uses: actions/checkout@v3
+    #Sets up the JDK with v17
+    - name: Set up Node.js 14 LTS
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+    #Install modules with NPM
+    - name: Install NPM Modules
+      run: npm install
+      working-directory: frontend/Prisma
+    #Install angular CLI
+    - name: Install Angular CLI
+      run: npm install -g @angular/cli
+      working-directory: frontend/Prisma
 
     #Run tests with NPM
     # --                          = tells NPM to pass extra arguments to the test script defined in package.json
@@ -46,8 +46,20 @@ jobs:
     #      run: npm run test -- --watch=false --browsers=ChromeHeadless
     #      working-directory: frontend
 
-    # - name: Test with npm
-    #   run: npm test
+    - name: Test with npm
+      run: npm run test
+    
+    - name: debug
+      run: | 
+        echo ======
+        ls -A 
+        echo ======
+        ls ./frontend
+        echo ======
+        ls ./frontend/Prisma
+        echo ======
+        ls ./frontend/Prisma/junit-results
+        echo ======
 
     #Build with NPM
     # - name: Build with NPM
@@ -120,6 +132,13 @@ jobs:
         npm install -g sonarqube-scanner
         npm install -D karma-sonarqube-reporter
         npm install karma-junit-reporter --save-dev
-        npm run sonar
+        npm run test
+        ls -A 
+        echo ======
+        ls ./frontend
+        echo ======
+        ls ./frontend/Prisma
+        echo ======
+      #  npm run sonar
     - run: sleep 10
     - run: f5fpc --stop
