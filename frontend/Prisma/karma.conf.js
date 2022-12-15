@@ -42,19 +42,19 @@ module.exports = function (config) {
         { type: 'lcovonly' },
       ]
     },
+    // junitReporter: {
+    //   outputDir: 'junit-results', // results will be saved as $outputDir/$browserName.xml
+    //   outputFile: 'junit-results.xml', // if included, results will be saved as $outputDir/$browserName/$outputFile
+    //   suite: '', // suite will become the package name attribute in xml testsuite element
+    //   useBrowserName: false, // add browser name to report and classes names
+    //   nameFormatter: undefined, // function (browser, result) to customize the name attribute in xml testcase element
+    //   classNameFormatter: undefined, // function (browser, result) to customize the classname attribute in xml testcase element
+    //   properties: {}, // key value pair of properties to add to the <properties> section of the report
+    //   xmlVersion: 1 // use '1' if reporting to be per SonarQube 6.2 XML format
+    // },
     junitReporter: {
       outputDir: 'junit-results', // results will be saved as $outputDir/$browserName.xml
       outputFile: 'junit-results.xml', // if included, results will be saved as $outputDir/$browserName/$outputFile
-      suite: '', // suite will become the package name attribute in xml testsuite element
-      useBrowserName: false, // add browser name to report and classes names
-      nameFormatter: undefined, // function (browser, result) to customize the name attribute in xml testcase element
-      classNameFormatter: undefined, // function (browser, result) to customize the classname attribute in xml testcase element
-      properties: {}, // key value pair of properties to add to the <properties> section of the report
-      xmlVersion: 1 // use '1' if reporting to be per SonarQube 6.2 XML format
-    },
-    junitReporter: {
-      outputDir: 'junit-results', // results will be saved as $outputDir/$browserName.xml
-      outputFile: 'junit-results-2.xml', // if included, results will be saved as $outputDir/$browserName/$outputFile
       suite: '', // suite will become the package name attribute in xml testsuite element
       useBrowserName: false, // add browser name to report and classes names
       nameFormatter: undefined, // function (browser, result) to customize the name attribute in xml testcase element
