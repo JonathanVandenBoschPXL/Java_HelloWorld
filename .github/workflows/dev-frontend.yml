@@ -53,7 +53,7 @@ jobs:
       working-directory: frontend/Prisma
 
     - name: Test with npm
-      run: npm run test -- --browsers=ChromeHeadlessCI
+      run: npm run test -- --no-watch --browsers=ChromeHeadlessCI
       working-directory: frontend/Prisma
       env:
         CI: true
