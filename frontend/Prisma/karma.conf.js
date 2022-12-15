@@ -36,7 +36,7 @@ module.exports = function (config) {
       ]
     },
     junitReporter: {
-      outputDir: 'unit-test-results', // results will be saved as $outputDir/$browserName.xml
+      outputDir: 'junit-results', // results will be saved as $outputDir/$browserName.xml
       outputFile: 'results-junit.xml', // if included, results will be saved as $outputDir/$browserName/$outputFile
       suite: '', // suite will become the package name attribute in xml testsuite element
       useBrowserName: false, // add browser name to report and classes names
@@ -46,7 +46,7 @@ module.exports = function (config) {
       xmlVersion: 1
     },
     junitReporter: {
-      outputDir: 'unit-test-results', // results will be saved as $outputDir/$browserName.xml
+      outputDir: 'junit-results', // results will be saved as $outputDir/$browserName.xml
       outputFile: 'results-junit_version2.xml', // if included, results will be saved as $outputDir/$browserName/$outputFile
       suite: '', // suite will become the package name attribute in xml testsuite element
       useBrowserName: false, // add browser name to report and classes names
