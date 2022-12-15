@@ -74,6 +74,7 @@ jobs:
         echo ======
         cat ./frontend/Prisma/junit-results/junit-results.xml
         echo ======
+        cat ./frontend/Prisma/junit-results/junit-results-2.xml
         echo ======LOCV DEBUG
         ls ./frontend/Prisma/coverage
         echo ======LOCV DEBUG

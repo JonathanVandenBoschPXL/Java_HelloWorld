@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test --code-coverage --reporters junit"
+    "test": "ng test --code-coverage --reporters junit,sonarqubeUnit"
   },
   "private": true,
   "dependencies": {
