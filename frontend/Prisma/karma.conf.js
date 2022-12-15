@@ -10,15 +10,15 @@ module.exports = function (config) {
       require('karma-chrome-launcher'),
       require('karma-jasmine-html-reporter'),
       require('karma-coverage'),
-      require('@angular-devkit/build-angular/plugins/karma')
+      require('@angular-devkit/build-angular/plugins/karma'),
+      require('karma-junit-reporter')
       //require('karma-sonarqube-reporter')
     ],
     files: [
-      'src/**/*.ts',
-      'test/**/*.ts'
+      'src/**/*.spec.ts'
     ],
     preprocessors: {
-      'src/**/*.ts': ['coverage']
+      'src/**/*.spec.ts': ['coverage']
     },
     client: {
       jasmine: {
