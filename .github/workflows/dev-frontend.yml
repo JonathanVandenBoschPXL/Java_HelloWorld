@@ -94,7 +94,7 @@ jobs:
       with:
         name: prisma-frontend
         path: prisma-frontend.tar
-        retention-days: 3
+        retention-days: 1
     
 
     # - run: wget -c https://login.pxl.be/public/download/linux_f5cli.x86_64.deb --cipher 'DEFAULT:!DH'
