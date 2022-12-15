@@ -73,6 +73,8 @@ jobs:
         ls ./frontend/Prisma/junit-results
         echo ======
         cat ./frontend/Prisma/junit-results/junit-results.xml
+        echo ======
+        cat ./frontend/Prisma/junit-results/junit-results-2.xml
         echo ======LOCV DEBUG
         ls ./frontend/Prisma/coverage
         echo ======LOCV DEBUG
@@ -90,7 +92,7 @@ jobs:
       if: success()
       with:
         name: prisma-frontend-test-results
-        path: ./frontend/Prisma/junit-results/junit-results.xml
+        path: ./frontend/Prisma/junit-results
         retention-days: 3
     
     # Upload Maven artifact (package) to GitHub Actions cache for later use in "docker" job.
@@ -106,14 +108,14 @@ jobs:
     #     retention-days: 1
 
     #Generate [Dorny] report
-    # - name: '[Dorny] Report'
-    #   uses: dorny/test-reporter@v1
-    #   if: always()
-    #   with:
-    #     name: '[Dorny] Report: frontend'
-    #     path: ./frontend/Prisma/junit-results/junit-results.xml
-    #     reporter: java-junit
-    #     fail-on-error: true
+    - name: '[Dorny] Report'
+      uses: dorny/test-reporter@v1
+      if: always()
+      with:
+        name: '[Dorny] Report: frontend'
+        path: ./frontend/Prisma/junit-results/junit-results-2.xml
+        reporter: java-junit
+        fail-on-error: true
     # - name: Publish Test Report
     #   uses: mikepenz/action-junit-report@v3
     #   if: always() # always run even if the previous step fails
@@ -310,7 +312,7 @@ jobs:
       #   echo ======
       #  npm run sonar
       with: 
-        projectBaseDir: ./tmp/data
+        projectBaseDir: frontend/Prisma
       continue-on-error: true
     - run: sleep 10
     - run: f5fpc --stop
