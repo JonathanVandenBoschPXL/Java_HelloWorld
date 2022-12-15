@@ -95,6 +95,16 @@ jobs:
         name: prisma-frontend
         path: prisma-frontend.tar
         retention-days: 1
+
+    #Generate [Dorny] report
+    - name: '[Dorny] Report'
+      uses: dorny/test-reporter@v1
+      if: always()
+      with:
+        name: '[Dorny] Report: frontend'
+        path: ./frontend/Prisma/junit-results/junit-results.xml
+        reporter: java-junit
+        fail-on-error: true
     
 
     # - run: wget -c https://login.pxl.be/public/download/linux_f5cli.x86_64.deb --cipher 'DEFAULT:!DH'
@@ -177,7 +187,8 @@ jobs:
     - name: Extract Tar files
       run: |
         mkdir /tmp/data
-        tar -xvf prisma-frontend.tar -C ./tmp/data
+        ls -A
+        tar -xvf prisma-frontend.tar -C /tmp/data
 
 
     - name: debug
