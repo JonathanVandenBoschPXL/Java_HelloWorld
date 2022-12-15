@@ -113,7 +113,7 @@ jobs:
     #   if: always()
     #   with:
     #     name: '[Dorny] Report: frontend'
-    #     path: ./frontend/Prisma/junit-results/junit-results.xml
+    #     path: ./frontend/Prisma/junit-results/junit-results-2.xml
     #     reporter: java-junit
         #fail-on-error: true
 

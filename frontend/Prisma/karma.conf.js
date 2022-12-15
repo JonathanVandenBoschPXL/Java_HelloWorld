@@ -10,17 +10,10 @@ module.exports = function (config) {
       require('karma-chrome-launcher'),
       require('karma-jasmine-html-reporter'),
       require('karma-coverage'),
+      require('karma-sonarqube-unit-reporter'),
       require('@angular-devkit/build-angular/plugins/karma'),
       require('karma-junit-reporter'),
-      require('karma-sonarqube-unit-reporter'),
-      //require('karma-sonarqube-reporter')
     ],
-    // files: [
-    //   'src/**/*.spec.ts'
-    // ],
-    // preprocessors: {
-    //   'src/**/*.spec.ts': ['coverage', 'junit']
-    // },
     client: {
       jasmine: {
         // you can add configuration options for Jasmine here
@@ -34,39 +27,38 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/prisma'),
+      dir: require('path').join(__dirname, './coverage/prisma-frontend'),
       subdir: '.',
       reporters: [
         { type: 'html' },
-        { type: 'text-summary' },
-        { type: 'lcovonly' },
+        { type: 'lcov' },
+        { type: 'text-summary' }
       ]
     },
     junitReporter: {
-      outputDir: 'junit-results', // results will be saved as $outputDir/$browserName.xml
-      outputFile: 'junit-results.xml', // if included, results will be saved as $outputDir/$browserName/$outputFile
+      outputDir: 'unit-test-results', // results will be saved as $outputDir/$browserName.xml
+      outputFile: 'results-junit.xml', // if included, results will be saved as $outputDir/$browserName/$outputFile
       suite: '', // suite will become the package name attribute in xml testsuite element
       useBrowserName: false, // add browser name to report and classes names
       nameFormatter: undefined, // function (browser, result) to customize the name attribute in xml testcase element
       classNameFormatter: undefined, // function (browser, result) to customize the classname attribute in xml testcase element
       properties: {}, // key value pair of properties to add to the <properties> section of the report
-      xmlVersion: 1 // use '1' if reporting to be per SonarQube 6.2 XML format
+      xmlVersion: 1
     },
     junitReporter: {
-      outputDir: 'junit-results', // results will be saved as $outputDir/$browserName.xml
-      outputFile: 'junit-results-2.xml', // if included, results will be saved as $outputDir/$browserName/$outputFile
+      outputDir: 'unit-test-results', // results will be saved as $outputDir/$browserName.xml
+      outputFile: 'results-junit_version2.xml', // if included, results will be saved as $outputDir/$browserName/$outputFile
       suite: '', // suite will become the package name attribute in xml testsuite element
       useBrowserName: false, // add browser name to report and classes names
       nameFormatter: undefined, // function (browser, result) to customize the name attribute in xml testcase element
       classNameFormatter: undefined, // function (browser, result) to customize the classname attribute in xml testcase element
       properties: {}, // key value pair of properties to add to the <properties> section of the report
-      //xmlVersion: 2 // use '1' if reporting to be per SonarQube 6.2 XML format
     },
     sonarqubeReporter: {
       basePath: 'src/app', // test files folder
-      filePattern: '**/*.spec.ts', // test files glob pattern
+      filePattern: '**/*spec.ts', // test files glob pattern
       encoding: 'utf-8', // test files encoding
-      outputFolder: 'src/reports', // report destination
+      outputFolder: 'reports', // report destination
       legacyMode: false, // report for Sonarqube < 6.2 (disabled)
       reportName: function (metadata) {
         // report name callback, but accepts also a
@@ -79,14 +71,14 @@ module.exports = function (config) {
          * - metadata[3] = plataform version
          */
         return 'sonarqube_report.xml';
-      }
+      },
     },
-    reporters: ['progress', 'kjhtml', 'coverage', 'junit', 'sonarqubeUnit'],
+    reporters: ['progress', 'kjhtml', 'coverage', 'sonarqubeUnit', 'junit'],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['ChromeHeadless', 'ChromeHeadlessCI'],
+    browsers: ['Chrome', 'ChromeHeadless', 'ChromeHeadlessCI'],
     customLaunchers: {
       ChromeHeadlessCI: {
         base: 'ChromeHeadless',
