@@ -107,14 +107,14 @@ jobs:
     #     retention-days: 1
 
     #Generate [Dorny] report
-    # - name: '[Dorny] Report'
-    #   uses: dorny/test-reporter@v1
-    #   if: always()
-    #   with:
-    #     name: '[Dorny] Report: frontend'
-    #     path: ./frontend/Prisma/junit-results/junit-results.xml
-    #     reporter: java-junit
-        #fail-on-error: true
+    - name: '[Dorny] Report'
+      uses: dorny/test-reporter@v1
+      if: always()
+      with:
+        name: '[Dorny] Report: frontend'
+        path: ./frontend/Prisma/junit-results/junit-results.xml
+        reporter: java-junit
+        fail-on-error: true
 
 
 
