@@ -10,15 +10,15 @@ module.exports = function (config) {
       require('karma-chrome-launcher'),
       require('karma-jasmine-html-reporter'),
       require('karma-coverage'),
-      require('@angular-devkit/build-angular/plugins/karma')
-      //require('karma-junit-reporter')
+      require('@angular-devkit/build-angular/plugins/karma'),
+      require('karma-junit-reporter')
       //require('karma-sonarqube-reporter')
     ],
     files: [
       'src/**/*.spec.ts'
     ],
     preprocessors: {
-      'src/**/*.spec.ts': ['coverage']
+      'src/**/*.spec.ts': ['coverage', 'junit']
     },
     client: {
       jasmine: {
@@ -42,7 +42,7 @@ module.exports = function (config) {
     },
     sonarqubeReporter: {
       basePath: 'src/app', // test files folder
-      filePattern: '**/*spec.ts', // test files glob pattern
+      filePattern: '**/*.spec.ts', // test files glob pattern
       encoding: 'utf-8', // test files encoding
       outputFolder: 'src/reports', // report destination
       legacyMode: false, // report for Sonarqube < 6.2 (disabled)
@@ -69,7 +69,7 @@ module.exports = function (config) {
       properties: {}, // key value pair of properties to add to the <properties> section of the report
       xmlVersion: 1 // use '1' if reporting to be per SonarQube 6.2 XML format
     },
-    reporters: ['progress', 'kjhtml', 'coverage', 'junit', 'sonarqube'],
+    reporters: ['progress', 'kjhtml', 'coverage', 'junit'],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
