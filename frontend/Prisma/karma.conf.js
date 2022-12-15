@@ -81,7 +81,7 @@ module.exports = function (config) {
         return 'sonarqube_report.xml';
       }
     },
-    reporters: ['progress', 'kjhtml', 'coverage', 'junit'],
+    reporters: ['progress', 'kjhtml', 'coverage', 'junit', 'sonarqubeUnit'],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
