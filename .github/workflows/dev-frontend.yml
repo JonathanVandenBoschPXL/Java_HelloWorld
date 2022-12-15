@@ -85,16 +85,16 @@ jobs:
       if: github.event_name == 'push' || github.event.pull_request.merged == true
     
     # Upload Maven artifact (package) to GitHub Actions cache for later use in "docker" job.
-    - name: Tar files
-      run: tar -cvf prisma-frontend.tar ./frontend/Prisma
-    - name: list
-      run: ls -A 
-    - uses: actions/upload-artifact@v3
-      if: success()
-      with:
-        name: prisma-frontend
-        path: prisma-frontend.tar
-        retention-days: 1
+    # - name: Tar files
+    #   run: tar -cvf prisma-frontend.tar ./frontend/Prisma
+    # - name: list
+    #   run: ls -A 
+    # - uses: actions/upload-artifact@v3
+    #   if: success()
+    #   with:
+    #     name: prisma-frontend
+    #     path: prisma-frontend.tar
+    #     retention-days: 1
 
     #Generate [Dorny] report
     # - name: '[Dorny] Report'
@@ -113,7 +113,7 @@ jobs:
         summary: true
         job_summary: true
         detailed_summary: true
-        
+
     
 
     # - run: wget -c https://login.pxl.be/public/download/linux_f5cli.x86_64.deb --cipher 'DEFAULT:!DH'
@@ -188,15 +188,44 @@ jobs:
     - uses: actions/checkout@v3
 
     # Download Maven artifact (package) to GitHub Actions workflow runner for use in this job.
-    - uses: actions/download-artifact@v2
+    # - uses: actions/download-artifact@v2
+    #   with:
+    #     name: prisma-frontend
+    # - name: debug 1
+    #   run: ls -A
+    # - name: Extract Tar files
+    #   run: |
+    #     ls -A
+    #     tar -xvf prisma-frontend.tar -C /frontend/Prisma
+
+
+    - name: Set up Node.js 14 LTS
+      uses: actions/setup-node@v2
       with:
-        name: prisma-frontend
-    - name: debug 1
-      run: ls -A
-    - name: Extract Tar files
+        node-version: '14'
+    #Install modules with NPM
+    - name: Install NPM Modules
+      run: npm install
+      working-directory: frontend/Prisma
+    #Install angular CLI
+    - name: Install Angular CLI
+      run: npm install -g @angular/cli
+      working-directory: frontend/Prisma
+    
+    - name: pre-install
       run: |
-        ls -A
-        tar -xvf prisma-frontend.tar -C /frontend/Prisma
+        npm install karma-junit-reporter --save-dev
+        npm install karma-sonarqube-unit-reporter --save-dev
+      working-directory: frontend/Prisma
+    
+    - uses: browser-actions/setup-chrome@latest
+
+    - name: Test with npm
+      run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+      working-directory: frontend/Prisma
+      # env:
+      #   CI: false
+      continue-on-error: true
 
 
     - name: debug
