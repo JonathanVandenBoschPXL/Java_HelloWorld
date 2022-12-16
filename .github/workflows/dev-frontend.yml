@@ -120,6 +120,10 @@ jobs:
         fail-on-error: false
     
 
+    - name: debug cobertura 
+      run: |
+        ls .frontend/Prisma/coverage/prisma/
+
     - uses: 5monkeys/cobertura-action@master
       with:
         path: .frontend/Prisma/coverage/prisma/cobertura-coverage.xml
