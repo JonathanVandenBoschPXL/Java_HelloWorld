@@ -30,3 +30,8 @@ jobs:
           ls -A 
           echo ==========================
           ls -A ./e2e/jmeter/
+      - name: Upload Results
+        uses: actions/upload-artifact@v2
+        with:
+          name: jmeter-results
+          path: result.jtl
