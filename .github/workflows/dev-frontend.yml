@@ -95,6 +95,9 @@ jobs:
         name: prisma-frontend-HTML-report
         path: |
           frontend/Prisma/coverage/prisma/index.html
+          frontend/Prisma/coverage/prisma/base.css
+          frontend/Prisma/coverage/prisma/prettify.css
+          frontend/Prisma/coverage/prisma/prettify.js
           frontend/Prisma/coverage/prisma/app
           frontend/Prisma/coverage/prisma/environments
         retention-days: 3
