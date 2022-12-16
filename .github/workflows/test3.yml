@@ -21,12 +21,20 @@ jobs:
       #     cd $GITHUB_WORKSPACE/apache-jmeter-5.4.1
       #     wget -q --no-check-certificate https://jmeter-plugins.org/files/packages/jpgc-dummy-0.4.zip  -P .
       #     unzip -o jpgc-dummy-0.4.zip  && rm jpgc-dummy-0.4.zip
+      - run: wget -c https://login.pxl.be/public/download/linux_f5cli.x86_64.deb --cipher 'DEFAULT:!DH'
+      - run: sudo dpkg -i linux_f5cli.x86_64.deb
+      - run: f5fpc -s -t login.pxl.be -x -u "${{ secrets.STUDENT_NUMBER }}@student.pxl.be" -p "${{ secrets.STUDENT_PASS }}" -b
+      - run: sleep 10
+      - run: ping 10.128.9.7 -c 2
       - name: run jmx scripts
         run: |
          cd $GITHUB_WORKSPACE/apache-jmeter-5.5/bin
          for i in $( ls $GITHUB_WORKSPACE/e2e/jmeter/*.jmx); do
             ./jmeter -n -t $i;
          done
+        continue-on-error: true
+      - run: sleep 10
+      - run: f5fpc --stop
       - name: list all outputs 
         run: |
           ls -A 
