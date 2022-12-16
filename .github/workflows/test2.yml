@@ -22,7 +22,7 @@ jobs:
         uses: QAInsights/PerfAction@v3.1
         with:
           test-plan-path: ./e2e/jmeter/*.jmx
-          args: "--loglevel INFO --generate-csv"
+          args: "--loglevel INFO"
       - run: sleep 10
       - run: f5fpc --stop
       - name: list all outputs 
