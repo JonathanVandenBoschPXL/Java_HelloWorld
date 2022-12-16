@@ -1,0 +1,9 @@
+name: '[Manual] Non-functional Tests'
+on: [workflow_dispatch]
+jobs:
+  example:
+    name: Just a job
+    runs-on: ubuntu-latest
+    steps:
+      - name: echo step
+        run: echo hello
