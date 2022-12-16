@@ -127,7 +127,7 @@ jobs:
 
     - uses: 5monkeys/cobertura-action@master
       with:
-        path: .frontend/Prisma/coverage/prisma/cobertura-coverage.xml
+        path: ./frontend/Prisma/coverage/prisma/cobertura-coverage.xml
         minimum_coverage: 70
 
 
