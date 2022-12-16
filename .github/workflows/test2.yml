@@ -8,16 +8,16 @@ jobs:
       - uses: actions/checkout@v3
       - name: debug
         run: ls -A ./e2e/jmeter/
-      # - name: Run JMeter Tests
-      #   uses: rbhadti94/apache-jmeter-action@v0.6.0
-      #   with:
-      #     testFilePath: e2e/jmeter/testfile.jmx
-      #     outputReportsFolder: e2e/jmeter/
-      - name: JMeter Test
-        uses: QAInsights/PerfAction@v3.1
+      - name: Run JMeter Tests
+        uses: rbhadti94/apache-jmeter-action@v0.6.0
         with:
-          test-plan-path: ./e2e/jmeter/testfile.jmx
-          args: "--loglevel INFO"
+          testFilePath: e2e/jmeter/testfile.jmx
+          outputReportsFolder: e2e/jmeter/
+      # - name: JMeter Test
+      #   uses: QAInsights/PerfAction@v3.1
+      #   with:
+      #     test-plan-path: ./e2e/jmeter/testfile.jmx
+      #     args: "--loglevel INFO"
       - name: list all outputs 
         run: |
           ls -A 
