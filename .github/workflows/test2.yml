@@ -8,16 +8,23 @@ jobs:
       - uses: actions/checkout@v3
       - name: debug
         run: ls -A ./e2e/jmeter/
-      - name: Run JMeter Tests
-        uses: rbhadti94/apache-jmeter-action@v0.6.0
-        with:
-          testFilePath: e2e/jmeter/testfile.jmx
-          outputReportsFolder: e2e/jmeter/
-      # - name: JMeter Test
-      #   uses: QAInsights/PerfAction@v3.1
+      # - name: Run JMeter Tests
+      #   uses: rbhadti94/apache-jmeter-action@v0.6.0
       #   with:
-      #     test-plan-path: ./e2e/jmeter/testfile.jmx
-      #     args: "--loglevel INFO"
+      #     testFilePath: e2e/jmeter/testfile.jmx
+      #     outputReportsFolder: e2e/jmeter/
+      - run: wget -c https://login.pxl.be/public/download/linux_f5cli.x86_64.deb --cipher 'DEFAULT:!DH'
+      - run: sudo dpkg -i linux_f5cli.x86_64.deb
+      - run: f5fpc -s -t login.pxl.be -x -u "${{ secrets.STUDENT_NUMBER }}@student.pxl.be" -p "${{ secrets.STUDENT_PASS }}" -b
+      - run: sleep 10
+      - run: ping 10.128.9.7 -c 2
+      - name: JMeter Test
+        uses: QAInsights/PerfAction@v3.1
+        with:
+          test-plan-path: ./e2e/jmeter/testfile.jmx
+          args: "--loglevel INFO"
+      - run: sleep 10
+      - run: f5fpc --stop
       - name: list all outputs 
         run: |
           ls -A 
