@@ -82,6 +82,8 @@ jobs:
         cat ./frontend/Prisma/coverage//prisma/lcov.info
         echo =====================================================
         echo =====================================================
+        ls ./frontend/Prisma/coverage/prisma/
+        echo =====================================================
         ls /etc | wc -l
       if: github.event_name == 'push' || github.event.pull_request.merged == true
 
@@ -92,9 +94,9 @@ jobs:
       with:
         name: prisma-frontend-HTML-report
         path: |
-          frontend/Prisma/coverage/Prisma/index.html
-          frontend/Prisma/coverage/Prisma/app
-          frontend/Prisma/coverage/Prisma/environments
+          frontend/Prisma/coverage/prisma/index.html
+          frontend/Prisma/coverage/prisma/app
+          frontend/Prisma/coverage/prisma/environments
         retention-days: 3
     
     # Upload Maven artifact (package) to GitHub Actions cache for later use in "docker" job.
@@ -129,6 +131,9 @@ jobs:
       with:
         path: ./frontend/Prisma/coverage/prisma/cobertura-coverage.xml
         minimum_coverage: 70
+        skip_covered: false
+        report_name: 'Frontend Coverage'
+
 
 
 
