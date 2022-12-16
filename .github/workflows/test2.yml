@@ -17,7 +17,7 @@ jobs:
         uses: QAInsights/PerfAction@v3.1
         with:
           test-plan-path: ./e2e/jmeter/testfile.jmx
-          args: ""
+          args: "--loglevel INFO"
       - name: list all outputs 
         run: |
           ls -A 
