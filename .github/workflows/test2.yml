@@ -11,7 +11,7 @@ jobs:
       - name: Run JMeter Tests
         uses: rbhadti94/apache-jmeter-action@v0.5.0
         with:
-          testFilePath: e2e/jmeter/testfile.jmx
-          outputReportsFolder: e2e/jmeter/
+          testFilePath: ./e2e/jmeter/testfile.jmx
+          outputReportsFolder: ./e2e/jmeter/
       - name: list all outputs 
         run: ls -A ./e2e/jmeter/
