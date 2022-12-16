@@ -92,9 +92,9 @@ jobs:
       with:
         name: prisma-frontend-HTML-report
         path: |
-          ./frontend/Prisma/coverage/Prisma/index.html
-          ./frontend/Prisma/coverage/Prisma/app
-          ./frontend/Prisma/coverage/Prisma/environments
+          frontend/Prisma/coverage/Prisma/index.html
+          frontend/Prisma/coverage/Prisma/app
+          frontend/Prisma/coverage/Prisma/environments
         retention-days: 3
     
     # Upload Maven artifact (package) to GitHub Actions cache for later use in "docker" job.
@@ -122,7 +122,8 @@ jobs:
 
     - name: debug cobertura 
       run: |
-        ls .frontend/Prisma/coverage/prisma/
+        ls frontend/Prisma/coverage/
+        ls frontend/Prisma/coverage/prisma/
 
     - uses: 5monkeys/cobertura-action@master
       with:
