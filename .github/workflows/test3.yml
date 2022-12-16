@@ -1,4 +1,4 @@
-name: '[Manual] Non-functional Tests'
+name: '[Manual3] Non-functional Tests 3'
 on: [workflow_dispatch]
 jobs:
   example:
