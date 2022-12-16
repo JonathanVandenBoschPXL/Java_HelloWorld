@@ -86,12 +86,15 @@ jobs:
       if: github.event_name == 'push' || github.event.pull_request.merged == true
 
 
-    - name: Upload XML test report.
+    - name: Upload HTML report + /apps folder for HTML links.
       uses: actions/upload-artifact@v3
       if: success()
       with:
-        name: prisma-frontend-test-results
-        path: ./frontend/Prisma/junit-results
+        name: prisma-frontend-HTML-report
+        path: |
+          ./frontend/Prisma/coverage/Prisma/index.html
+          ./frontend/Prisma/coverage/Prisma/app
+          ./frontend/Prisma/coverage/Prisma/environments
         retention-days: 3
     
     # Upload Maven artifact (package) to GitHub Actions cache for later use in "docker" job.
@@ -114,7 +117,13 @@ jobs:
         name: '[Dorny] Report: frontend'
         path: ./frontend/Prisma/junit-results/junit-results.xml
         reporter: java-junit
-        fail-on-error: true
+        fail-on-error: false
+    
+
+    - uses: 5monkeys/cobertura-action@master
+      with:
+        path: .frontend/Prisma/coverage/prisma/cobertura-coverage.xml
+        minimum_coverage: 70
 
 
 

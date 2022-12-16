@@ -1,0 +1,270 @@
+<?xml version="1.0"?>
+<testsuite name="Chrome Headless 108.0.5359.125 (Windows 10)" package="" timestamp="2022-12-16T09:00:43" id="0" hostname="DESKTOP-80EN47T" tests="34" errors="0" failures="1" time="0.786">
+  <properties>
+    <property name="browser.fullName" value="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/108.0.5359.125 Safari/537.36"/>
+  </properties>
+  <testcase name="HoofdfunctieIndicatieComponent should create" time="0.089" classname="HoofdfunctieIndicatieComponent"/>
+  <testcase name="AppComponent should create the app" time="0.022" classname="AppComponent"/>
+  <testcase name="AppComponent should have as title 'Prisma'" time="0.013" classname="AppComponent"/>
+  <testcase name="FooterComponent should create" time="0.016" classname="FooterComponent"/>
+  <testcase name="ContactService verzendContactEmail should post to backend with correct contact" time="0.011" classname="ContactService verzendContactEmail"/>
+  <testcase name="OverOnsComponent should create" time="0.067" classname="OverOnsComponent"/>
+  <testcase name="ContactComponent routeToHome should use passed through router to navigate to homepage" time="0.134" classname="ContactComponent routeToHome"/>
+  <testcase name="ContactComponent openCancelDialog should open new dialogcomponent" time="0.019" classname="ContactComponent openCancelDialog"/>
+  <testcase name="OverzichtKinderenComponent ngOnInit should fill kinderenList with kindService" time="0.043" classname="OverzichtKinderenComponent ngOnInit"/>
+  <testcase name="KindService should be created" time="0.009" classname="KindService"/>
+  <testcase name="AuthGuardGuard should be created" time="0.011" classname="AuthGuardGuard"/>
+  <testcase name="LoginpaginaComponent should create" time="0.025" classname="LoginpaginaComponent">
+    <failure type="">NullInjectorError: R3InjectorError(DynamicTestModule)[FormBuilder -&gt; FormBuilder]: 
+  NullInjectorError: No provider for FormBuilder!
+error properties: Object({ ngTempTokenPath: null, ngTokenPath: [ 'FormBuilder', 'FormBuilder' ] })
+    at NullInjector.get (node_modules/@angular/core/fesm2020/core.mjs:8191:27)
+    at R3Injector.get (node_modules/@angular/core/fesm2020/core.mjs:8618:33)
+    at R3Injector.get (node_modules/@angular/core/fesm2020/core.mjs:8618:33)
+    at ChainedInjector.get (node_modules/@angular/core/fesm2020/core.mjs:13811:36)
+    at lookupTokenUsingModuleInjector (node_modules/@angular/core/fesm2020/core.mjs:3293:39)
+    at getOrCreateInjectable (node_modules/@angular/core/fesm2020/core.mjs:3338:12)
+    at ɵɵdirectiveInject (node_modules/@angular/core/fesm2020/core.mjs:10913:12)
+    at NodeInjectorFactory.factory (ng:///LoginpaginaComponent/ɵfac.js:4:48)
+    at getNodeInjectable (node_modules/@angular/core/fesm2020/core.mjs:3523:44)
+    at instantiateRootComponent (node_modules/@angular/core/fesm2020/core.mjs:12592:23)
+</failure>
+  </testcase>
+  <testcase name="NavbarComponent should create" time="0.024" classname="NavbarComponent"/>
+  <testcase name="HomepaginaComponent should create" time="0.016" classname="HomepaginaComponent"/>
+  <testcase name="BewegingFunctiesComponent saveData sets component fields to correct values" time="0.035" classname="BewegingFunctiesComponent saveData"/>
+  <testcase name="BewegingFunctiesComponent functieNavigatie emits hoofdFunctieIndex with step" time="0.01" classname="BewegingFunctiesComponent functieNavigatie"/>
+  <testcase name="BewegingFunctiesComponent functieNavigatie calls saveData" time="0.026" classname="BewegingFunctiesComponent functieNavigatie"/>
+  <testcase name="KindCardComponent should create" time="0.028" classname="KindCardComponent"/>
+  <testcase name="DomeinIndicatieComponent should create" time="0.015" classname="DomeinIndicatieComponent"/>
+  <testcase name="SensorischeFunctiesComponent functieNavigatie calls saveData" time="0.019" classname="SensorischeFunctiesComponent functieNavigatie"/>
+  <testcase name="SensorischeFunctiesComponent functieNavigatie emits hoofdFunctieIndex with step" time="0.018" classname="SensorischeFunctiesComponent functieNavigatie"/>
+  <testcase name="SensorischeFunctiesComponent saveData sets component fields to correct values" time="0.013" classname="SensorischeFunctiesComponent saveData"/>
+  <testcase name="TrajectService checkVoorBestaandeTrajecten should return the correct TrajectAanwezig object" time="0.003" classname="TrajectService checkVoorBestaandeTrajecten"/>
+  <testcase name="HoofdfunctieComponent functieNavigatie should emit hoofdFunctieIndex with step" time="0.011" classname="HoofdfunctieComponent functieNavigatie"/>
+  <testcase name="CancelDialogComponent onNoClick should call close on dialogRef" time="0.036" classname="CancelDialogComponent onNoClick"/>
+  <testcase name="CancelDialogComponent onYesClick it should call onYesClickFunction of data" time="0.009" classname="CancelDialogComponent onYesClick"/>
+  <testcase name="CancelDialogComponent onYesClick should call close on dialogRef" time="0.005" classname="CancelDialogComponent onYesClick"/>
+  <testcase name="MentaleFunctiesComponent should create" time="0.034" classname="MentaleFunctiesComponent"/>
+  <testcase name="TrajectService should be created" time="0.003" classname="TrajectService"/>
+  <testcase name="GroeipuntenpaginaComponent ngOnInit sets huidigeHoofdFunctie to correct values" time="0.008" classname="GroeipuntenpaginaComponent ngOnInit"/>
+  <testcase name="GroeipuntenpaginaComponent functieNavigatie does not move index one step up if step is bigger than length of function - 1" time="0.003" classname="GroeipuntenpaginaComponent functieNavigatie"/>
+  <testcase name="GroeipuntenpaginaComponent functieNavigatie moves index one step up if index and step is smaller than length of function -1 and greater or equal 0" time="0.004" classname="GroeipuntenpaginaComponent functieNavigatie"/>
+  <testcase name="LoginService login should post to login endpoint" time="0.005" classname="LoginService login"/>
+  <testcase name="TokenService should be created" time="0.002" classname="TokenService"/>
+  <system-out>
+    <![CDATA[Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0304: 'app-navbar' is not a known element (used in the 'AppComponent' component template):
+1. If 'app-navbar' is an Angular component, then verify that it is a part of an @NgModule where this component is declared.
+2. If 'app-navbar' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0304: 'app-footer' is not a known element (used in the 'AppComponent' component template):
+1. If 'app-footer' is an Angular component, then verify that it is a part of an @NgModule where this component is declared.
+2. If 'app-footer' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0304: 'app-navbar' is not a known element (used in the 'AppComponent' component template):
+1. If 'app-navbar' is an Angular component, then verify that it is a part of an @NgModule where this component is declared.
+2. If 'app-navbar' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0304: 'app-footer' is not a known element (used in the 'AppComponent' component template):
+1. If 'app-footer' is an Angular component, then verify that it is a part of an @NgModule where this component is declared.
+2. If 'app-footer' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0303: Can't bind to 'routerLink' since it isn't a known property of 'a' (used in the 'NavbarComponent' component template).
+1. If 'a' is an Angular component and it has the 'routerLink' input, then verify that it is a part of an @NgModule where this component is declared.
+2. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0303: Can't bind to 'routerLink' since it isn't a known property of 'a' (used in the 'NavbarComponent' component template).
+1. If 'a' is an Angular component and it has the 'routerLink' input, then verify that it is a part of an @NgModule where this component is declared.
+2. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0303: Can't bind to 'routerLink' since it isn't a known property of 'a' (used in the 'NavbarComponent' component template).
+1. If 'a' is an Angular component and it has the 'routerLink' input, then verify that it is a part of an @NgModule where this component is declared.
+2. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0303: Can't bind to 'routerLink' since it isn't a known property of 'a' (used in the 'NavbarComponent' component template).
+1. If 'a' is an Angular component and it has the 'routerLink' input, then verify that it is a part of an @NgModule where this component is declared.
+2. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0304: 'mat-icon' is not a known element (used in the 'HomepaginaComponent' component template):
+1. If 'mat-icon' is an Angular component, then verify that it is a part of an @NgModule where this component is declared.
+2. If 'mat-icon' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0303: Can't bind to 'routerLink' since it isn't a known property of 'a' (used in the 'HomepaginaComponent' component template).
+1. If 'a' is an Angular component and it has the 'routerLink' input, then verify that it is a part of an @NgModule where this component is declared.
+2. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0303: Can't bind to 'routerLink' since it isn't a known property of 'a' (used in the 'NavbarComponent' component template).
+1. If 'a' is an Angular component and it has the 'routerLink' input, then verify that it is a part of an @NgModule where this component is declared.
+2. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0303: Can't bind to 'routerLink' since it isn't a known property of 'a' (used in the 'NavbarComponent' component template).
+1. If 'a' is an Angular component and it has the 'routerLink' input, then verify that it is a part of an @NgModule where this component is declared.
+2. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0303: Can't bind to 'routerLink' since it isn't a known property of 'a' (used in the 'NavbarComponent' component template).
+1. If 'a' is an Angular component and it has the 'routerLink' input, then verify that it is a part of an @NgModule where this component is declared.
+2. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0303: Can't bind to 'routerLink' since it isn't a known property of 'a' (used in the 'NavbarComponent' component template).
+1. If 'a' is an Angular component and it has the 'routerLink' input, then verify that it is a part of an @NgModule where this component is declared.
+2. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0304: 'mat-checkbox' is not a known element (used in the 'MentaleFunctiesComponent' component template):
+1. If 'mat-checkbox' is an Angular component, then verify that it is a part of an @NgModule where this component is declared.
+2. If 'mat-checkbox' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0304: 'mat-icon' is not a known element (used in the 'HomepaginaComponent' component template):
+1. If 'mat-icon' is an Angular component, then verify that it is a part of an @NgModule where this component is declared.
+2. If 'mat-icon' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0303: Can't bind to 'routerLink' since it isn't a known property of 'a' (used in the 'HomepaginaComponent' component template).
+1. If 'a' is an Angular component and it has the 'routerLink' input, then verify that it is a part of an @NgModule where this component is declared.
+2. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0304: 'mat-checkbox' is not a known element (used in the 'MentaleFunctiesComponent' component template):
+1. If 'mat-checkbox' is an Angular component, then verify that it is a part of an @NgModule where this component is declared.
+2. If 'mat-checkbox' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0304: 'mat-checkbox' is not a known element (used in the 'MentaleFunctiesComponent' component template):
+1. If 'mat-checkbox' is an Angular component, then verify that it is a part of an @NgModule where this component is declared.
+2. If 'mat-checkbox' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0304: 'mat-checkbox' is not a known element (used in the 'MentaleFunctiesComponent' component template):
+1. If 'mat-checkbox' is an Angular component, then verify that it is a part of an @NgModule where this component is declared.
+2. If 'mat-checkbox' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0304: 'mat-checkbox' is not a known element (used in the 'MentaleFunctiesComponent' component template):
+1. If 'mat-checkbox' is an Angular component, then verify that it is a part of an @NgModule where this component is declared.
+2. If 'mat-checkbox' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0304: 'mat-checkbox' is not a known element (used in the 'MentaleFunctiesComponent' component template):
+1. If 'mat-checkbox' is an Angular component, then verify that it is a part of an @NgModule where this component is declared.
+2. If 'mat-checkbox' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0304: 'mat-checkbox' is not a known element (used in the 'MentaleFunctiesComponent' component template):
+1. If 'mat-checkbox' is an Angular component, then verify that it is a part of an @NgModule where this component is declared.
+2. If 'mat-checkbox' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0304: 'mat-checkbox' is not a known element (used in the 'MentaleFunctiesComponent' component template):
+1. If 'mat-checkbox' is an Angular component, then verify that it is a part of an @NgModule where this component is declared.
+2. If 'mat-checkbox' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0304: 'mat-checkbox' is not a known element (used in the 'MentaleFunctiesComponent' component template):
+1. If 'mat-checkbox' is an Angular component, then verify that it is a part of an @NgModule where this component is declared.
+2. If 'mat-checkbox' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0304: 'mat-checkbox' is not a known element (used in the 'MentaleFunctiesComponent' component template):
+1. If 'mat-checkbox' is an Angular component, then verify that it is a part of an @NgModule where this component is declared.
+2. If 'mat-checkbox' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0304: 'mat-checkbox' is not a known element (used in the 'MentaleFunctiesComponent' component template):
+1. If 'mat-checkbox' is an Angular component, then verify that it is a part of an @NgModule where this component is declared.
+2. If 'mat-checkbox' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0304: 'mat-checkbox' is not a known element (used in the 'MentaleFunctiesComponent' component template):
+1. If 'mat-checkbox' is an Angular component, then verify that it is a part of an @NgModule where this component is declared.
+2. If 'mat-checkbox' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0304: 'mat-checkbox' is not a known element (used in the 'MentaleFunctiesComponent' component template):
+1. If 'mat-checkbox' is an Angular component, then verify that it is a part of an @NgModule where this component is declared.
+2. If 'mat-checkbox' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0304: 'mat-checkbox' is not a known element (used in the 'MentaleFunctiesComponent' component template):
+1. If 'mat-checkbox' is an Angular component, then verify that it is a part of an @NgModule where this component is declared.
+2. If 'mat-checkbox' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0304: 'mat-checkbox' is not a known element (used in the 'MentaleFunctiesComponent' component template):
+1. If 'mat-checkbox' is an Angular component, then verify that it is a part of an @NgModule where this component is declared.
+2. If 'mat-checkbox' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0304: 'mat-checkbox' is not a known element (used in the 'MentaleFunctiesComponent' component template):
+1. If 'mat-checkbox' is an Angular component, then verify that it is a part of an @NgModule where this component is declared.
+2. If 'mat-checkbox' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0304: 'mat-checkbox' is not a known element (used in the 'MentaleFunctiesComponent' component template):
+1. If 'mat-checkbox' is an Angular component, then verify that it is a part of an @NgModule where this component is declared.
+2. If 'mat-checkbox' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0303: Can't bind to 'formGroup' since it isn't a known property of 'section' (used in the 'MentaleFunctiesComponent' component template).
+1. If 'section' is an Angular component and it has the 'formGroup' input, then verify that it is a part of an @NgModule where this component is declared.
+2. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0303: Can't bind to 'ngModel' since it isn't a known property of 'textarea' (used in the 'MentaleFunctiesComponent' component template).
+1. If 'textarea' is an Angular component and it has the 'ngModel' input, then verify that it is a part of an @NgModule where this component is declared.
+2. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0303: Can't bind to 'formGroup' since it isn't a known property of 'section' (used in the 'MentaleFunctiesComponent' component template).
+1. If 'section' is an Angular component and it has the 'formGroup' input, then verify that it is a part of an @NgModule where this component is declared.
+2. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0303: Can't bind to 'ngModel' since it isn't a known property of 'textarea' (used in the 'MentaleFunctiesComponent' component template).
+1. If 'textarea' is an Angular component and it has the 'ngModel' input, then verify that it is a part of an @NgModule where this component is declared.
+2. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0303: Can't bind to 'formGroup' since it isn't a known property of 'section' (used in the 'MentaleFunctiesComponent' component template).
+1. If 'section' is an Angular component and it has the 'formGroup' input, then verify that it is a part of an @NgModule where this component is declared.
+2. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0303: Can't bind to 'ngModel' since it isn't a known property of 'textarea' (used in the 'MentaleFunctiesComponent' component template).
+1. If 'textarea' is an Angular component and it has the 'ngModel' input, then verify that it is a part of an @NgModule where this component is declared.
+2. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0303: Can't bind to 'formGroup' since it isn't a known property of 'section' (used in the 'MentaleFunctiesComponent' component template).
+1. If 'section' is an Angular component and it has the 'formGroup' input, then verify that it is a part of an @NgModule where this component is declared.
+2. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0303: Can't bind to 'ngModel' since it isn't a known property of 'textarea' (used in the 'MentaleFunctiesComponent' component template).
+1. If 'textarea' is an Angular component and it has the 'ngModel' input, then verify that it is a part of an @NgModule where this component is declared.
+2. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0304: 'app-navbar' is not a known element (used in the 'AppComponent' component template):
+1. If 'app-navbar' is an Angular component, then verify that it is a part of an @NgModule where this component is declared.
+2. If 'app-navbar' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0304: 'app-footer' is not a known element (used in the 'AppComponent' component template):
+1. If 'app-footer' is an Angular component, then verify that it is a part of an @NgModule where this component is declared.
+2. If 'app-footer' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0304: 'app-navbar' is not a known element (used in the 'AppComponent' component template):
+1. If 'app-navbar' is an Angular component, then verify that it is a part of an @NgModule where this component is declared.
+2. If 'app-navbar' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0304: 'app-footer' is not a known element (used in the 'AppComponent' component template):
+1. If 'app-footer' is an Angular component, then verify that it is a part of an @NgModule where this component is declared.
+2. If 'app-footer' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0304: 'mat-checkbox' is not a known element (used in the 'MentaleFunctiesComponent' component template):
+1. If 'mat-checkbox' is an Angular component, then verify that it is a part of an @NgModule where this component is declared.
+2. If 'mat-checkbox' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0304: 'mat-checkbox' is not a known element (used in the 'MentaleFunctiesComponent' component template):
+1. If 'mat-checkbox' is an Angular component, then verify that it is a part of an @NgModule where this component is declared.
+2. If 'mat-checkbox' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0304: 'mat-checkbox' is not a known element (used in the 'MentaleFunctiesComponent' component template):
+1. If 'mat-checkbox' is an Angular component, then verify that it is a part of an @NgModule where this component is declared.
+2. If 'mat-checkbox' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0304: 'mat-checkbox' is not a known element (used in the 'MentaleFunctiesComponent' component template):
+1. If 'mat-checkbox' is an Angular component, then verify that it is a part of an @NgModule where this component is declared.
+2. If 'mat-checkbox' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0304: 'mat-checkbox' is not a known element (used in the 'MentaleFunctiesComponent' component template):
+1. If 'mat-checkbox' is an Angular component, then verify that it is a part of an @NgModule where this component is declared.
+2. If 'mat-checkbox' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0304: 'mat-checkbox' is not a known element (used in the 'MentaleFunctiesComponent' component template):
+1. If 'mat-checkbox' is an Angular component, then verify that it is a part of an @NgModule where this component is declared.
+2. If 'mat-checkbox' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0304: 'mat-checkbox' is not a known element (used in the 'MentaleFunctiesComponent' component template):
+1. If 'mat-checkbox' is an Angular component, then verify that it is a part of an @NgModule where this component is declared.
+2. If 'mat-checkbox' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0304: 'mat-checkbox' is not a known element (used in the 'MentaleFunctiesComponent' component template):
+1. If 'mat-checkbox' is an Angular component, then verify that it is a part of an @NgModule where this component is declared.
+2. If 'mat-checkbox' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0304: 'mat-checkbox' is not a known element (used in the 'MentaleFunctiesComponent' component template):
+1. If 'mat-checkbox' is an Angular component, then verify that it is a part of an @NgModule where this component is declared.
+2. If 'mat-checkbox' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0304: 'mat-checkbox' is not a known element (used in the 'MentaleFunctiesComponent' component template):
+1. If 'mat-checkbox' is an Angular component, then verify that it is a part of an @NgModule where this component is declared.
+2. If 'mat-checkbox' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0304: 'mat-checkbox' is not a known element (used in the 'MentaleFunctiesComponent' component template):
+1. If 'mat-checkbox' is an Angular component, then verify that it is a part of an @NgModule where this component is declared.
+2. If 'mat-checkbox' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0304: 'mat-checkbox' is not a known element (used in the 'MentaleFunctiesComponent' component template):
+1. If 'mat-checkbox' is an Angular component, then verify that it is a part of an @NgModule where this component is declared.
+2. If 'mat-checkbox' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0304: 'mat-checkbox' is not a known element (used in the 'MentaleFunctiesComponent' component template):
+1. If 'mat-checkbox' is an Angular component, then verify that it is a part of an @NgModule where this component is declared.
+2. If 'mat-checkbox' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0304: 'mat-checkbox' is not a known element (used in the 'MentaleFunctiesComponent' component template):
+1. If 'mat-checkbox' is an Angular component, then verify that it is a part of an @NgModule where this component is declared.
+2. If 'mat-checkbox' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0304: 'mat-checkbox' is not a known element (used in the 'MentaleFunctiesComponent' component template):
+1. If 'mat-checkbox' is an Angular component, then verify that it is a part of an @NgModule where this component is declared.
+2. If 'mat-checkbox' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0304: 'mat-checkbox' is not a known element (used in the 'MentaleFunctiesComponent' component template):
+1. If 'mat-checkbox' is an Angular component, then verify that it is a part of an @NgModule where this component is declared.
+2. If 'mat-checkbox' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0304: 'mat-checkbox' is not a known element (used in the 'MentaleFunctiesComponent' component template):
+1. If 'mat-checkbox' is an Angular component, then verify that it is a part of an @NgModule where this component is declared.
+2. If 'mat-checkbox' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0303: Can't bind to 'formGroup' since it isn't a known property of 'section' (used in the 'MentaleFunctiesComponent' component template).
+1. If 'section' is an Angular component and it has the 'formGroup' input, then verify that it is a part of an @NgModule where this component is declared.
+2. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0303: Can't bind to 'ngModel' since it isn't a known property of 'textarea' (used in the 'MentaleFunctiesComponent' component template).
+1. If 'textarea' is an Angular component and it has the 'ngModel' input, then verify that it is a part of an @NgModule where this component is declared.
+2. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0303: Can't bind to 'formGroup' since it isn't a known property of 'section' (used in the 'MentaleFunctiesComponent' component template).
+1. If 'section' is an Angular component and it has the 'formGroup' input, then verify that it is a part of an @NgModule where this component is declared.
+2. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0303: Can't bind to 'ngModel' since it isn't a known property of 'textarea' (used in the 'MentaleFunctiesComponent' component template).
+1. If 'textarea' is an Angular component and it has the 'ngModel' input, then verify that it is a part of an @NgModule where this component is declared.
+2. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0303: Can't bind to 'formGroup' since it isn't a known property of 'section' (used in the 'MentaleFunctiesComponent' component template).
+1. If 'section' is an Angular component and it has the 'formGroup' input, then verify that it is a part of an @NgModule where this component is declared.
+2. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0303: Can't bind to 'ngModel' since it isn't a known property of 'textarea' (used in the 'MentaleFunctiesComponent' component template).
+1. If 'textarea' is an Angular component and it has the 'ngModel' input, then verify that it is a part of an @NgModule where this component is declared.
+2. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0303: Can't bind to 'formGroup' since it isn't a known property of 'section' (used in the 'MentaleFunctiesComponent' component template).
+1. If 'section' is an Angular component and it has the 'formGroup' input, then verify that it is a part of an @NgModule where this component is declared.
+2. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.'
+,Chrome Headless 108.0.5359.125 (Windows 10) ERROR: 'NG0303: Can't bind to 'ngModel' since it isn't a known property of 'textarea' (used in the 'MentaleFunctiesComponent' component template).
+1. If 'textarea' is an Angular component and it has the 'ngModel' input, then verify that it is a part of an @NgModule where this component is declared.
+2. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.'
+
+]]>
+  </system-out>
+  <system-err/>
+</testsuite>

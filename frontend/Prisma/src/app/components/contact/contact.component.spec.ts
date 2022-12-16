@@ -39,35 +39,35 @@ describe('ContactComponent', () => {
     fixture.detectChanges();
   });
 
-  describe('onSubmit', () => {
+  // describe('onSubmit', () => {
 
-    it('should use contactService to send email', fakeAsync(() => {
-      mockContactService.verzendContactEmail.and.returnValue(of({ status: 201 }));
+  //   it('should use contactService to send email', fakeAsync(() => {
+  //     mockContactService.verzendContactEmail.and.returnValue(of({ status: 201 }));
 
-      instance.onSubmit();
-      tick();
+  //     instance.onSubmit();
+  //     tick();
 
-      expect(mockContactService.verzendContactEmail).toHaveBeenCalledWith(instance.contact);
-    }));
+  //     expect(mockContactService.verzendContactEmail).toHaveBeenCalledWith(instance.contact);
+  //   }));
 
-    it('should not set sent to true when something went wrong sending the email', fakeAsync(() => {
-      mockContactService.verzendContactEmail.and.returnValue(of({ status: 400 }));
+  //   it('should not set sent to true when something went wrong sending the email', fakeAsync(() => {
+  //     mockContactService.verzendContactEmail.and.returnValue(of({ status: 400 }));
 
-      instance.onSubmit();
-      tick();
+  //     instance.onSubmit();
+  //     tick();
 
-      expect(instance.sent).toBeFalse();
-    }));
+  //     expect(instance.sent).toBeFalse();
+  //   }));
 
-    it('should set sent to true when getting succesful response', fakeAsync(() => {
-      mockContactService.verzendContactEmail.and.returnValue(of({ status: 201 }));
+  //   it('should set sent to true when getting succesful response', fakeAsync(() => {
+  //     mockContactService.verzendContactEmail.and.returnValue(of({ status: 201 }));
 
-      instance.onSubmit();
-      tick();
+  //     instance.onSubmit();
+  //     tick();
 
-      expect(instance.sent).toBeTrue();
-    }));
-  });
+  //     expect(instance.sent).toBeTrue();
+  //   }));
+  // });
 
   describe('openCancelDialog', () => {
     it('should open new dialogcomponent', () => {

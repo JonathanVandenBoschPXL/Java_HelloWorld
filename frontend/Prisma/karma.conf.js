@@ -40,6 +40,7 @@ module.exports = function (config) {
         { type: 'html' },
         { type: 'text-summary' },
         { type: 'lcov' },
+        { type: 'cobertura' },
       ]
     },
     // junitReporter: {

@@ -1,0 +1,99 @@
+<testExecutions version="1">
+  <file path="Chrome_Headless_108_0_5359_125_(Windows_10).HoofdfunctieIndicatieComponent">
+    <testCase name="HoofdfunctieIndicatieComponent should create" duration="89"/>
+  </file>
+  <file path="Chrome_Headless_108_0_5359_125_(Windows_10).AppComponent">
+    <testCase name="AppComponent should create the app" duration="22"/>
+    <testCase name="AppComponent should have as title 'Prisma'" duration="13"/>
+  </file>
+  <file path="Chrome_Headless_108_0_5359_125_(Windows_10).FooterComponent">
+    <testCase name="FooterComponent should create" duration="16"/>
+  </file>
+  <file path="Chrome_Headless_108_0_5359_125_(Windows_10).ContactService">
+    <testCase name="ContactService verzendContactEmail should post to backend with correct contact" duration="11"/>
+  </file>
+  <file path="Chrome_Headless_108_0_5359_125_(Windows_10).OverOnsComponent">
+    <testCase name="OverOnsComponent should create" duration="67"/>
+  </file>
+  <file path="Chrome_Headless_108_0_5359_125_(Windows_10).ContactComponent">
+    <testCase name="ContactComponent routeToHome should use passed through router to navigate to homepage" duration="134"/>
+    <testCase name="ContactComponent openCancelDialog should open new dialogcomponent" duration="19"/>
+  </file>
+  <file path="Chrome_Headless_108_0_5359_125_(Windows_10).OverzichtKinderenComponent">
+    <testCase name="OverzichtKinderenComponent ngOnInit should fill kinderenList with kindService" duration="43"/>
+  </file>
+  <file path="Chrome_Headless_108_0_5359_125_(Windows_10).KindService">
+    <testCase name="KindService should be created" duration="9"/>
+  </file>
+  <file path="Chrome_Headless_108_0_5359_125_(Windows_10).AuthGuardGuard">
+    <testCase name="AuthGuardGuard should be created" duration="11"/>
+  </file>
+  <file path="Chrome_Headless_108_0_5359_125_(Windows_10).LoginpaginaComponent">
+    <testCase name="LoginpaginaComponent should create" duration="25">
+      <failure message="Error">NullInjectorError: R3InjectorError(DynamicTestModule)[FormBuilder -&gt; FormBuilder]: 
+  NullInjectorError: No provider for FormBuilder!
+error properties: Object({ ngTempTokenPath: null, ngTokenPath: [ 'FormBuilder', 'FormBuilder' ] })
+    at NullInjector.get (node_modules/@angular/core/fesm2020/core.mjs:8191:27)
+    at R3Injector.get (node_modules/@angular/core/fesm2020/core.mjs:8618:33)
+    at R3Injector.get (node_modules/@angular/core/fesm2020/core.mjs:8618:33)
+    at ChainedInjector.get (node_modules/@angular/core/fesm2020/core.mjs:13811:36)
+    at lookupTokenUsingModuleInjector (node_modules/@angular/core/fesm2020/core.mjs:3293:39)
+    at getOrCreateInjectable (node_modules/@angular/core/fesm2020/core.mjs:3338:12)
+    at ɵɵdirectiveInject (node_modules/@angular/core/fesm2020/core.mjs:10913:12)
+    at NodeInjectorFactory.factory (ng:///LoginpaginaComponent/ɵfac.js:4:48)
+    at getNodeInjectable (node_modules/@angular/core/fesm2020/core.mjs:3523:44)
+    at instantiateRootComponent (node_modules/@angular/core/fesm2020/core.mjs:12592:23)
+</failure>
+    </testCase>
+  </file>
+  <file path="Chrome_Headless_108_0_5359_125_(Windows_10).NavbarComponent">
+    <testCase name="NavbarComponent should create" duration="24"/>
+  </file>
+  <file path="Chrome_Headless_108_0_5359_125_(Windows_10).HomepaginaComponent">
+    <testCase name="HomepaginaComponent should create" duration="16"/>
+  </file>
+  <file path="Chrome_Headless_108_0_5359_125_(Windows_10).BewegingFunctiesComponent">
+    <testCase name="BewegingFunctiesComponent saveData sets component fields to correct values" duration="35"/>
+    <testCase name="BewegingFunctiesComponent functieNavigatie emits hoofdFunctieIndex with step" duration="10"/>
+    <testCase name="BewegingFunctiesComponent functieNavigatie calls saveData" duration="26"/>
+  </file>
+  <file path="Chrome_Headless_108_0_5359_125_(Windows_10).KindCardComponent">
+    <testCase name="KindCardComponent should create" duration="28"/>
+  </file>
+  <file path="Chrome_Headless_108_0_5359_125_(Windows_10).DomeinIndicatieComponent">
+    <testCase name="DomeinIndicatieComponent should create" duration="15"/>
+  </file>
+  <file path="Chrome_Headless_108_0_5359_125_(Windows_10).SensorischeFunctiesComponent">
+    <testCase name="SensorischeFunctiesComponent functieNavigatie calls saveData" duration="19"/>
+    <testCase name="SensorischeFunctiesComponent functieNavigatie emits hoofdFunctieIndex with step" duration="18"/>
+    <testCase name="SensorischeFunctiesComponent saveData sets component fields to correct values" duration="13"/>
+  </file>
+  <file path="Chrome_Headless_108_0_5359_125_(Windows_10).TrajectService">
+    <testCase name="TrajectService checkVoorBestaandeTrajecten should return the correct TrajectAanwezig object" duration="3"/>
+  </file>
+  <file path="Chrome_Headless_108_0_5359_125_(Windows_10).HoofdfunctieComponent">
+    <testCase name="HoofdfunctieComponent functieNavigatie should emit hoofdFunctieIndex with step" duration="11"/>
+  </file>
+  <file path="Chrome_Headless_108_0_5359_125_(Windows_10).CancelDialogComponent">
+    <testCase name="CancelDialogComponent onNoClick should call close on dialogRef" duration="36"/>
+    <testCase name="CancelDialogComponent onYesClick it should call onYesClickFunction of data" duration="9"/>
+    <testCase name="CancelDialogComponent onYesClick should call close on dialogRef" duration="5"/>
+  </file>
+  <file path="Chrome_Headless_108_0_5359_125_(Windows_10).MentaleFunctiesComponent">
+    <testCase name="MentaleFunctiesComponent should create" duration="34"/>
+  </file>
+  <file path="Chrome_Headless_108_0_5359_125_(Windows_10).TrajectService">
+    <testCase name="TrajectService should be created" duration="3"/>
+  </file>
+  <file path="Chrome_Headless_108_0_5359_125_(Windows_10).GroeipuntenpaginaComponent">
+    <testCase name="GroeipuntenpaginaComponent ngOnInit sets huidigeHoofdFunctie to correct values" duration="8"/>
+    <testCase name="GroeipuntenpaginaComponent functieNavigatie does not move index one step up if step is bigger than length of function - 1" duration="3"/>
+    <testCase name="GroeipuntenpaginaComponent functieNavigatie moves index one step up if index and step is smaller than length of function -1 and greater or equal 0" duration="4"/>
+  </file>
+  <file path="Chrome_Headless_108_0_5359_125_(Windows_10).LoginService">
+    <testCase name="LoginService login should post to login endpoint" duration="5"/>
+  </file>
+  <file path="Chrome_Headless_108_0_5359_125_(Windows_10).TokenService">
+    <testCase name="TokenService should be created" duration="2"/>
+  </file>
+</testExecutions>
